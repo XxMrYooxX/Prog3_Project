@@ -1,18 +1,30 @@
 package de.htwsaar.pong.zuse.model;
 
-import de.htwsaar.pong.zuse.presentation.GamePanel;
+import de.htwsaar.pong.zuse.presentation.GameView;
 import javafx.stage.Stage;
+
+import java.io.FileNotFoundException;
 
 public class ButtonHandler {
     public static void MenuSingleplayer(Stage menuStage){
         menuStage.hide();
         try{
-            GamePanel gamePanel = new GamePanel();
-
+            GameView gameViewSingle = new GameView(GameHandler.GameMode.SINGLEPLAYER);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
     public static void MenuMultiplayer(Stage menuStage){
-
+        menuStage.hide();
+        try{
+            GameView gamePanelMulti = new GameView(GameHandler.GameMode.MULTIPLAYER);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     public static void MenuOptions(Stage menuStage){
 
