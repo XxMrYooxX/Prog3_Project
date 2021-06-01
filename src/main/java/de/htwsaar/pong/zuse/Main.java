@@ -1,12 +1,9 @@
 package de.htwsaar.pong.zuse;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
+import de.htwsaar.pong.zuse.model.LaunchGame;
 
-
-public class Main extends Application{
-    @Override
-    public void start(Stage mainStage) throws Exception{
-
+public class Main{
+    public static void main(String[] args){
+        LaunchGame.launchGame();
     }
 }
