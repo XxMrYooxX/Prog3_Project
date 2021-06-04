@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 
 public class MainMenu{
-    protected Stage menuStage;
+    public Stage menuStage;
     private AnchorPane menuPane;
     private Scene menuScene;
     private static final String MAINMENUBUTTON = "-fx-border-width: 2px; -fx-text-fill: white; -fx-border-color: #145374; -fx-border-style: solid;" +
