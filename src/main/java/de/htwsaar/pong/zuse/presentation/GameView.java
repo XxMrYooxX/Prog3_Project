@@ -39,12 +39,16 @@ public class GameView {
         menuStage.setHeight(GAMEVIEWHEIGHT); //weil kb auf relative Groessen TODO: fix this pls
         gamePane = new AnchorPane();
         gamePane.setStyle(BACKGROUNDBLACKSTYLE);
-        gameScene new Scene(gamePane);
+        gameScene = new Scene(gamePane);
         gameStage.setScene(gameScene);
-        GameHandler.createGameSubScene();
+        GameHandler.createGameSubScene(gameScene, gamePane, gameMode);
         GameHandler.createScoreSubScene();
         GameHandler.createGameTimer();
         GameHandler.createGameTitle();
         GameHandler.createMenuButton();
+    }
+
+    public Scene getGameScene() {
+        return gameScene;
     }
 }

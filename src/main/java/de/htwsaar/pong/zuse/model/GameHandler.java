@@ -1,10 +1,20 @@
 package de.htwsaar.pong.zuse.model;
 
+import de.htwsaar.pong.zuse.presentation.GameView;
+import javafx.animation.AnimationTimer;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+
+import java.util.Random;
+
 public class GameHandler {
 
-    private GameSubScene gameSubScene;
-    private Player player;
-    private Player player2;
+    private static GameSubScene gameSubScene;
+    private static GamePlayer player;
+    private static GamePlayer player2;
+    private static GamePlayerKI playerKI;
     private Ball ball;
 
     private AnimationTimer animationTimer;
@@ -19,8 +29,8 @@ public class GameHandler {
     private Label playerScore;
     private Label dashLbl;
     private Label opponentScore;
-    private static final String LABEL_STYLE = "-fx-spacing: 20; -fx-text-fill: #b206b0;";
-    private static final String TITLE_STYLE = "-fx-spacing: 20; -fx-text-fill: #ff8a5c;";
+    private final String LABEL_STYLE = "-fx-spacing: 20; -fx-text-fill: #b206b0;";
+    private final String TITLE_STYLE = "-fx-spacing: 20; -fx-text-fill: #ff8a5c;";
 
     private GameSubScene endGameSubScene;
     private Label resultLabel;
@@ -34,20 +44,40 @@ public class GameHandler {
     private boolean isWKeyPressed;
     private boolean isSKeyPressed;
     private static final int SPEED = 5;
-    public void createGameSubScene() {
+    public static void createGameSubScene(Scene gameScene, AnchorPane gamePane, GameMode gameMode) {
+        gameSubScene = new GameSubScene(1170, 620, 100, 100);
+
+        player = new GamePlayer(gameScene, gamePane, false);
+        player.setLayoutX(40);
+        player.setLayoutY(255);
+
+
+
+        if(gameMode == GameMode.MULTIPLAYER){
+            player2 = new GamePlayer(gameScene, gamePane, true);
+            player2.setLayoutX(1090);
+            player2.setLayoutY(225);
+            gameSubScene.getPane().getChildren().addAll(ball, player, player2);
+        } else {
+            playerKI = new GamePlayerKI();
+            playerKI.setLayoutX(1090);
+            playerKI.setLayoutY(225);
+            gameSubScene.getPane().getChildren().addAll(ball, player, playerKI);
+        }
+        gamePane.getChildren().add(gameSubScene);
     }
 
-    public void createScoreSubScene() {
+    public static void createScoreSubScene() {
     }
 
-    public void createGameTimer() {
+    public static void createGameTimer() {
 
     }
 
-    public void createGameTitle() {
+    public static void createGameTitle() {
     }
 
-    public void createMenuButton() {
+    public static void createMenuButton() {
     }
 
     public enum GameMode{
