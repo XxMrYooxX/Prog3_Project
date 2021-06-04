@@ -21,12 +21,12 @@ Bei der Presentation Model Architektur handelt es sich um eine veränderte Model
 https://martinfowler.com/eaaDev/PresentationModel.html
 
 ## Credits
-Dipl.-Ing. (FH) Michael Sauer DEA (UVigo) - Dozent des Moduls Prog3 und Aufgabenersteller
-Anas Alajaji - Programmberatung
-Sayed Mustafa Sajadi - Programmberatung
-Maram Albaali - Programmiererin
-Marcel Hesselbach - Teamkommunikator und Programmierer
-Isabelle Müller - Programmiererin
-Jorin Moritz Spiller - Programmierer
-Amin Yousif - Programmierer
+Dipl.-Ing. (FH) Michael Sauer DEA (UVigo) - Dozent des Moduls Prog3 und Aufgabenersteller 
+Anas Alajaji - Programmberatung 
+Sayed Mustafa Sajadi - Programmberatung 
+Maram Albaali - Programmiererin 
+Marcel Hesselbach - Teamkommunikator und Programmierer 
+Isabelle Müller - Programmiererin 
+Jorin Moritz Spiller - Programmierer 
+Amin Yousif - Programmierer 
 
