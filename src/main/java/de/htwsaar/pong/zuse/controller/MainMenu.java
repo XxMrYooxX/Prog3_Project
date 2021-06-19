@@ -1,4 +1,4 @@
-package de.htwsaar.pong.zuse.presentation;
+package de.htwsaar.pong.zuse.controller;
 
 import de.htwsaar.pong.zuse.model.ButtonHandler;
 import de.htwsaar.pong.zuse.model.GameButton;

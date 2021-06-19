@@ -1,6 +1,6 @@
 package de.htwsaar.pong.zuse.model;
 
-import de.htwsaar.pong.zuse.presentation.GameView;
+import de.htwsaar.pong.zuse.controller.GameView;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;

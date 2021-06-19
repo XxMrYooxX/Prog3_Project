@@ -1,6 +1,6 @@
 package de.htwsaar.pong.zuse.model;
 
-import de.htwsaar.pong.zuse.presentation.MainMenu;
+import de.htwsaar.pong.zuse.controller.MainMenu;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

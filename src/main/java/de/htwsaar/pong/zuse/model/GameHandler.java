@@ -1,6 +1,5 @@
 package de.htwsaar.pong.zuse.model;
 
-import de.htwsaar.pong.zuse.presentation.GameView;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
