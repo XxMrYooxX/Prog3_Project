@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 
-public class GameView {
+public class GameViewController {
 
     private Stage previousStage;
 
@@ -23,7 +23,7 @@ public class GameView {
 
 
 
-    public GameView(GameHandler.GameMode gameMode) throws FileNotFoundException, InterruptedException {
+    public GameViewController(GameHandler.GameMode gameMode) throws FileNotFoundException, InterruptedException {
         gameStage = new Stage();
         switch (gameMode){
             case SINGLEPLAYER:
