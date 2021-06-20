@@ -1,6 +1,5 @@
 package de.htwsaar.pong.zuse.model;
 
-import game.threads.SpeedChanger;
 import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -41,13 +40,6 @@ public class GamePlayerKI extends Rectangle
 
     private void move()
     {
-        if (!isThreadActive)
-        {
-            isThreadActive = true;
-            Thread thread = new Thread(new SpeedChanger(this, isThreadActive));
-            thread.start();
-        }
-
         if (ball.getTranslateY() < this.getTranslateY() + 50)
         {
             this.setTranslateY(this.getTranslateY() - speed);
@@ -59,13 +51,4 @@ public class GamePlayerKI extends Rectangle
         }
     }
 
-    public void setIsThreadActive(boolean running)
-    {
-        isThreadActive = running;
-    }
-
-    public void setSpeed(int speed)
-    {
-        this.speed = speed;
-    }
 }
