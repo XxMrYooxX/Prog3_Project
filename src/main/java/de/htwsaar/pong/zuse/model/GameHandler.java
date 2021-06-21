@@ -14,7 +14,7 @@ public class GameHandler {
     private static GamePlayer player;
     private static GamePlayer player2;
     private static GamePlayerKI playerKI;
-    private Ball ball;
+    private static GameBall ball;
 
     private AnimationTimer animationTimer;
 
