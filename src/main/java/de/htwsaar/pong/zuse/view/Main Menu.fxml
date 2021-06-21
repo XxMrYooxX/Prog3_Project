@@ -67,10 +67,13 @@
                   <Font size="28.0" />
                </font>
             </Label>
+          <!-- ICONS NOT WORKING -->
+          <!--
             <Icon content="SETTINGS" layoutX="14.0" layoutY="349.0" prefHeight="34.0" prefWidth="33.0" />
             <Icon content="ARROW_FORWARD" layoutX="144.0" layoutY="129.0" />
             <Icon content="ARROW_FORWARD" layoutX="144.0" layoutY="188.0" />
             <Icon content="ARROW_FORWARD" layoutX="144.0" layoutY="247.0" />
+            -->
       </children>
     </AnchorPane>
   </children>

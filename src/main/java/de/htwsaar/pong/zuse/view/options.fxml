@@ -48,36 +48,42 @@
             <Font size="57.0" />
           </font>
         </Label>
-            <Icon content="ARROW_BACK" layoutX="14.0" layoutY="15.0" prefHeight="34.0" prefWidth="33.0" scaleX="1.5" scaleY="1.5" />
-            <Label layoutX="55.0" layoutY="15.0" text="Back">
-               <font>
-                  <Font name="System Bold" size="23.0" />
-               </font>
-            </Label>
-            <Text layoutX="46.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
-            <Text layoutX="46.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
-            <Text layoutX="358.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
-            <Text layoutX="358.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
+          <!-- ICONS NOT WORKING -->
+          <!--
+           <Icon content="ARROW_BACK" layoutX="14.0" layoutY="15.0" prefHeight="34.0" prefWidth="33.0" scaleX="1.5" scaleY="1.5" />
+          -->
+           <Label layoutX="55.0" layoutY="15.0" text="Back">
+              <font>
+                 <Font name="System Bold" size="23.0" />
+              </font>
+           </Label>
+           <Text layoutX="46.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
+              <font>
+                 <Font size="20.0" />
+              </font>
+           </Text>
+           <Text layoutX="46.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
+              <font>
+                 <Font size="20.0" />
+              </font>
+           </Text>
+           <Text layoutX="358.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
+              <font>
+                 <Font size="20.0" />
+              </font>
+           </Text>
+           <Text layoutX="358.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
+              <font>
+                 <Font size="20.0" />
+              </font>
+           </Text>
+         <!-- ICONS NOT WORKING -->
+          <!--
             <Icon content="ARROW_UPWARD" layoutX="22.0" layoutY="248.0" />
             <Icon content="ARROW_UPWARD" layoutX="336.0" layoutY="246.0" />
             <Icon content="ARROW_DOWNWARD" layoutX="22.0" layoutY="281.0" />
             <Icon content="ARROW_DOWNWARD" layoutX="336.0" layoutY="279.0" />
+           -->
             <Text layoutX="412.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Control - Player 2">
                <font>
                   <Font name="System Bold" size="20.0" />
