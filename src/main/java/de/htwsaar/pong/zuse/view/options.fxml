@@ -36,9 +36,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.htwsaar.pong.zuse.controller.OptionsMenuController">
+<BorderPane  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.htwsaar.pong.zuse.controller.OptionsMenuController">
    <left>
-      <VBox alignment="CENTER" prefHeight="327.0" prefWidth="202.0" BorderPane.alignment="CENTER_LEFT">
+      <VBox alignment="CENTER"  BorderPane.alignment="CENTER_LEFT">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control - Player 1">
                <font>
@@ -59,7 +59,7 @@
       </VBox>
    </left>
    <right>
-      <VBox alignment="CENTER" prefHeight="327.0" prefWidth="297.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER"  BorderPane.alignment="CENTER">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control - Player 2">
                <font>
@@ -89,7 +89,7 @@
            </Label>
          </left>
          <bottom>
-        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="640.0" style="&#10;" text="Options" textFill="#aba0a0" BorderPane.alignment="CENTER">
+        <Label alignment="CENTER" contentDisplay="CENTER"  style="&#10;" text="Options" textFill="#aba0a0" BorderPane.alignment="CENTER">
           <font>
             <Font size="57.0" />
           </font>
