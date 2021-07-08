@@ -32,49 +32,55 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import com.gluonhq.charm.glisten.control.Icon?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <children>
-        <Label alignment="CENTER" layoutX="264.0" layoutY="29.0" style="&#10;" text="PONG" textFill="#aba0a0" wrapText="false">
-          <font>
-            <Font size="57.0" />
-          </font>
-        </Label>
-            <Label alignment="CENTER" layoutX="171.0" layoutY="116.0" style="&#10;" text="Play now" textFill="#aba0a0" wrapText="false">
+<BorderPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.htwsaar.pong.zuse.controller.MainMenuController">
+   <top>
+  <Label alignment="CENTER" style="&#10;" text="PONG" textFill="#aba0a0" wrapText="false" BorderPane.alignment="CENTER">
+    <font>
+      <Font size="57.0" />
+    </font>
+  </Label>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" style="&#10;" text="Play now" textFill="#aba0a0" wrapText="false">
                <font>
                   <Font size="35.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="171.0" layoutY="175.0" style="&#10;" text="How to Play" textFill="#aba0a0" wrapText="false">
+            <Label alignment="CENTER" style="&#10;" text="How to Play" textFill="#aba0a0" wrapText="false">
                <font>
                   <Font size="35.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="171.0" layoutY="234.0" style="&#10;" text="Exit" textFill="#aba0a0" wrapText="false">
+            <Label alignment="CENTER" style="&#10;" text="Exit" textFill="#aba0a0" wrapText="false">
                <font>
                   <Font size="35.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="47.0" layoutY="346.0" style="&#10;" text="OPTIONS" wrapText="false">
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="optionsl_label" alignment="BOTTOM_LEFT" onMouseClicked="#goToOptions" style="&#10;" text="OPTIONS">
                <font>
                   <Font size="28.0" />
                </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="60.0" />
+               </padding>
             </Label>
-          <!-- ICONS NOT WORKING -->
-          <!--
-            <Icon content="SETTINGS" layoutX="14.0" layoutY="349.0" prefHeight="34.0" prefWidth="33.0" />
-            <Icon content="ARROW_FORWARD" layoutX="144.0" layoutY="129.0" />
-            <Icon content="ARROW_FORWARD" layoutX="144.0" layoutY="188.0" />
-            <Icon content="ARROW_FORWARD" layoutX="144.0" layoutY="247.0" />
-            -->
-      </children>
-    </AnchorPane>
-  </children>
-</VBox>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

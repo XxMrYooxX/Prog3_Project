@@ -36,76 +36,76 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-      <BorderPane prefHeight="394.0" prefWidth="640.0">
-         <top>
-        <Label alignment="CENTER" prefHeight="84.0" prefWidth="682.0" style="&#10;" text="Options" textFill="#aba0a0" wrapText="false" BorderPane.alignment="CENTER">
-          <font>
-            <Font size="57.0" />
-          </font>
-               <graphic>
-                <!-- ICONS NOT WORKING -->
-                <!--
-                 <Icon content="ARROW_BACK" layoutX="14.0" layoutY="15.0" prefHeight="34.0" prefWidth="33.0" scaleX="1.5" scaleY="1.5" />
-                                  -->
-                 <Label alignment="CENTER" text="Back">
-                    <font>
-                       <Font name="System Bold" size="23.0" />
-                    </font>
-                 </Label>
-               </graphic>
-        </Label>
-         </top>
-         <left>
-            <VBox alignment="CENTER" prefHeight="327.0" prefWidth="202.0" BorderPane.alignment="CENTER_LEFT">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control - Player 1">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Text>
-                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" ausgewählter Button: [BUTTON]">
-                    <font>
-                       <Font size="20.0" />
-                    </font>
-                 </Text>
-                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" ausgewählter Button: [BUTTON]">
-                    <font>
-                       <Font size="20.0" />
-                    </font>
-                 </Text>
-               </children>
-            </VBox>
-         </left>
-         <right>
-            <VBox alignment="CENTER" prefHeight="327.0" prefWidth="297.0" BorderPane.alignment="CENTER">
-               <children>
-               <!-- ICONS NOT WORKING -->
-                <!--
-                  <Icon content="ARROW_UPWARD" layoutX="22.0" layoutY="248.0" />
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.htwsaar.pong.zuse.controller.OptionsMenuController">
+   <left>
+      <VBox alignment="CENTER" prefHeight="327.0" prefWidth="202.0" BorderPane.alignment="CENTER_LEFT">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control - Player 1">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+           <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" ausgewählter Button: [BUTTON]">
+              <font>
+                 <Font size="20.0" />
+              </font>
+           </Text>
+           <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" ausgewählter Button: [BUTTON]">
+              <font>
+                 <Font size="20.0" />
+              </font>
+           </Text>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox alignment="CENTER" prefHeight="327.0" prefWidth="297.0" BorderPane.alignment="CENTER">
+         <children>
+         <!-- ICONS NOT WORKING -->
+          <!--
+            <Icon content="ARROW_UPWARD" layoutX="22.0" layoutY="248.0" />
                               <Icon content="ARROW_UPWARD" layoutX="336.0" layoutY="246.0" />
                               <Icon content="ARROW_DOWNWARD" layoutX="22.0" layoutY="281.0" />
                               <Icon content="ARROW_DOWNWARD" layoutX="336.0" layoutY="279.0" />
                              -->
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control - Player 2">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Text>
-                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
-                    <font>
-                       <Font size="20.0" />
-                    </font>
-                 </Text>
-                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
-                    <font>
-                       <Font size="20.0" />
-                    </font>
-                 </Text>
-               </children>
-            </VBox>
-         </right>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control - Player 2">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
+              <font>
+                 <Font size="20.0" />
+              </font>
+           </Text>
+           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
+              <font>
+                 <Font size="20.0" />
+              </font>
+           </Text>
+         </children>
+      </VBox>
+   </right>
+   <top>
+      <BorderPane prefHeight="32.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+         <left>
+          <!-- ICONS NOT WORKING -->
+          <!--
+           <Icon content="ARROW_BACK" layoutX="14.0" layoutY="15.0" prefHeight="34.0" prefWidth="33.0" scaleX="1.5" scaleY="1.5" />
+                                                                      -->
+           <Label alignment="TOP_LEFT" prefHeight="34.0" prefWidth="166.0" text="Back" BorderPane.alignment="CENTER">
+              <font>
+                 <Font name="System Bold" size="23.0" />
+              </font>
+           </Label>
+         </left>
+         <bottom>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="640.0" style="&#10;" text="Options" textFill="#aba0a0" wrapText="false" BorderPane.alignment="CENTER">
+          <font>
+            <Font size="57.0" />
+          </font>
+        </Label>
+         </bottom>
       </BorderPane>
-  </children>
-</VBox>
+   </top>
+</BorderPane>
