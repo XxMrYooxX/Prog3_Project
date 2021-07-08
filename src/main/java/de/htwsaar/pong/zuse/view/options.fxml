@@ -32,66 +32,76 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.htwsaar.pong.zuse.controller.OptionsMenuController">
+<BorderPane prefHeight="720" prefWidth="1080" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.htwsaar.pong.zuse.controller.OptionsMenuController">
    <left>
-      <VBox alignment="CENTER" prefHeight="327.0" prefWidth="202.0" BorderPane.alignment="CENTER_LEFT">
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER_LEFT">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control - Player 1">
+            <Label text="Control - Player 1" underline="true">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="35.0" />
                </font>
-            </Text>
-           <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" ausgewählter Button: [BUTTON]">
+            </Label>
+           <Label stylesheets="@mainmenu_options_style.css" text=" ausgewählter Button: [BUTTON]">
               <font>
-                 <Font size="20.0" />
+                 <Font size="35.0" />
               </font>
-           </Text>
-           <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" ausgewählter Button: [BUTTON]">
+           </Label>
+           <Label stylesheets="@mainmenu_options_style.css" text=" ausgewählter Button: [BUTTON]">
               <font>
-                 <Font size="20.0" />
+                 <Font size="35.0" />
               </font>
-           </Text>
+           </Label>
          </children>
+         <padding>
+            <Insets left="60.0" />
+         </padding>
       </VBox>
    </left>
    <right>
-      <VBox alignment="CENTER" prefHeight="327.0" prefWidth="297.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control - Player 2">
+            <Label text="Control - Player 2" underline="true">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="35.0" />
                </font>
-            </Text>
-           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
+            </Label>
+           <Label stylesheets="@mainmenu_options_style.css" text="ausgewähler Button: [BUTTON]">
               <font>
-                 <Font size="20.0" />
+                 <Font size="35.0" />
               </font>
-           </Text>
-           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ausgewähler Button: [BUTTON]">
+           </Label>
+           <Label stylesheets="@mainmenu_options_style.css" text="ausgewähler Button: [BUTTON]">
               <font>
-                 <Font size="20.0" />
+                 <Font size="35.0" />
               </font>
-           </Text>
+           </Label>
          </children>
+         <padding>
+            <Insets right="60.0" />
+         </padding>
       </VBox>
    </right>
    <top>
-      <BorderPane prefHeight="32.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+      <BorderPane BorderPane.alignment="CENTER">
          <left>
-           <Label alignment="TOP_LEFT" prefHeight="34.0" prefWidth="166.0" text="Back" BorderPane.alignment="CENTER">
+           <Label fx:id="o_label_back" alignment="TOP_LEFT" onMouseClicked="#goToMainMenu" stylesheets="mainmenu_options_style.css" text="⮪ Back" BorderPane.alignment="CENTER">
               <font>
-                 <Font name="System Bold" size="23.0" />
+                 <Font name="System Bold" size="35.0" />
               </font>
+               <padding>
+                  <Insets left="10.0" top="5.0" />
+               </padding>
            </Label>
          </left>
          <bottom>
-        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="640.0" style="&#10;" text="Options" textFill="#aba0a0" BorderPane.alignment="CENTER">
+        <Label alignment="CENTER" contentDisplay="CENTER" style="&#10;" text="Options" textFill="#aba0a0" BorderPane.alignment="CENTER">
           <font>
-            <Font size="57.0" />
+            <Font size="120.0" />
           </font>
         </Label>
          </bottom>

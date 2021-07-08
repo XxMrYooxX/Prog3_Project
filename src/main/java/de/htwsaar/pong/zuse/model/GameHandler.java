@@ -58,7 +58,7 @@ public class GameHandler {
             player2.setLayoutY(225);
             gameSubScene.getPane().getChildren().addAll(ball, player, player2);
         } else {
-            playerKI = new GamePlayerKI();
+            //playerKI = new GamePlayerKI();
             playerKI.setLayoutX(1090);
             playerKI.setLayoutY(225);
             gameSubScene.getPane().getChildren().addAll(ball, player, playerKI);

@@ -11,16 +11,6 @@
   <name>Pong</name>
   <url>https://github.com/XxMrYooxX/Prog3_Project</url>
 
-  <!-- Repository für Gluon -->
-  <repositories>
-    <repository>
-      <id>charm-glisten</id>
-      <name>charm-glisten Repository</name>
-      <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
-      <layout>default</layout>
-    </repository>
-  </repositories>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
@@ -28,17 +18,16 @@
   </properties>
 
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/com.gluonhq/charm-glisten -->
-    <dependency>
-      <groupId>com.gluonhq</groupId>
-      <artifactId>charm-glisten</artifactId>
-      <version>6.0.6</version>
-    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>16</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
@@ -53,6 +42,12 @@
   </dependencies>
 
   <build>
+    <!-- Ressourcen Ordner, damit die entsprechenden fxml Datein beim Aufruf des FXMLLoaders gefunden werden können -->
+    <resources>
+      <resource>
+        <directory>src/main/java/de/htwsaar/pong/zuse/view</directory>
+      </resource>
+    </resources>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->

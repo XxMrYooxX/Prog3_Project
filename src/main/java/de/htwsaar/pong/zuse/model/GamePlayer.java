@@ -22,7 +22,7 @@ public class GamePlayer extends Rectangle {
 
         createTimer();
         if (playerTwo != true) {
-            addActionListeners();
+          //  addActionListeners();
         }
         this.setFill(Color.WHITE);
         this.setWidth(PLAYERWIDTH);
