@@ -36,7 +36,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.htwsaar.pong.zuse.controller.OptionsMenuController">
+<BorderPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.htwsaar.pong.zuse.controller.OptionsMenuController">
    <left>
       <VBox alignment="CENTER" prefHeight="327.0" prefWidth="202.0" BorderPane.alignment="CENTER_LEFT">
          <children>
