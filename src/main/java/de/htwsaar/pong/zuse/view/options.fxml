@@ -61,13 +61,6 @@
    <right>
       <VBox alignment="CENTER" prefHeight="327.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-         <!-- ICONS NOT WORKING -->
-          <!--
-            <Icon content="ARROW_UPWARD" layoutX="22.0" layoutY="248.0" />
-                              <Icon content="ARROW_UPWARD" layoutX="336.0" layoutY="246.0" />
-                              <Icon content="ARROW_DOWNWARD" layoutX="22.0" layoutY="281.0" />
-                              <Icon content="ARROW_DOWNWARD" layoutX="336.0" layoutY="279.0" />
-                             -->
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control - Player 2">
                <font>
                   <Font name="System Bold" size="20.0" />
@@ -88,11 +81,7 @@
    </right>
    <top>
       <BorderPane prefHeight="32.0" prefWidth="640.0" BorderPane.alignment="CENTER">
-         <left>
-          <!-- ICONS NOT WORKING -->
-          <!--
-           <Icon content="ARROW_BACK" layoutX="14.0" layoutY="15.0" prefHeight="34.0" prefWidth="33.0" scaleX="1.5" scaleY="1.5" />
-                                                                      -->
+         <left>              -->
            <Label alignment="TOP_LEFT" prefHeight="34.0" prefWidth="166.0" text="Back" BorderPane.alignment="CENTER">
               <font>
                  <Font name="System Bold" size="23.0" />
@@ -100,7 +89,7 @@
            </Label>
          </left>
          <bottom>
-        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="640.0" style="&#10;" text="Options" textFill="#aba0a0" wrapText="false" BorderPane.alignment="CENTER">
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="640.0" style="&#10;" text="Options" textFill="#aba0a0" BorderPane.alignment="CENTER">
           <font>
             <Font size="57.0" />
           </font>

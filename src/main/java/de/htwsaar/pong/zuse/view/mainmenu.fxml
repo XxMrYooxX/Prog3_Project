@@ -69,7 +69,7 @@
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="optionsl_label" alignment="BOTTOM_LEFT" onMouseClicked="#goToOptions" style="&#10;" text="OPTIONS">
+            <Label alignment="BOTTOM_LEFT" style="&#10;" text="OPTIONS">
                <font>
                   <Font size="28.0" />
                </font>
