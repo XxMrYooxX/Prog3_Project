@@ -74,6 +74,15 @@ public class GameHandler {
     }
 
     public static void createGameTitle() {
+           
+        Label titleLabel = new Label("PONG");
+        titleLabel.setStyle(TITLE_STYLE);
+        titleLabel.setFont(font);
+        titleLabel.setScaleX(5);
+        titleLabel.setScaleY(5);
+        titleLabel.setLayoutX(630);
+        titleLabel.setLayoutY(40);
+        gamePane.getChildren().add(titleLabel);
     }
 
     public static void createMenuButton() {
