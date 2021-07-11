@@ -58,7 +58,7 @@ public class GameHandler {
             player2.setLayoutY(225);
             gameSubScene.getPane().getChildren().addAll(ball, player, player2);
         } else {
-            playerKI = new GamePlayerKI();
+            //playerKI = new GamePlayerKI();
             playerKI.setLayoutX(1090);
             playerKI.setLayoutY(225);
             gameSubScene.getPane().getChildren().addAll(ball, player, playerKI);
@@ -74,11 +74,36 @@ public class GameHandler {
     }
 
     public static void createGameTitle() {
+           
+        Label titleLabel = new Label("PONG");
+        titleLabel.setStyle(TITLE_STYLE);
+        titleLabel.setFont(font);
+        titleLabel.setScaleX(5);
+        titleLabel.setScaleY(5);
+        titleLabel.setLayoutX(630);
+        titleLabel.setLayoutY(40);
+        gamePane.getChildren().add(titleLabel);
     }
 
-    public static void createMenuButton() {
+    public static void createMenuButton() throws FileNotFoundException
+    {
+        GameButton Button = new GameButton("Back to Menu", 880, 600, true);
+        Button.setOnAction(e ->
+        {
+            gameStage.hide();
+            try
+            {
+                MenuView menuView = new MenuView();
+                menuView.changeScenes(gameStage);
+            }
+            catch (FileNotFoundException ex)
+            {
+                ex.printStackTrace();
+            }
+        });
+        gamePane.getChildren().add(Button);
     }
-
+    
     public enum GameMode{
         SINGLEPLAYER, MULTIPLAYER
     }

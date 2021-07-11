@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.htwsaar.pong.zuse.controller.ChooseGameModeController">
+   <top>
+      <BorderPane prefHeight="173.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <left>
+            <Label fx:id="gm_label_back" onMouseClicked="#goToMainMenu" stylesheets="mainmenu_options_style.css" text="⮪ Back" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+         </left>
+         <bottom>
+            <Label text="Spielmodus" textFill="#aba0a0" underline="true" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="120.0" />
+               </font>
+            </Label>
+         </bottom>
+      </BorderPane>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="542.0" prefWidth="1280.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="gm_label_singleplayer" prefHeight="109.0" prefWidth="620.0" text="▶ Singeplayer 👤" textFill="#aba0a0">
+               <font>
+                  <Font size="75.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="gm_label_multiplayer" prefHeight="109.0" prefWidth="620.0" text="▶ Multiplayer 👥" textFill="#aba0a0">
+               <font>
+                  <Font size="75.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

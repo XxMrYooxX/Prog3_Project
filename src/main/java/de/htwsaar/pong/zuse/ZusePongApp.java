@@ -4,6 +4,6 @@ import de.htwsaar.pong.zuse.model.LaunchGame;
 
 public class ZusePongApp {
     public static void main(String[] args){
-        LaunchGame.launchGame();
+        LaunchGame.launchGame(args);
     }
 }
