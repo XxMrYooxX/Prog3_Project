@@ -87,8 +87,8 @@ public class GameHandler {
 
     public static void createMenuButton() throws FileNotFoundException
     {
-        PongButton pongButton = new PongButton("Back to Menu", 880, 600, true);
-        pongButton.setOnAction(e ->
+        GameButton Button = new GameButton("Back to Menu", 880, 600, true);
+        Button.setOnAction(e ->
         {
             gameStage.hide();
             try
@@ -101,7 +101,7 @@ public class GameHandler {
                 ex.printStackTrace();
             }
         });
-        gamePane.getChildren().add(pongButton);
+        gamePane.getChildren().add(Button);
     }
     
     public enum GameMode{
