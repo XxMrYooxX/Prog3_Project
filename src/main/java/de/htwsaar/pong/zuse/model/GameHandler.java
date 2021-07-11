@@ -73,10 +73,33 @@ public class GameHandler {
 
     }
 
-    public static void createGameTitle() {
+    public void createGameTitle() {
+        Label titleLabel = new Label("PONG");
+        titleLabel.setStyle(TITLE_STYLE);
+        //titleLabel.setFont(font);
+        titleLabel.setScaleX(5);
+        titleLabel.setScaleY(5);
+        titleLabel.setLayoutX(630);
+        titleLabel.setLayoutY(40);
+        //gamePane.getChildren().add(titleLabel);
     }
 
     public static void createMenuButton() {
+        GameButton Button = new GameButton("Back to Menu", 880, 600, true);
+        /*Button.setOnAction(e ->
+        {
+            gameStage.hide();
+            try
+            {
+                MenuView menuView = new MenuView();
+                menuView.changeScenes(gameStage);
+            }
+            catch (FileNotFoundException ex)
+            {
+                ex.printStackTrace();
+            }
+        });
+        gamePane.getChildren().add(Button);*/
     }
 
     public enum GameMode{
