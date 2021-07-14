@@ -49,7 +49,7 @@ public class GameViewController {
         gamePane.setStyle(BACKGROUNDBLACKSTYLE);
         gameHandler = new GameHandler(gameStage, gamePane, gameScene);
         gameHandler.createGameSubScene(gameScene, gamePane);
-        gameHandler.createScoreSubScene();
+        gameHandler.createScoreSubScene(gamePane);
         gameHandler.createGameTimer();
         gameHandler.createGameTitle(gamePane);
         gameHandler.createMenuButton(gamePane);

@@ -22,8 +22,8 @@ public class GamePlayer extends Rectangle {
         this.pane = pane;
 
         createTimer();
-        if (playerTwo != true) {
-          //  addActionListeners();
+        if (!playerTwo) {
+          addActionListeners();
         }
         this.setFill(Color.WHITE);
         this.setWidth(PLAYERWIDTH);

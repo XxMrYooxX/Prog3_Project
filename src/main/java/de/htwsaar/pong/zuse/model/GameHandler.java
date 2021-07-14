@@ -33,6 +33,8 @@ public class GameHandler {
     private Thread gamePointThread;
     private GameSubScene scoreSubScene;
     private Stage gameStage;
+    private Scene gameScene;
+    private AnchorPane gamePane;
     private Label playerOneScore;
     private Label playerTwoScore;
     private Label dashLbl;
@@ -55,6 +57,8 @@ public class GameHandler {
 
     public GameHandler(Stage gameStage, AnchorPane gamePane, Scene gameScene){
         this.gameStage = gameStage;
+        this.gamePane = gamePane;
+        this.gameScene = gameScene;
     }
 
     public void createGameSubScene(Scene gameScene, AnchorPane gamePane) {
@@ -140,8 +144,8 @@ public class GameHandler {
     }
     private void createEndScoreSubScene(boolean playerOneWins){
         endGameSubScene = new GameSubScene(1270, 720, 400, 125);
-        endGameSubScene.getPane().setStyle("-fx-background-color: transparent;");
-
+        //endGameSubScene.getPane().setStyle("-fx-background-color: transparent;");
+        resultLabel = new Label("");
         if (playerOneWins) resultLabel.setText("Winner Winner Chicken Dinner! - Player 2 Wins!");
         else resultLabel.setText("Winner Winner Chicken Dinner! - Player 1 Wins!");
         resultLabel.setScaleX(1.5);
@@ -162,6 +166,38 @@ public class GameHandler {
         });
 
     }
+    public void createScoreSubScene(Pane gamePane) {
+        scoreSubScene = new GameSubScene(300, 100, 500, 575);
+        playerOneScore = new Label("3");
+        dashLbl = new Label("  -  ");
+        playerTwoScore = new Label("3");
+
+        playerOneScore.setScaleX(8);
+        playerOneScore.setScaleY(8);
+        playerOneScore.setLayoutX(50);
+        playerOneScore.setLayoutY(40);
+
+        dashLbl.setScaleX(8);
+        dashLbl.setScaleY(8);
+        dashLbl.setLayoutX(140);
+        dashLbl.setLayoutY(40);
+
+        playerTwoScore.setScaleX(8);
+        playerTwoScore.setScaleY(8);
+        playerTwoScore.setLayoutX(240);
+        playerTwoScore.setLayoutY(40);
+
+        playerOneScore.setStyle(LABEL_STYLE);
+        dashLbl.setStyle(LABEL_STYLE);
+        playerTwoScore.setStyle(LABEL_STYLE);
+        //playerOneScore.setFont(font);
+        //dashLbl.setFont(font);
+        //playerTwoScore.setFont(font);
+
+        scoreSubScene.getPane().setStyle("-fx-background-color: transparent;");
+        scoreSubScene.getPane().getChildren().addAll(playerOneScore, dashLbl, playerTwoScore);
+        gamePane.getChildren().add(scoreSubScene);
+    }
     private void updateScore(boolean playerOne){
         if(playerOne){
             playerOneLivesLeft--;
@@ -178,12 +214,15 @@ public class GameHandler {
         if (player.getTranslateY() + 100 >= 225) {
             player.setTranslateY(player.getTranslateY() - SPEED);
         }
-        if (player2.getTranslateY() <= -225) {
-            player2.setTranslateY(player2.getTranslateY() + SPEED);
+        if(GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER){
+            if (player2.getTranslateY() <= -225) {
+                player2.setTranslateY(player2.getTranslateY() + SPEED);
+            }
+            if (player2.getTranslateY() + 100 >= 225) {
+                player2.setTranslateY(player2.getTranslateY() - SPEED);
+            }
         }
-        if (player2.getTranslateY() + 100 >= 225) {
-            player2.setTranslateY(player2.getTranslateY() - SPEED);
-        }
+
     }
     private void checkPoints(){
         if(!gameDone){
