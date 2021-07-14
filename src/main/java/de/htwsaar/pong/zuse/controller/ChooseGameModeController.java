@@ -24,7 +24,7 @@ public class ChooseGameModeController {
     @FXML
     public void goToSingleplayer(javafx.scene.input.MouseEvent event) throws IOException, InterruptedException { //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml)
         System.out.println("go to singeplayer");
-        GameOptions.gameMode = GameOptions.GameMode.SINGLEPLAYER;
+        GameOptions.setGameMode(GameOptions.GameMode.SINGLEPLAYER);
         //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
         gm_label_singleplayer.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gamescene.fxml"))));
         //GameViewController gameviewcontroller = new GameViewController(GameViewController.GameMode.SINGLEPLAYER);
@@ -34,7 +34,7 @@ public class ChooseGameModeController {
     @FXML
     public void goToMultiplayer(javafx.scene.input.MouseEvent event) throws IOException, InterruptedException { //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml)
         System.out.println("go to multiplayer");
-        GameOptions.gameMode = GameOptions.GameMode.MULTIPLAYER;
+        GameOptions.setGameMode(GameOptions.GameMode.MULTIPLAYER);
         //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
         gm_label_multiplayer.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gamescene.fxml"))));
         //GameViewController gameviewcontroller = new GameViewController(GameViewController.GameMode.SINGLEPLAYER);

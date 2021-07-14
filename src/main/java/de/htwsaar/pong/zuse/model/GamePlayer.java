@@ -2,6 +2,7 @@ package de.htwsaar.pong.zuse.model;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -45,5 +46,33 @@ public class GamePlayer extends Rectangle {
         if(isDownKeyPressed && !isUpKeyPressed && this.getTranslateY() + PLAYERHEIGHT != PLAYERHEIGHT){
             this.setTranslateY(this.getTranslateY() + SPEED);
         }
+    }
+
+    private void addActionListeners() {
+        scene.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.UP){
+                isUpKeyPressed = true;
+            }
+            if (e.getCode() == KeyCode.DOWN){
+                isDownKeyPressed = true;
+            }
+        });
+        scene.setOnKeyReleased(e -> {
+            if(e.getCode() == KeyCode.UP){
+                isUpKeyPressed = false;
+            }
+            if (e.getCode() == KeyCode.DOWN){
+                isDownKeyPressed = false;
+            }
+        });
+    }
+    public boolean getIsUpKeyPressed()
+    {
+        return isUpKeyPressed;
+    }
+
+    public boolean getIsDownKeyPressed()
+    {
+        return isDownKeyPressed;
     }
 }

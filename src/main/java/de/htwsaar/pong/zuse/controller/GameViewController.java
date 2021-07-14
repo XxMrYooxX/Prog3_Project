@@ -22,6 +22,8 @@ public class GameViewController {
     @FXML
     private Button gs_button_start;
 
+    private GameHandler gameHandler;
+
     private Stage previousStage;
 
     private Stage gameStage;
@@ -45,28 +47,24 @@ public class GameViewController {
         gameScene = gamePane.getScene();
 
         gamePane.setStyle(BACKGROUNDBLACKSTYLE);
+        gameHandler = new GameHandler(gameStage);
+        gameHandler.createGameSubScene(gameScene, gamePane);
+        gameHandler.createScoreSubScene();
+        gameHandler.createGameTimer();
+        gameHandler.createGameTitle();
+        gameHandler.createMenuButton(gamePane);
 
-        GameHandler.createGameSubScene(gameScene, gamePane);
-        GameHandler.createScoreSubScene();
-        GameHandler.createGameTimer();
-        GameHandler.createGameTitle();
-        GameHandler.createMenuButton();
-
-        switch (GameOptions.gameMode) {
+        switch (GameOptions.getGameMode()) {
             case SINGLEPLAYER:
                 gameStage.setTitle("Pong Singleplayer | Team Zuse");
                 break;
             case MULTIPLAYER:
                 gameStage.setTitle("Pong Multiplayer | Team Zuse");
+                gameHandler.addListeners(gameScene);
                 break;
 
 
         }
-
-
-        /*
-
-    }*/
     }
 
     public Scene getGameScene() { return gameScene; }

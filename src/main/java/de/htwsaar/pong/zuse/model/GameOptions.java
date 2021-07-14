@@ -1,8 +1,8 @@
 package de.htwsaar.pong.zuse.model;
 
 public final class GameOptions {
-  //  public static GameMode gamemode;
-    public static GameMode gameMode;
+    private static GameMode gameMode;
+
 
     private GameOptions() {};
 
@@ -11,5 +11,11 @@ public final class GameOptions {
         SINGLEPLAYER, MULTIPLAYER
     }
 
+  public static GameMode getGameMode() {
+    return gameMode;
+  }
 
+  public static void setGameMode(GameMode gameMode) {
+    GameOptions.gameMode = gameMode;
+  }
 }

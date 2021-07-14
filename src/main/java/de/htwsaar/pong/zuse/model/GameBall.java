@@ -38,15 +38,15 @@ public class GameBall extends Circle {
         this.setTranslateY(this.getTranslateY() - ySpeed);
     }
 
-    public static void setxSpeed(int xSpeed) {
+    public static void setXSpeed(int xSpeed) {
         GameBall.xSpeed = xSpeed;
     }
 
-    public static void setySpeed(int ySpeed) {
+    public static void setYSpeed(int ySpeed) {
         GameBall.ySpeed = ySpeed;
     }
 
-    public static int getxSpeed() {
+    public static int getXSpeed() {
         return xSpeed;
     }
     public void setColor(Color color){
