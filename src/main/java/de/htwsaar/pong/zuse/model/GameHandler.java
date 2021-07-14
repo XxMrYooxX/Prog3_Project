@@ -43,7 +43,8 @@ public class GameHandler {
     private boolean isWKeyPressed;
     private boolean isSKeyPressed;
     private static final int SPEED = 5;
-    public static void createGameSubScene(Scene gameScene, AnchorPane gamePane, GameMode gameMode) {
+
+    public static void createGameSubScene(Scene gameScene, AnchorPane gamePane) {
         gameSubScene = new GameSubScene(1170, 620, 100, 100);
         player = new GamePlayer(gameScene, gamePane, false);
         player.setLayoutX(40);
@@ -72,7 +73,7 @@ public class GameHandler {
 
     }
 
-    public void createGameTitle() {
+    public static void createGameTitle() {
         Label titleLabel = new Label("PONG");
         titleLabel.setStyle(TITLE_STYLE);
         //titleLabel.setFont(font);
@@ -101,8 +102,5 @@ public class GameHandler {
         gamePane.getChildren().add(Button);*/
     }
 
-    public enum GameMode{
-        SINGLEPLAYER, MULTIPLAYER
-    }
 
 }

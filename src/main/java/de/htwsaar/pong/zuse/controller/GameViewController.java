@@ -63,8 +63,10 @@ public class GameViewController {
 
         }
 
-    public Scene getGameScene() {
-        return gameScene;
+
+        /*
+
+    }*/
     }
 
     public Scene getGameScene() { return gameScene; }
