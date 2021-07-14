@@ -9,6 +9,7 @@ import java.util.Objects;
 
 public class OptionsMenuController {
 
+
     //Initiliasieren der Label, damit diese zum Finden der Scene verwendet werden können (siehe unten)
     //Labelnamen entsprechen den ID's , welche in der FXML Datei festgelegt wurden (Pflicht)
     @FXML
@@ -23,4 +24,6 @@ public class OptionsMenuController {
         //Event abgeschlossen und "verbraucht"
         event.consume();
     }
+
+
 }

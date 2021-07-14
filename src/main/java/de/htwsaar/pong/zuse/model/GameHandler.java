@@ -45,14 +45,13 @@ public class GameHandler {
     private static final int SPEED = 5;
     public static void createGameSubScene(Scene gameScene, AnchorPane gamePane, GameMode gameMode) {
         gameSubScene = new GameSubScene(1170, 620, 100, 100);
-
         player = new GamePlayer(gameScene, gamePane, false);
         player.setLayoutX(40);
         player.setLayoutY(255);
+        GameOptions.GameMode gameMode = GameOptions.gameMode;
 
 
-
-        if(gameMode == GameMode.MULTIPLAYER){
+        if(gameMode == GameOptions.GameMode.MULTIPLAYER){
             player2 = new GamePlayer(gameScene, gamePane, true);
             player2.setLayoutX(1090);
             player2.setLayoutY(225);
@@ -85,7 +84,7 @@ public class GameHandler {
     }
 
     public static void createMenuButton() {
-        GameButton Button = new GameButton("Back to Menu", 880, 600, true);
+       // GameButton Button = new GameButton("Back to Menu", 880, 600, true);
         /*Button.setOnAction(e ->
         {
             gameStage.hide();

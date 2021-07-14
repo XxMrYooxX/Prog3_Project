@@ -27,7 +27,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="542.0" prefWidth="1280.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="gm_label_singleplayer" prefHeight="109.0" prefWidth="620.0" text="▶ Singeplayer 👤" textFill="#aba0a0">
+            <Label fx:id="gm_label_singleplayer" onMouseClicked="#goToSingleplayer" prefHeight="109.0" prefWidth="620.0" text="▶ Singeplayer 👤" textFill="#aba0a0">
                <font>
                   <Font size="75.0" />
                </font>
@@ -35,7 +35,7 @@
                   <Insets bottom="40.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="gm_label_multiplayer" prefHeight="109.0" prefWidth="620.0" text="▶ Multiplayer 👥" textFill="#aba0a0">
+            <Label fx:id="gm_label_multiplayer" onMouseClicked="#goToMultiplayer" prefHeight="109.0" prefWidth="620.0" text="▶ Multiplayer 👥" textFill="#aba0a0">
                <font>
                   <Font size="75.0" />
                </font>

@@ -1,15 +1,10 @@
 package de.htwsaar.pong.zuse.controller;
 
-import de.htwsaar.pong.zuse.model.ButtonHandler;
-import de.htwsaar.pong.zuse.model.GameButton;
+import de.htwsaar.pong.zuse.model.GameOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Objects;
 

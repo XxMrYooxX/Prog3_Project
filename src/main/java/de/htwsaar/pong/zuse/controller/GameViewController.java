@@ -1,19 +1,32 @@
 package de.htwsaar.pong.zuse.controller;
 
 import de.htwsaar.pong.zuse.model.GameHandler;
+import de.htwsaar.pong.zuse.model.GameOptions;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
+import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class GameViewController {
+
+
+    @FXML
+    private AnchorPane gs_ap_anchorpane;
+    @FXML
+    private Button gs_button_start;
 
     private Stage previousStage;
 
     private Stage gameStage;
     private AnchorPane gamePane;
-    private Scene gameScene;
+
     private Stage menuStage;
 
     //Styles
@@ -21,34 +34,40 @@ public class GameViewController {
     public static int GAMEVIEWHEIGHT = 720;
     public static int GAMEVIEWWIDTH = 1280;
 
+    private Scene gameScene;
 
 
-    public GameViewController(GameHandler.GameMode gameMode) throws FileNotFoundException, InterruptedException {
-        gameStage = new Stage();
-        switch (gameMode){
+    @FXML
+    public void startButton(ActionEvent actionEvent){
+
+        gameStage = (Stage) gs_ap_anchorpane.getScene().getWindow();
+        gamePane = gs_ap_anchorpane;
+        gameScene = gamePane.getScene();
+
+        gamePane.setStyle(BACKGROUNDBLACKSTYLE);
+
+        GameHandler.createGameSubScene(gameScene, gamePane);
+        GameHandler.createScoreSubScene();
+        GameHandler.createGameTimer();
+        GameHandler.createGameTitle();
+        GameHandler.createMenuButton();
+
+        switch (GameOptions.gameMode) {
             case SINGLEPLAYER:
                 gameStage.setTitle("Pong Singleplayer | Team Zuse");
                 break;
             case MULTIPLAYER:
                 gameStage.setTitle("Pong Multiplayer | Team Zuse");
                 break;
+
+
         }
-        menuStage.setMaximized(false);  //weil kb auf relative Groessen TODO: fix this pls
-        menuStage.setResizable(false); //weil kb auf relative Groessen TODO: fix this pls
-        menuStage.setWidth(GAMEVIEWWIDTH); //weil kb auf relative Groessen TODO: fix this pls
-        menuStage.setHeight(GAMEVIEWHEIGHT); //weil kb auf relative Groessen TODO: fix this pls
-        gamePane = new AnchorPane();
-        gamePane.setStyle(BACKGROUNDBLACKSTYLE);
-        gameScene = new Scene(gamePane);
-        gameStage.setScene(gameScene);
-        GameHandler.createGameSubScene(gameScene, gamePane, gameMode);
-        GameHandler.createScoreSubScene();
-        GameHandler.createGameTimer();
-        GameHandler.createGameTitle();
-        GameHandler.createMenuButton();
-    }
 
     public Scene getGameScene() {
         return gameScene;
     }
+
+    public Scene getGameScene() { return gameScene; }
+
 }
+
