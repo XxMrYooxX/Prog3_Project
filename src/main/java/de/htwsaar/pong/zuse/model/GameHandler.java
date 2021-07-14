@@ -123,7 +123,16 @@ public class GameHandler {
         }
 
     }
-
+    public void createGameTitle(Pane gamePane)
+    {
+        Label titleLabel = new Label("PONG");
+        titleLabel.setStyle(TITLE_STYLE);
+        titleLabel.setScaleX(5);
+        titleLabel.setScaleY(5);
+        titleLabel.setLayoutX(630);
+        titleLabel.setLayoutY(40);
+        gamePane.getChildren().add(titleLabel);
+    }
     private void createScoreSubScene(boolean playerOneWins){
         endGameSubScene = new GameSubScene(1270, 720, 400, 125);
         endGameSubScene.getPane().setStyle("-fx-background-color: transparent;");

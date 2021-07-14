@@ -51,7 +51,7 @@ public class GameViewController {
         gameHandler.createGameSubScene(gameScene, gamePane);
         gameHandler.createScoreSubScene();
         gameHandler.createGameTimer();
-        gameHandler.createGameTitle();
+        gameHandler.createGameTitle(gamePane);
         gameHandler.createMenuButton(gamePane);
 
         switch (GameOptions.getGameMode()) {
