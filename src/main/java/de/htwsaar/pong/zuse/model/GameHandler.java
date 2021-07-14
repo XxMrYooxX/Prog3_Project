@@ -53,30 +53,37 @@ public class GameHandler {
     private boolean isSKeyPressed;
     private static final int SPEED = 5;
 
-    public GameHandler(Stage gameStage){
+    public GameHandler(Stage gameStage, AnchorPane gamePane, Scene gameScene){
         this.gameStage = gameStage;
     }
 
     public void createGameSubScene(Scene gameScene, AnchorPane gamePane) {
-        gameSubScene = new GameSubScene(1170, 620, 100, 100);
+        gameSubScene = new GameSubScene(1280, 720, 0, 0);
 
         player = new GamePlayer(gameScene, gamePane, false);
         player.setLayoutX(40);
-        player.setLayoutY(255);
+        player.setLayoutY(225);
 
-        switch (GameOptions.getGameMode()) {
-            case SINGLEPLAYER:
-                playerKI = new GamePlayerKI(ball);
-                playerKI.setLayoutX(1090);
-                playerKI.setLayoutY(225);
-                gameSubScene.getPane().getChildren().addAll(ball, player, playerKI);
-                break;
-            case MULTIPLAYER:
-                player2 = new GamePlayer(gameScene, gamePane, true);
-                player2.setLayoutX(1090);
-                player2.setLayoutY(225);
-                gameSubScene.getPane().getChildren().addAll(ball, player, player2);
-                break;
+        ball = new GameBall(gameSubScene);
+        ball.setLayoutX(680);
+        ball.setLayoutY(225);
+
+
+        if (GameOptions.getGameMode() == GameOptions.GameMode.SINGLEPLAYER) {
+            System.out.println(GameOptions.getGameMode());
+            playerKI = new GamePlayerKI(ball);
+            playerKI.setLayoutX(1090);
+            playerKI.setLayoutY(225);
+            gameSubScene.getPane().getChildren().addAll(ball, player, playerKI);
+
+        } else {
+            System.out.println(GameOptions.getGameMode());
+            System.out.println("Multiplayer Erstellung 2 Spieler");
+            player2 = new GamePlayer(gameScene, gamePane, true);
+            player2.setLayoutX(1090);
+            player2.setLayoutY(225);
+            gameSubScene.getPane().getChildren().addAll(ball, player, player2);
+
         }
         gamePane.getChildren().add(gameSubScene);
     }
@@ -107,7 +114,7 @@ public class GameHandler {
                 ball.setYSpeed(0);
                 ball.setTranslateX(0);
                 ball.setTranslateY(-400);
-                createScoreSubScene(false);
+                createEndScoreSubScene(false);
             }
             if(playerTwoLivesLeft == 0){
                 gameDone = true;
@@ -116,7 +123,7 @@ public class GameHandler {
                 ball.setYSpeed(0);
                 ball.setTranslateX(0);
                 ball.setTranslateY(-400);
-                createScoreSubScene(true);
+                createEndScoreSubScene(true);
             }
         }
 
@@ -131,7 +138,7 @@ public class GameHandler {
         titleLabel.setLayoutY(40);
         gamePane.getChildren().add(titleLabel);
     }
-    private void createScoreSubScene(boolean playerOneWins){
+    private void createEndScoreSubScene(boolean playerOneWins){
         endGameSubScene = new GameSubScene(1270, 720, 400, 125);
         endGameSubScene.getPane().setStyle("-fx-background-color: transparent;");
 

@@ -47,7 +47,7 @@ public class GameViewController {
         gameScene = gamePane.getScene();
 
         gamePane.setStyle(BACKGROUNDBLACKSTYLE);
-        gameHandler = new GameHandler(gameStage);
+        gameHandler = new GameHandler(gameStage, gamePane, gameScene);
         gameHandler.createGameSubScene(gameScene, gamePane);
         gameHandler.createScoreSubScene();
         gameHandler.createGameTimer();
