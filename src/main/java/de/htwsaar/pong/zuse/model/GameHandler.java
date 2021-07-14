@@ -81,8 +81,6 @@ public class GameHandler {
         gamePane.getChildren().add(gameSubScene);
     }
 
-    public void createScoreSubScene() {
-    }
 
     public void createGameTimer() {
         animationTimer = new AnimationTimer() {
