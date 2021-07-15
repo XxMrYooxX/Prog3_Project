@@ -52,8 +52,6 @@ public class GameHandler {
     private boolean isSKeyPressed;
     private static final int SPEED = 5;
 
-    //Setzen der benötigten Parameter für weitere Methoden
-
     /**
      * Konstruktor des GameHandlers
      * Setzt die verwendete Stage, Pane und Scene
