@@ -43,7 +43,6 @@ public class GameHandler {
     private Label dashLbl;
 
     private final String LABEL_STYLE = "-fx-spacing: 20; -fx-text-fill: #b206b0;";
-    private final String TITLE_STYLE = "-fx-spacing: 20; -fx-text-fill: #ff8a5c;";
 
     private GameSubScene endGameSubScene;
     private Label resultLabel;
@@ -80,14 +79,21 @@ public class GameHandler {
 
         //Abhängig vom GameMode wird ein KI Player, bzw. ein zweiter Spieler hinzugefügt
         if (GameOptions.getGameMode() == GameOptions.GameMode.SINGLEPLAYER) {
+            //Debug
+            System.out.println(GameOptions.getGameMode());
             System.out.println("Singleplayer Erstellung 1 Spieler");
+
+            //Anlegen des KI Spielers mit Referenz auf den Ball, damit dieser folgen kann
             playerKI = new GamePlayerKI(ball);
             //Hinzufügen des neuen Elements zur GameSubScene
             gameSubScene.getPane().getChildren().addAll(ball, player, playerKI);
 
         } else {
+            //Debug
             System.out.println(GameOptions.getGameMode());
             System.out.println("Multiplayer Erstellung 2 Spieler");
+
+            //Anlegen des Spielers mit Referenz der Scene für den ActionListener (Tastenanschläge)
             player2 = new GamePlayer(gameScene, true);
             //Hinzufügen des neuen Elements zur GameSubScene
             gameSubScene.getPane().getChildren().addAll(ball, player, player2);
@@ -95,8 +101,22 @@ public class GameHandler {
         }
         //Fügt die erstellte SubScene zum GamePane hinzu
         gamePane.getChildren().add(gameSubScene);
+
     }
 
+    public void createGameTitle()
+    {
+        Label titleLabel = new Label("PONG");
+
+        titleLabel.setStyle("-fx-spacing: 20; -fx-text-fill: #000000;"); //Farbe schwarz
+        titleLabel.setScaleX(5);
+        titleLabel.setScaleY(5);
+        titleLabel.setLayoutX(WIDTH/2); //Horizontal zentriert
+        titleLabel.setLayoutY(40); //40px Abstand zum obereren Rand
+
+        //Hinzufügen zur GameScene
+        gamePane.getChildren().add(titleLabel);
+    }
 
     public void createGameTimer() {
         animationTimer = new AnimationTimer() {
@@ -138,16 +158,7 @@ public class GameHandler {
 
     }
 
-    public void createGameTitle()
-    {
-        Label titleLabel = new Label("PONG");
-        titleLabel.setStyle(TITLE_STYLE);
-        titleLabel.setScaleX(5);
-        titleLabel.setScaleY(5);
-        titleLabel.setLayoutX(630);
-        titleLabel.setLayoutY(40);
-        gamePane.getChildren().add(titleLabel);
-    }
+
     private void createEndScoreSubScene(boolean playerOneWins){
         endGameSubScene = new GameSubScene(1270, 720, 400, 125);
         //endGameSubScene.getPane().setStyle("-fx-background-color: transparent;");

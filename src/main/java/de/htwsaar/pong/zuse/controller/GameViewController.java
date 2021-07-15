@@ -31,20 +31,24 @@ public class GameViewController {
         AnchorPane gamePane = gs_ap_anchorpane;
         gameScene = gamePane.getScene();
 
+        //Anlegen des GameHandlers, der alles weitere übernimmt
         GameHandler gameHandler = new GameHandler(gameStage, gamePane, gameScene);
 
+        //Methoden zum Aufbau der Gamescene
         gameHandler.createGameSubScene();
+        gameHandler.createGameTitle();
         gameHandler.createScoreSubScene();
         gameHandler.createGameTimer();
-        gameHandler.createGameTitle();
         gameHandler.createMenuButton();
 
+        //Ändern des Fenstertitels entsprechend dem GameMode
         switch (GameOptions.getGameMode()) {
             case SINGLEPLAYER:
                 gameStage.setTitle("Pong Singleplayer | Team Zuse");
                 break;
             case MULTIPLAYER:
                 gameStage.setTitle("Pong Multiplayer | Team Zuse");
+                //Hinzufügen von Listenern, ob Tasten gedrückt werden
                 gameHandler.addListeners(gameScene);
                 break;
 
@@ -52,7 +56,10 @@ public class GameViewController {
         }
     }
 
-    public Scene getGameScene() { return gameScene; }
+    /* Nicht genutzt??
 
+   public Scene getGameScene() { return gameScene; }
+
+     */
 }
 
