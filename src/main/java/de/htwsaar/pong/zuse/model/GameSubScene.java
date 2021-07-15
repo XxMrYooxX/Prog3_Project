@@ -10,7 +10,7 @@ public class GameSubScene extends SubScene {
         this.prefWidth(width);
         this.setLayoutX(x);
         this.setLayoutY(y);
-        AnchorPane root = (AnchorPane) this.getPane();
+        AnchorPane root = this.getPane();
         root.setStyle("-fx-background-color: #beeef7;");
     }
     public AnchorPane getPane(){
