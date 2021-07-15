@@ -24,7 +24,6 @@ public class GameViewController {
      * Erschaffen des GameHandlers beim Klick auf Start mit entsprechendem Modus (Single, Multi)
      *
      */
-    //Erschaffen des GameHandlers beim Klick auf Start mit entsprechendem Modus (Single, Multi)
     @FXML
     public void startButton(){
 
