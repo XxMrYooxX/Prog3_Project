@@ -11,17 +11,24 @@ public class GameBall extends Circle {
     private static final int SIZE = 20;
     private static int xSpeed = -10;
     private static int ySpeed = 8;
+    private static final int HEIGHT = GameOptions.getGameHeight();
+    private static final int WIDTH = GameOptions.getGameWidth();
 
     public GameBall(GameSubScene gameSubScene){
         this.gameSubScene = gameSubScene;
+
+        //Festelegen des Balllayouts
         this.setRadius(SIZE);
         this.setFill(Color.WHITE);
-        this.setLayoutX(1270/2);
-        this.setLayoutY(720/2);
+        this.setLayoutX(WIDTH/2);
+        this.setLayoutY(HEIGHT/2);
 
+
+        //Erstellt und startet den Animationtimer
         createTimer();
     }
 
+    //Erstellt und startet den Animationtimer, die Methode Move() wird im Hintergrund immer wieder aufgerufen
     private void createTimer() {
         animationTimer = new AnimationTimer() {
             @Override

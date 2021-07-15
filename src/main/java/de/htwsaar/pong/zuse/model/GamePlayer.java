@@ -22,19 +22,20 @@ public class GamePlayer extends Rectangle {
     public GamePlayer(Scene scene, boolean playerTwo){
         this.scene = scene;
 
+        //Erstellt und startet den Animationtimer
         createTimer();
-
+        //Festelegen der Paddlegröße
         this.setWidth(PLAYERWIDTH);
         this.setHeight(PLAYERHEIGHT);
 
         //Prüfen ob Spieler 1 oder 2 erschaffen werden soll
-        if (playerTwo) {
-          addActionListeners();
+        if (playerTwo) { //Spieler 2
+            //TODO ActionListener funktioniert nicht, Tastenanschläge werden nicht erkannt // addActionListeners();
             this.setFill(Color.GREEN);
             this.setLayoutX(WIDTH-PLAYERWIDTH-20); //20px Breite des Paddles + 20px Abstand zum Rand = 40px -> 1280-40 = 1240
             //Da das Rechteck von oben nach unten gezeichnet wird, befindet sich der Mittelpunkt bei der Hälfte des Fensterns, abzüglich der halben Länge des Paddles
             this.setLayoutY((HEIGHT / 2) - (PLAYERHEIGHT / 2));
-        } else {
+        } else { //Spieler 1
             this.setFill(Color.WHITE);
             this.setLayoutX(PLAYERWIDTH); //20px Abstand zum Rand
             //Da das Rechteck von oben nach unten gezeichnet wird, befindet sich der Mittelpunkt bei der Hälfte des Fensterns, abzüglich der halben Länge des Paddles
@@ -43,15 +44,19 @@ public class GamePlayer extends Rectangle {
 
     }
 
+    //Erstellt und startet den Animationtimer, die Methode Move() wird im Hintergrund immer wieder aufgerufen
     public void createTimer(){
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                move();
+               //TODO Bewegen der Paddles funktioniert nicht //move();
             }
         };
         animationTimer.start();
     }
+
+    /*
+
     public void move(){
         if(isUpKeyPressed && !isDownKeyPressed && this.getTranslateY() != -PLAYERHEIGHT){
             this.setTranslateY(this.getTranslateY() - SPEED);
@@ -61,21 +66,25 @@ public class GamePlayer extends Rectangle {
         }
     }
 
+
     private void addActionListeners() {
         scene.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.UP){
                 isUpKeyPressed = true;
-            }
+                System.out.println("up key");            }
             if (e.getCode() == KeyCode.DOWN){
                 isDownKeyPressed = true;
+                System.out.println("down key");
             }
         });
         scene.setOnKeyReleased(e -> {
             if(e.getCode() == KeyCode.UP){
                 isUpKeyPressed = false;
+                System.out.println("up released");
             }
             if (e.getCode() == KeyCode.DOWN){
                 isDownKeyPressed = false;
+                System.out.println("down released");
             }
         });
     }
@@ -88,4 +97,6 @@ public class GamePlayer extends Rectangle {
     {
         return isDownKeyPressed;
     }
+
+     */
 }

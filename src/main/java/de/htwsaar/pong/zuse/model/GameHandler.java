@@ -74,6 +74,7 @@ public class GameHandler {
         //Anlegen des ersten Players, der unabhängig vom Gamemode gebraucht wird
         player = new GamePlayer(gameScene, false);
 
+        //Erstellt den Spielball
         ball = new GameBall(gameSubScene);
 
         if (GameOptions.getGameMode() == GameOptions.GameMode.SINGLEPLAYER) {
