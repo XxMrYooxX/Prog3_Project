@@ -202,7 +202,10 @@ public class GameHandler {
         firstMenuButton.setOnAction(e ->
         {
             try {
-                animationTimer.start();
+                //AnimationTimer Befehle stoppen
+                animationTimer.stop();
+                //Fenstertitel zurückändern
+                gameStage.setTitle("Pong by Team Zuse");
                 gameStage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
             } catch (IOException ioException) {
                 ioException.printStackTrace();
@@ -295,6 +298,8 @@ public class GameHandler {
         //Laden des Hauptmenüs
         menuButton.setOnAction(e -> {
             try {
+                //Fenstertitel zurückändern
+                gameStage.setTitle("Pong by Team Zuse");
                 gameStage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
             } catch (IOException ioException) {
                 ioException.printStackTrace();

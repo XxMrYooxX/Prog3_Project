@@ -23,6 +23,7 @@ public class LaunchGame extends Application {
         stage.setResizable(false);
         stage.setMaximized(false);
         //Fenster anzeigen
+        stage.setTitle("Pong by Team Zuse");
         stage.show();
 
         // Ende der "Main" ->>> Änderungen an der Szene werden jeweils von den Controllern ausgeführt (siehe /controller)
