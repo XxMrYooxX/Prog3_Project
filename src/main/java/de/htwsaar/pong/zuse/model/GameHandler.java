@@ -55,14 +55,17 @@ public class GameHandler {
     private boolean isSKeyPressed;
     private static final int SPEED = 5;
 
+    //Setzen der benötigten Parameter für weitere Methoden
     public GameHandler(Stage gameStage, AnchorPane gamePane, Scene gameScene){
         this.gameStage = gameStage;
         this.gamePane = gamePane;
         this.gameScene = gameScene;
     }
 
+    //Erschaffen der eigentlichen GameScene auf Basis der gamescene view (root)
     public void createGameSubScene() {
-        gameSubScene = new GameSubScene(1280, 720, 0, 0);
+        gameSubScene = new GameSubScene(1280, 720,0,0);
+        gameSubScene.getPane().setStyle("-fx-background-color: #beeef7;");
 
         player = new GamePlayer(gameScene, gamePane, false);
         player.setLayoutX(40);
