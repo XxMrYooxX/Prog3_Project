@@ -2,7 +2,11 @@ package de.htwsaar.pong.zuse.model;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
@@ -41,8 +45,9 @@ public class GameHandler {
     private Label playerOneScore;
     private Label playerTwoScore;
     private Label dashLbl;
+    private Button firstMenuButton;
 
-    private final String LABEL_STYLE = "-fx-spacing: 20; -fx-text-fill: #b206b0;";
+    private final String LABEL_STYLE = "-fx-spacing: 20; -fx-text-fill: #FFFFFF;";
 
     private GameSubScene endGameSubScene;
     private Label resultLabel;
@@ -111,7 +116,10 @@ public class GameHandler {
         titleLabel.setStyle("-fx-spacing: 20; -fx-text-fill: #000000;"); //Farbe schwarz
         titleLabel.setScaleX(5);
         titleLabel.setScaleY(5);
-        titleLabel.setLayoutX(WIDTH/2); //Horizontal zentriert
+        AnchorPane.setLeftAnchor(titleLabel, 0.0);
+        AnchorPane.setRightAnchor(titleLabel, 0.0);
+        titleLabel.setAlignment(Pos.CENTER);
+        //titleLabel.setLayoutX(WIDTH/2); //Horizontal zentriert
         titleLabel.setLayoutY(40); //40px Abstand zum obereren Rand
 
         //Hinzufügen zur GameScene
@@ -143,6 +151,9 @@ public class GameHandler {
                 ball.setTranslateX(0);
                 ball.setTranslateY(-400);
                 createEndScoreSubScene(false);
+                //Entfernt den Menubutton unten rechts, da ein neuer mit dem EndScore eingeblendet wird
+                gamePane.getChildren().remove(firstMenuButton);
+
             }
             if(playerTwoLivesLeft == 0){
                 gameDone = true;
@@ -153,6 +164,8 @@ public class GameHandler {
                 ball.setTranslateX(0);
                 ball.setTranslateY(-400);
                 createEndScoreSubScene(true);
+                //Entfernt den Menubutton unten rechts, da ein neuer mit dem EndScore eingeblendet wird
+                gamePane.getChildren().remove(firstMenuButton);
             }
         }
 
@@ -219,34 +232,40 @@ public class GameHandler {
 
     //Erstellt den Button um zum Hauptmenü zurückzukommen
     public void createMenuButton() {
-        GameButton Button = new GameButton("Hauptmenü", 1150, 670);
-        Button.setOnAction(e ->
+        firstMenuButton = new GameButton("Main Menu", 1150, 670);
+        firstMenuButton.setOnAction(e ->
         {
             try {
+                animationTimer.start();
                 gameStage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
         });
-        gamePane.getChildren().add(Button);
+        gamePane.getChildren().add(firstMenuButton);
     }
 
-    private void createEndScoreSubScene(boolean playerOneWins){
-        endGameSubScene = new GameSubScene(1270, 720, 400, 125);
-        //endGameSubScene.getPane().setStyle("-fx-background-color: transparent;");
-        resultLabel = new Label("");
-        if (playerOneWins) resultLabel.setText("Winner Winner Chicken Dinner! - Player 2 Wins!");
-        else resultLabel.setText("Winner Winner Chicken Dinner! - Player 1 Wins!");
-        resultLabel.setScaleX(1.5);
-        resultLabel.setScaleY(1.5);
-        resultLabel.setStyle(LABEL_STYLE);
-        resultLabel.setLayoutX(150);
-        resultLabel.setLayoutY(100);
 
-        GameButton menuButton = new GameButton("Main Menu", 75, 150);
+    private void createEndScoreSubScene(boolean playerOneWins){
+        endGameSubScene = new GameSubScene(1280, 720, 0, 0);
+        endGameSubScene.getPane().setStyle("-fx-background-color: rgba(0, 100, 100, 0.5);");
+        resultLabel = new Label("");
+        if (playerOneWins) resultLabel.setText("Player 1 Wins!");
+        else resultLabel.setText("Player 2 Wins!");
+        resultLabel.setScaleX(7);
+        resultLabel.setScaleY(7);
+
+        AnchorPane.setLeftAnchor(resultLabel, 0.0);
+        AnchorPane.setRightAnchor(resultLabel, 0.0);
+        resultLabel.setAlignment(Pos.CENTER);
+        resultLabel.setLayoutY(HEIGHT/2 -60);
+        resultLabel.setStyle(LABEL_STYLE);
+
+        GameButton menuButton = new GameButton("Main Menu", 600, HEIGHT/2 + 40);
         menuButton.setTextFill(Color.BLACK);
+        menuButton.setScaleX(3);
+        menuButton.setScaleY(3);
         menuButton.setOnAction(e -> {
-            gameStage.hide();
             try {
                 gameStage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
             } catch (IOException ioException) {
@@ -254,6 +273,8 @@ public class GameHandler {
             }
         });
 
+        endGameSubScene.getPane().getChildren().addAll(resultLabel, menuButton);
+        gamePane.getChildren().add(endGameSubScene);
     }
     public void createScoreSubScene() {
         scoreSubScene = new GameSubScene(300, 100, 500, 575);
