@@ -16,6 +16,8 @@ public class GameBall extends Circle {
         this.gameSubScene = gameSubScene;
         this.setRadius(SIZE);
         this.setFill(Color.WHITE);
+        this.setLayoutX(1270/2);
+        this.setLayoutY(720/2);
 
         createTimer();
     }

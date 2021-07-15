@@ -26,14 +26,6 @@ public class LaunchGame extends Application {
         stage.show();
 
         // Ende der "Main" ->>> Änderungen an der Szene werden jeweils von den Controllern ausgeführt (siehe /controller)
-
-
-        /* ALTER CODE
-        MainMenuController menuPresentation = new MainMenuController();
-        stage = menuPresentation.getMenuStage();
-        stage.setTitle("PONG by PROG3 Team Zuse");
-        stage.show();
-         */
     }
     public static void launchGame(String[] args){
         launch(args);

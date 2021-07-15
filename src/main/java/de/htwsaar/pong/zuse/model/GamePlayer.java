@@ -8,22 +8,26 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class GamePlayer extends Rectangle {
-    private Scene scene;
-    private AnchorPane pane;
-    private AnimationTimer animationTimer;
+    private final Scene scene;
     private boolean isUpKeyPressed;
     private boolean isDownKeyPressed;
-    private static int PLAYERHEIGHT = 100;
-    private static int PLAYERWIDTH = 20;
-    private static int SPEED = 10;
+    private static final int HEIGHT = GameOptions.getGameHeight();
+    private static final int WIDTH = GameOptions.getGameHeight();
 
-    public GamePlayer(Scene scene, AnchorPane pane, boolean playerTwo){
+
+    //Konstanten für Größe, bzw. Speed der Paddles
+    private static final int PLAYERHEIGHT = 100;
+    private static final int PLAYERWIDTH = 20;
+    private static final int SPEED = 10;
+
+    public GamePlayer(Scene scene, boolean playerTwo){
         this.scene = scene;
-        this.pane = pane;
-
         createTimer();
+
         if (!playerTwo) {
           addActionListeners();
+          this.setLayoutX(20);
+          this.setLayoutY((720 / 2) - 50);
         }
         this.setFill(Color.WHITE);
         this.setWidth(PLAYERWIDTH);
@@ -31,7 +35,7 @@ public class GamePlayer extends Rectangle {
     }
 
     public void createTimer(){
-        animationTimer = new AnimationTimer() {
+        AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
                 move();

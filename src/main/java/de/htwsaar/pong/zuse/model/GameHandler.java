@@ -28,6 +28,9 @@ public class GameHandler {
     private Color playerColor = Color.rgb(178,34,34);
     private Color opponentColor = Color.rgb(50,122,178);
 
+    private static final int WIDTH = GameOptions.getGameWidth();
+    private static final int HEIGHT = GameOptions.getGameHeight();
+
     private boolean cooldown = false;
     private Random rnd = new Random();
     private Thread gamePointThread;
@@ -64,29 +67,26 @@ public class GameHandler {
 
     //Erschaffen der eigentlichen GameScene auf Basis der gamescene view (root)
     public void createGameSubScene() {
-        gameSubScene = new GameSubScene(1280, 720,0,0);
-        gameSubScene.getPane().setStyle("-fx-background-color: #beeef7;");
+        gameSubScene = new GameSubScene(WIDTH, HEIGHT,0,0);
+        //Festelegen des Hintergrunds der Spielfläche
+        gameSubScene.getPane().setStyle("-fx-background-color: #beeef7;"); //Helles Türkis
 
-        player = new GamePlayer(gameScene, gamePane, false);
-        player.setLayoutX(40);
-        player.setLayoutY(225);
+        //Anlegen des ersten Players, der unabhängig vom Gamemode gebraucht wird
+        player = new GamePlayer(gameScene, false);
 
         ball = new GameBall(gameSubScene);
-        ball.setLayoutX(680);
-        ball.setLayoutY(225);
-
 
         if (GameOptions.getGameMode() == GameOptions.GameMode.SINGLEPLAYER) {
             System.out.println(GameOptions.getGameMode());
             playerKI = new GamePlayerKI(ball);
             playerKI.setLayoutX(1090);
-            playerKI.setLayoutY(225);
+            playerKI.setLayoutY(360);
             gameSubScene.getPane().getChildren().addAll(ball, player, playerKI);
 
         } else {
             System.out.println(GameOptions.getGameMode());
             System.out.println("Multiplayer Erstellung 2 Spieler");
-            player2 = new GamePlayer(gameScene, gamePane, true);
+            player2 = new GamePlayer(gameScene, true);
             player2.setLayoutX(1090);
             player2.setLayoutY(225);
             gameSubScene.getPane().getChildren().addAll(ball, player, player2);
