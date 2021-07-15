@@ -23,7 +23,6 @@ public class GameHandler {
 
     private static GamePlayer player;
     private static GamePlayer player2;
-    private static GamePlayerKI playerKI;
     private static GameBall ball;
 
     private AnimationTimer animationTimer;
@@ -76,7 +75,7 @@ public class GameHandler {
             System.out.println("Singleplayer Erstellung 1 Spieler");
 
             //Anlegen des KI Spielers mit Referenz auf den Ball, damit dieser folgen kann
-            playerKI = new GamePlayerKI(ball);
+            GamePlayerKI playerKI = new GamePlayerKI(ball);
             //Hinzufügen des neuen Elements zur GameSubScene
             gameSubScene.getPane().getChildren().addAll(ball, player, playerKI);
 
@@ -249,7 +248,8 @@ public class GameHandler {
             playerOneLivesLeft--;
             playerOneScore.setText(String.valueOf(playerOneLivesLeft));
             if(playerOneLivesLeft == 0) {
-                stopAllAnimationsTimer();
+                animationTimer.stop();
+                ball.stopBallAnimation();
                 ball.setVisible(false);
                 endGame();
             }
@@ -257,16 +257,12 @@ public class GameHandler {
             playerTwoLivesLeft--;
             playerTwoScore.setText(String.valueOf(playerTwoLivesLeft));
             if(playerTwoLivesLeft == 0) {
-                stopAllAnimationsTimer();
+                animationTimer.stop();
+                ball.stopBallAnimation();
                 ball.setVisible(false);
                 endGame();
             }
         }
-    }
-
-    private void stopAllAnimationsTimer(){
-        animationTimer.stop();
-        ball.stopBallAnimation();
     }
 
     //Erstellt die Endscene, in der angezeigt wird, wer gewonnen hat, sowie ein Button um zurück ins Hauptmenü zu kommen
