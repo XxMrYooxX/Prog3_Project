@@ -19,35 +19,17 @@ public class GameViewController {
 
     @FXML
     private AnchorPane gs_ap_anchorpane;
-    @FXML
-    private Button gs_button_start;
-
-    private GameHandler gameHandler;
-
-    private Stage previousStage;
-
-    private Stage gameStage;
-    private AnchorPane gamePane;
-
-    private Stage menuStage;
-
-    //Styles
-    private static String BACKGROUNDBLACKSTYLE = "-fx-background-color: BLACK;";
-    public static int GAMEVIEWHEIGHT = 720;
-    public static int GAMEVIEWWIDTH = 1280;
 
     private Scene gameScene;
-
 
     @FXML
     public void startButton(ActionEvent actionEvent){
 
-        gameStage = (Stage) gs_ap_anchorpane.getScene().getWindow();
-        gamePane = gs_ap_anchorpane;
+        Stage gameStage = (Stage) gs_ap_anchorpane.getScene().getWindow();
+        AnchorPane gamePane = gs_ap_anchorpane;
         gameScene = gamePane.getScene();
 
-        gamePane.setStyle(BACKGROUNDBLACKSTYLE);
-        gameHandler = new GameHandler(gameStage, gamePane, gameScene);
+        GameHandler gameHandler = new GameHandler(gameStage, gamePane, gameScene);
         gameHandler.createGameSubScene(gameScene, gamePane);
         gameHandler.createScoreSubScene(gamePane);
         gameHandler.createGameTimer();
