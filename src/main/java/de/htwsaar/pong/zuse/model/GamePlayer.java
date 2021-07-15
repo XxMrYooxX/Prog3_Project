@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class GamePlayer extends Rectangle {
+    //Parameter für ActionListener/move Methode
     private final Scene scene;
     private boolean isUpKeyPressed;
     private boolean isDownKeyPressed;
@@ -55,7 +56,7 @@ public class GamePlayer extends Rectangle {
         animationTimer.start();
     }
 
-    /*
+    /* //TODO Nicht funktioneller Code (Bewegen des Paddles)
 
     public void move(){
         if(isUpKeyPressed && !isDownKeyPressed && this.getTranslateY() != -PLAYERHEIGHT){

@@ -6,11 +6,10 @@ import javafx.scene.shape.Rectangle;
 
 public class GamePlayerKI extends Rectangle
 {
-    private AnimationTimer animationTimer;
 
-    private GameBall ball;
+    private final GameBall ball;
 
-    private static int speed = 10;
+    private static final int speed = 10;
 
     private boolean isThreadActive = false;
 
@@ -33,26 +32,26 @@ public class GamePlayerKI extends Rectangle
         this.setLayoutY((HEIGHT / 2) - (PLAYERHEIGHT / 2));
     }
 
+    //Erstellt und startet den Animationtimer, die Methode Move() wird im Hintergrund immer wieder aufgerufen
     private void createAnimationTimer()
     {
-        animationTimer = new AnimationTimer()
-        {
+        AnimationTimer animationTimer = new AnimationTimer() {
             @Override
-            public void handle(long l)
-            {
+            public void handle(long l) {
                 move();
             }
         };
         animationTimer.start();
     }
 
+    //Methode, welche das KI-gesteuerte Paddle zum "Verfolgen des Balles" bringt
     private void move()
     {
+        //Wenn der Ball +-50px von der Y-Koordinate (Höhe) des Paddles entfernt ist, bewegt sich das Paddle zu dem Ball hin
         if (ball.getTranslateY() < this.getTranslateY() + 50)
         {
             this.setTranslateY(this.getTranslateY() - speed);
         }
-
         if (ball.getTranslateY() > this.getTranslateY() + 50)
         {
             this.setTranslateY(this.getTranslateY() + speed);

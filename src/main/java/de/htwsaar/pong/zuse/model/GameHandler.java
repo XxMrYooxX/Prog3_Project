@@ -77,19 +77,23 @@ public class GameHandler {
         //Erstellt den Spielball
         ball = new GameBall(gameSubScene);
 
-        if (GameOptions.getGameMode() == GameOptions.GameMode.SINGLEPLAYER) {
-            System.out.println(GameOptions.getGameMode());
-            playerKI = new GamePlayerKI(ball);
 
+        //Abhängig vom GameMode wird ein KI Player, bzw. ein zweiter Spieler hinzugefügt
+        if (GameOptions.getGameMode() == GameOptions.GameMode.SINGLEPLAYER) {
+            System.out.println("Singleplayer Erstellung 1 Spieler");
+            playerKI = new GamePlayerKI(ball);
+            //Hinzufügen des neuen Elements zur GameSubScene
             gameSubScene.getPane().getChildren().addAll(ball, player, playerKI);
 
         } else {
             System.out.println(GameOptions.getGameMode());
             System.out.println("Multiplayer Erstellung 2 Spieler");
             player2 = new GamePlayer(gameScene, true);
+            //Hinzufügen des neuen Elements zur GameSubScene
             gameSubScene.getPane().getChildren().addAll(ball, player, player2);
 
         }
+        //Fügt die erstellte SubScene zum GamePane hinzu
         gamePane.getChildren().add(gameSubScene);
     }
 
@@ -115,8 +119,8 @@ public class GameHandler {
             if(playerOneLivesLeft == 0){
                 gameDone = true;
                 ball.setFill(Color.BLACK);
-                ball.setXSpeed(0);
-                ball.setYSpeed(0);
+                GameBall.setXSpeed(0);
+                GameBall.setYSpeed(0);
                 ball.setTranslateX(0);
                 ball.setTranslateY(-400);
                 createEndScoreSubScene(false);
@@ -124,8 +128,8 @@ public class GameHandler {
             if(playerTwoLivesLeft == 0){
                 gameDone = true;
                 ball.setFill(Color.BLACK);
-                ball.setXSpeed(0);
-                ball.setYSpeed(0);
+                GameBall.setXSpeed(0);
+                GameBall.setYSpeed(0);
                 ball.setTranslateX(0);
                 ball.setTranslateY(-400);
                 createEndScoreSubScene(true);
@@ -254,8 +258,8 @@ public class GameHandler {
     private void relocateBall()
     {
         ball.setFill(Color.BLACK);
-        ball.setXSpeed(0);
-        ball.setYSpeed(0);
+        GameBall.setXSpeed(0);
+        GameBall.setYSpeed(0);
         ball.setTranslateX(0);
         ball.setTranslateY(0);
     }
