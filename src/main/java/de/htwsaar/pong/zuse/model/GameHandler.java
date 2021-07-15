@@ -170,23 +170,23 @@ public class GameHandler {
      * Methode checkCollision
      * - Kollisionserkennung der SpielerPaddles
      * - Abhängig von Spielmodus
+     * TODO: eventuell Anpassen der Koordinaten
      */
     private void checkCollision(){
-        if (player.getTranslateY() <= -225) {
+        if (player.getTranslateY() <= -360) {
             player.setTranslateY(player.getTranslateY() + SPEED);
         }
-        if (player.getTranslateY() + 100 >= 225) {
+        if (player.getTranslateY() >= 360) {
             player.setTranslateY(player.getTranslateY() - SPEED);
         }
         if(GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER){
-            if (player2.getTranslateY() <= -225) {
+            if (player2.getTranslateY() <= 360) {
                 player2.setTranslateY(player2.getTranslateY() + SPEED);
             }
-            if (player2.getTranslateY() + 100 >= 225) {
+            if (player2.getTranslateY() >= -360) {
                 player2.setTranslateY(player2.getTranslateY() - SPEED);
             }
         }
-
     }
 
     /**
@@ -233,7 +233,7 @@ public class GameHandler {
      * - Erstellt den Button um zum Hauptmenü zurückzukommen
      */
     public void createMenuButton() {
-        firstMenuButton = new GameButton("Main Menu", 1150, 670);
+        firstMenuButton = new GameButton("Main Menu", 640, 20);
         firstMenuButton.setOnAction(e -> {
             try {
                 //AnimationTimer Befehle stoppen
@@ -346,7 +346,7 @@ public class GameHandler {
         resultLabel.setStyle(LABEL_STYLE);
 
         //Button zum Hauptmenü erzeugen
-        GameButton menuButton = new GameButton("Main Menu", 600, HEIGHT/2 + 40);
+        GameButton menuButton = new GameButton("Main Menu", 600, (HEIGHT >> 1) + 40);
         //Layout des Buttons
         menuButton.setTextFill(Color.BLACK);
         menuButton.setScaleX(3);
@@ -408,22 +408,23 @@ public class GameHandler {
      * Methode checkBallCollision
      * - Prüft die Collision des Balls am Spieler 1
      * - Prüft abhängig von Spielmodus die Collision des Balls am Spieler 2 / KI
+     * TODO: Pruefe Koordinaten
      */
     private void checkBallCollision() {
         if (ball.getTranslateY() >= player.getTranslateY() && ball.getTranslateY() <= player.getTranslateY() + 33) {
-            if (ball.getTranslateX() <= -530 && ball.getTranslateX() >= -540) {
+            if (ball.getTranslateX() <= -360 && ball.getTranslateX() >= -360) {
                 //ball.setColor(playerColor);
                 GameBall.setXSpeed(-GameBall.getXSpeed());
                 GameBall.setYSpeed(8);
             }
         } else if (ball.getTranslateY() >= player.getTranslateY() + 66 && ball.getTranslateY() <= player.getTranslateY() + 100) {
-            if (ball.getTranslateX() <= -530 && ball.getTranslateX() >= -540) {
+            if (ball.getTranslateX() <= -360 && ball.getTranslateX() >= -360) {
                 //ball.setColor(playerColor);
                 GameBall.setXSpeed(-GameBall.getXSpeed());
                 GameBall.setYSpeed(-8);
             }
         } else if (ball.getTranslateY() >= player.getTranslateY() + 33 && ball.getTranslateY() <= player.getTranslateY() + 66) {
-            if (ball.getTranslateX() <= -530 && ball.getTranslateX() >= -540) {
+            if (ball.getTranslateX() <= -360 && ball.getTranslateX() >= -360) {
                 //ball.setColor(playerColor);
                 GameBall.setXSpeed(-GameBall.getXSpeed());
                 int randNum = rnd.nextInt(2) + 1;
@@ -437,19 +438,19 @@ public class GameHandler {
         switch(GameOptions.getGameMode()){
             case MULTIPLAYER:
                 if (ball.getTranslateY() >= player2.getTranslateY() && ball.getTranslateY() <= player2.getTranslateY() + 33) {
-                    if (ball.getTranslateX() >= 510 && ball.getTranslateX() <= 515) {
+                    if (ball.getTranslateX() >= 360 && ball.getTranslateX() <= 360) {
                         //ball.setColor(opponentColor);
                         GameBall.setXSpeed(-GameBall.getXSpeed());
                         GameBall.setYSpeed(8);
                     }
                 } else if (ball.getTranslateY() >= player2.getTranslateY() + 66 && ball.getTranslateY() <= player2.getTranslateY() + 100) {
-                    if (ball.getTranslateX() >= 510 && ball.getTranslateX() <= 515) {
+                    if (ball.getTranslateX() >= 360 && ball.getTranslateX() <= 360) {
                         //ball.setColor(opponentColor);
                         GameBall.setXSpeed(-GameBall.getXSpeed());
                         GameBall.setYSpeed(-8);
                     }
                 } else if (ball.getTranslateY() >= player2.getTranslateY() + 33 && ball.getTranslateY() <= player2.getTranslateY() + 66) {
-                    if (ball.getTranslateX() >= 510 && ball.getTranslateX() <= 515) {
+                    if (ball.getTranslateX() >= 360 && ball.getTranslateX() <= 360) {
                         //ball.setColor(opponentColor);
                         GameBall.setXSpeed(-GameBall.getXSpeed());
                         int randNum = rnd.nextInt(2) + 1;
@@ -463,19 +464,19 @@ public class GameHandler {
                 break;
             case SINGLEPLAYER:
                 if (ball.getTranslateY() >= playerKI.getTranslateY() && ball.getTranslateY() <= playerKI.getTranslateY() + 33) {
-                    if (ball.getTranslateX() >= 510 && ball.getTranslateX() <= 515) {
+                    if (ball.getTranslateX() >= 360 && ball.getTranslateX() <= 360) {
                         //ball.setColor(opponentColor);
                         GameBall.setXSpeed(-GameBall.getXSpeed());
                         GameBall.setYSpeed(8);
                     }
                 } else if (ball.getTranslateY() >= playerKI.getTranslateY() + 66 && ball.getTranslateY() <= playerKI.getTranslateY() + 100) {
-                    if (ball.getTranslateX() >= 510 && ball.getTranslateX() <= 515) {
+                    if (ball.getTranslateX() >= 360 && ball.getTranslateX() <= 360) {
                         //ball.setColor(opponentColor);
                         GameBall.setXSpeed(-GameBall.getXSpeed());
                         GameBall.setYSpeed(-8);
                     }
                 } else if (ball.getTranslateY() >= playerKI.getTranslateY() + 33 && ball.getTranslateY() <= playerKI.getTranslateY() + 66) {
-                    if (ball.getTranslateX() >= 510 && ball.getTranslateX() <= 515) {
+                    if (ball.getTranslateX() >= 360 && ball.getTranslateX() <= 360) {
                         //ball.setColor(opponentColor);
                         GameBall.setXSpeed(-GameBall.getXSpeed());
                         int randNum = rnd.nextInt(2) + 1;
@@ -511,8 +512,7 @@ public class GameHandler {
                 isSKeyPressed = true;
             }
         });
-        gameScene.setOnKeyReleased(e ->
-        {
+        gameScene.setOnKeyReleased(e -> {
             if (e.getCode() == GameOptions.getKeyCodePtwoUp()) {
                 isUpKeyPressed = false;
             }
