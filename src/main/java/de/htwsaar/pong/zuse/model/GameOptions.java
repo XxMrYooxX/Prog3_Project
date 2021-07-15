@@ -9,10 +9,10 @@ public final class GameOptions {
 
     private GameOptions() {};
 
-    private static KeyCode poneUp;
-    private static KeyCode poneDown;
-    private static KeyCode ptwoUp;
-    private static KeyCode ptwoDown;
+    private static KeyCode poneUp = KeyCode.W;
+    private static KeyCode poneDown = KeyCode.S;
+    private static KeyCode ptwoUp = KeyCode.UP;
+    private static KeyCode ptwoDown = KeyCode.DOWN;
 
 
     public static enum GameMode{

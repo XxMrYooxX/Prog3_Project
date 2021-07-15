@@ -24,6 +24,20 @@ public class OptionsMenuController {
     @FXML
     private Label o_label_ptwo_down;
 
+    public OptionsMenuController() {
+
+    }
+
+    //Initialisieren der Buttontext, aus dem Options
+    @FXML
+    public void initialize() {
+        o_label_pone_up.setText("ausgewählter Button: "+ GameOptions.getKeyCodePoneUp().toString());
+        o_label_pone_down.setText("ausgewählter Button: "+ GameOptions.getKeyCodePoneDown().toString());
+        o_label_ptwo_up.setText("ausgewählter Button: "+ GameOptions.getKeyCodePtwoUp().toString());
+        o_label_ptwo_down.setText("ausgewählter Button: "+ GameOptions.getKeyCodePtwoDown().toString());
+
+    }
+
     //Methode zum Wechseln in die Main Menu Scene
     @FXML
     public void goToMainMenu(javafx.scene.input.MouseEvent event) throws IOException { //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml)
