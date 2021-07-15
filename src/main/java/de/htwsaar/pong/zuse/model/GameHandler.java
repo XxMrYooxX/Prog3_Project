@@ -54,7 +54,6 @@ public class GameHandler {
 
     private int playerOneLivesLeft = 3;
     private int playerTwoLivesLeft = 3;
-    private boolean gameDone = false;
 
     private boolean isUpKeyPressed;
     private boolean isDownKeyPressed;
@@ -131,7 +130,6 @@ public class GameHandler {
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                endGame(); //TODO Stattdessen Animation Timer beenden, wenn das Leben auf 0 fällt, statt immer wieder zu prüfen?
                 checkCollision();
                 checkPoints();
             }
@@ -141,33 +139,23 @@ public class GameHandler {
 
     //Überprüft ob das Spiel vorbei ist, also ein Spieler 0 Leben hat //TODO Ball einfach unsichtbar machen mit "ball.setVisible(false)"
     private void endGame()  {
-        if(!gameDone){
             if(playerOneLivesLeft == 0){
-                gameDone = true;
                 ball.setFill(Color.BLACK);
                 //Beendet Ballbewegung und setzt ihn außerhalb des sichtbaren Bereichs
-                GameBall.setXSpeed(0);
-                GameBall.setYSpeed(0);
-                ball.setTranslateX(0);
-                ball.setTranslateY(-400);
+                relocateBall();
                 createEndScoreSubScene(false);
                 //Entfernt den Menubutton unten rechts, da ein neuer mit dem EndScore eingeblendet wird
                 gamePane.getChildren().remove(firstMenuButton);
 
             }
             if(playerTwoLivesLeft == 0){
-                gameDone = true;
                 ball.setFill(Color.BLACK);
                 //Beendet Ballbewegung und setzt ihn außerhalb des sichtbaren Bereichs
-                GameBall.setXSpeed(0);
-                GameBall.setYSpeed(0);
-                ball.setTranslateX(0);
-                ball.setTranslateY(-400);
+                relocateBall();
                 createEndScoreSubScene(true);
                 //Entfernt den Menubutton unten rechts, da ein neuer mit dem EndScore eingeblendet wird
                 gamePane.getChildren().remove(firstMenuButton);
             }
-        }
 
     }
 
@@ -192,7 +180,6 @@ public class GameHandler {
 
     //Setzen der Punkte, wenn Ball außerhalb des Spielbereichs fliegt, Ball in zufällige Richtung starten lassen mit gamePointThread
     private void checkPoints(){
-        if(!gameDone){
             if(ball.getTranslateX() <= -600){
                 if(!cooldown){
                     updateScore(true);
@@ -218,7 +205,6 @@ public class GameHandler {
                     gamePointThread.start();
                 }
             }
-        }
     }
 
     //Zentriert den Ball in der Mitte und setzt den Speed auf 0
@@ -245,39 +231,12 @@ public class GameHandler {
         gamePane.getChildren().add(firstMenuButton);
     }
 
-
-    private void createEndScoreSubScene(boolean playerOneWins){
-        endGameSubScene = new GameSubScene(1280, 720, 0, 0);
-        endGameSubScene.getPane().setStyle("-fx-background-color: rgba(0, 100, 100, 0.5);");
-        resultLabel = new Label("");
-        if (playerOneWins) resultLabel.setText("Player 1 Wins!");
-        else resultLabel.setText("Player 2 Wins!");
-        resultLabel.setScaleX(7);
-        resultLabel.setScaleY(7);
-
-        AnchorPane.setLeftAnchor(resultLabel, 0.0);
-        AnchorPane.setRightAnchor(resultLabel, 0.0);
-        resultLabel.setAlignment(Pos.CENTER);
-        resultLabel.setLayoutY(HEIGHT/2 -60);
-        resultLabel.setStyle(LABEL_STYLE);
-
-        GameButton menuButton = new GameButton("Main Menu", 600, HEIGHT/2 + 40);
-        menuButton.setTextFill(Color.BLACK);
-        menuButton.setScaleX(3);
-        menuButton.setScaleY(3);
-        menuButton.setOnAction(e -> {
-            try {
-                gameStage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-        });
-
-        endGameSubScene.getPane().getChildren().addAll(resultLabel, menuButton);
-        gamePane.getChildren().add(endGameSubScene);
-    }
+   //Erzeugen der Scene zum Anzeigen des Scores
     public void createScoreSubScene() {
         scoreSubScene = new GameSubScene(300, 100, 500, 575);
+        scoreSubScene.getPane().setStyle("-fx-background-color: transparent;");
+
+        //Alles für das Layout
         playerOneScore = new Label("3");
         dashLbl = new Label("  -  ");
         playerTwoScore = new Label("3");
@@ -300,23 +259,73 @@ public class GameHandler {
         playerOneScore.setStyle(LABEL_STYLE);
         dashLbl.setStyle(LABEL_STYLE);
         playerTwoScore.setStyle(LABEL_STYLE);
-        //playerOneScore.setFont(font);
-        //dashLbl.setFont(font);
-        //playerTwoScore.setFont(font);
 
-        scoreSubScene.getPane().setStyle("-fx-background-color: transparent;");
+        //Hinzufügen zur Scene und anzeigen
         scoreSubScene.getPane().getChildren().addAll(playerOneScore, dashLbl, playerTwoScore);
         gamePane.getChildren().add(scoreSubScene);
     }
+
+    //Der spieler verliert ein Leben, wenn das Leben 0 erreicht hat, wird endGame aufgerufen und der Animationtimer wird gestoppt
     private void updateScore(boolean playerOne){
         if(playerOne){
             playerOneLivesLeft--;
             playerOneScore.setText(String.valueOf(playerOneLivesLeft));
+            if(playerOneLivesLeft == 0) {
+                endGame();
+                animationTimer.stop();
+            }
         } else {
             playerTwoLivesLeft--;
             playerTwoScore.setText(String.valueOf(playerTwoLivesLeft));
+            if(playerTwoLivesLeft == 0) {
+                endGame();
+                animationTimer.stop();
+            }
         }
     }
+
+    //Erstellt die Endscene, in der angezeigt wird, wer gewonnen hat, sowie ein Button um zurück ins Hauptmenü zu kommen
+    private void createEndScoreSubScene(boolean playerOneWins){
+        //Erstellen der Subscene mit halbtransparentem Hintergrund
+        endGameSubScene = new GameSubScene(1280, 720, 0, 0);
+        endGameSubScene.getPane().setStyle("-fx-background-color: rgba(0, 100, 100, 0.5);");
+
+        resultLabel = new Label("");
+
+        //Gewinner bestimmen und Text setzen
+        if (playerOneWins) resultLabel.setText("Player 1 Wins!");
+        else resultLabel.setText("Player 2 Wins!");
+
+        //Layout anpassen und zentrieren
+        resultLabel.setScaleX(7);
+        resultLabel.setScaleY(7);
+        AnchorPane.setLeftAnchor(resultLabel, 0.0);
+        AnchorPane.setRightAnchor(resultLabel, 0.0);
+        resultLabel.setAlignment(Pos.CENTER);
+        resultLabel.setLayoutY(HEIGHT/2 -60);
+        resultLabel.setStyle(LABEL_STYLE);
+
+        //Button zum Hauptmenü erzeugen
+        GameButton menuButton = new GameButton("Main Menu", 600, HEIGHT/2 + 40);
+        //Layout des Buttons
+        menuButton.setTextFill(Color.BLACK);
+        menuButton.setScaleX(3);
+        menuButton.setScaleY(3);
+
+        //Laden des Hauptmenüs
+        menuButton.setOnAction(e -> {
+            try {
+                gameStage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
+        //Scene übernehmen und anzeigen
+        endGameSubScene.getPane().getChildren().addAll(resultLabel, menuButton);
+        gamePane.getChildren().add(endGameSubScene);
+    }
+
 
     private void movePlayers() {
         if (isUpKeyPressed && !isDownKeyPressed && isWKeyPressed && !isSKeyPressed) {
