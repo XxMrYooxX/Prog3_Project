@@ -8,6 +8,7 @@ public class GamePlayerKI extends Rectangle
 {
 
     private final GameBall ball;
+    private AnimationTimer animationTimer;
 
     private static final int speed = 10;
 
@@ -35,7 +36,7 @@ public class GamePlayerKI extends Rectangle
     //Erstellt und startet den Animationtimer, die Methode Move() wird im Hintergrund immer wieder aufgerufen
     private void createAnimationTimer()
     {
-        AnimationTimer animationTimer = new AnimationTimer() {
+        animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
                 move();
@@ -58,4 +59,7 @@ public class GamePlayerKI extends Rectangle
         }
     }
 
+    public void stopGamePlayerKIAnimation() {
+        animationTimer.stop();
+    }
 }
