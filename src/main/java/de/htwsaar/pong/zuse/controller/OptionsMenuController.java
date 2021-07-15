@@ -4,6 +4,8 @@ import de.htwsaar.pong.zuse.model.GameOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -23,6 +25,8 @@ public class OptionsMenuController {
     private Label o_label_ptwo_up;
     @FXML
     private Label o_label_ptwo_down;
+    @FXML
+    private Label o_label_keyassigned;
 
     public OptionsMenuController() {
 
@@ -40,9 +44,12 @@ public class OptionsMenuController {
     //Methode zum Wechseln in die Main Menu Scene
     @FXML
     public void goToMainMenu(javafx.scene.input.MouseEvent event) throws IOException { //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml)
-        System.out.println("go to main menu");
-        //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
-        o_label_back.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
+        if(GameOptions.doubleKeyAssignment()) {
+            o_label_keyassigned.setVisible(true);
+        } else {
+            //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
+            o_label_back.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
+        }
         //Event abgeschlossen und "verbraucht"
         event.consume();
     }
@@ -55,6 +62,7 @@ public class OptionsMenuController {
             o_label_pone_up.setText("ausgewählter Button: "+ e.getCode());
             GameOptions.setKeyCodePoneUp(e.getCode());
         });
+        o_label_keyassigned.setVisible(false);
         event.consume();
     }
 
@@ -66,6 +74,7 @@ public class OptionsMenuController {
             o_label_pone_down.setText("ausgewählter Button: "+ e.getCode());
             GameOptions.setKeyCodePoneDown(e.getCode());
         });
+        o_label_keyassigned.setVisible(false);
         event.consume();
     }
 
@@ -77,6 +86,7 @@ public class OptionsMenuController {
             o_label_ptwo_up.setText("ausgewählter Button: "+ e.getCode());
             GameOptions.setKeyCodePtwoUp(e.getCode());
         });
+        o_label_keyassigned.setVisible(false);
         event.consume();
     }
 
@@ -88,7 +98,7 @@ public class OptionsMenuController {
             o_label_ptwo_down.setText("ausgewählter Button: "+ e.getCode());
             GameOptions.setKeyCodePtwoDown(e.getCode());
         });
+        o_label_keyassigned.setVisible(false);
         event.consume();
     }
-
 }

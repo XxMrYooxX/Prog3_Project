@@ -2,6 +2,9 @@ package de.htwsaar.pong.zuse.model;
 
 import javafx.scene.input.KeyCode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Class GameOptions
  * Repräsentiert statisch die GameOptions
@@ -67,6 +70,16 @@ public final class GameOptions {
      */
     public static KeyCode getKeyCodePoneDown() { return poneDown; }
 
+    public static boolean doubleKeyAssignment() {
+        KeyCode[] keycodes = new KeyCode[]{poneUp, poneDown, ptwoDown, ptwoUp};
+        Set<KeyCode> lump = new HashSet<>();
+        for (KeyCode i : keycodes)
+        {
+            if (lump.contains(i)) return true;
+            lump.add(i);
+        }
+        return false;
+    }
     /**
      * Setter für Attribut gameMode
      * @param gameMode Zu setzender GameMode

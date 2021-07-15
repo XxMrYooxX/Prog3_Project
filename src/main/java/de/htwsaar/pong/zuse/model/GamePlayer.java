@@ -29,8 +29,6 @@ public class GamePlayer extends Rectangle {
         this.setWidth(PLAYERWIDTH);
         this.setHeight(PLAYERHEIGHT);
 
-
-
         //Prüfen ob Spieler 1 oder 2 erschaffen werden soll
         if (playerTwo) { //Spieler 2
             this.setFill(Color.GREEN);
