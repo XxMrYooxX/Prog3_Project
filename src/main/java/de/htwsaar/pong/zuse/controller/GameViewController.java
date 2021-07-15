@@ -15,14 +15,30 @@ import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/**
+ * Controller Class fuer GameView
+ *
+ * @version 1.1
+ */
 public class GameViewController {
 
-
+    /**
+     * AnchorPane der Scene
+     */
     @FXML
     private AnchorPane gs_ap_anchorpane;
 
+    /**
+     * GameScene
+     */
     private Scene gameScene;
 
+    /**
+     * StartButton des Spiels
+     * Erschaffen des GameHandlers beim Klick auf Start mit entsprechendem Modus (Single, Multi)
+     *
+     * @param actionEvent   Event, welches Methode startet
+     */
     //Erschaffen des GameHandlers beim Klick auf Start mit entsprechendem Modus (Single, Multi)
     @FXML
     public void startButton(ActionEvent actionEvent){
@@ -55,18 +71,12 @@ public class GameViewController {
             case MULTIPLAYER:
                 gameStage.setTitle("Pong Multiplayer | Team Zuse");
                 //Hinzufügen von Listenern, ob Tasten gedrückt werden
-                //TODO funktioniert nicht // gameHandler.addListeners(gameScene);
+                gameHandler.addListeners(gameScene);
                 break;
 
 
         }
 
     }
-
-    /* Nicht genutzt??
-
-   public Scene getGameScene() { return gameScene; }
-
-     */
 }
 
