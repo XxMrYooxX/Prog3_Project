@@ -61,7 +61,7 @@ public class GameHandler {
         this.gameScene = gameScene;
     }
 
-    public void createGameSubScene(Scene gameScene, AnchorPane gamePane) {
+    public void createGameSubScene() {
         gameSubScene = new GameSubScene(1280, 720, 0, 0);
 
         player = new GamePlayer(gameScene, gamePane, false);
@@ -132,7 +132,8 @@ public class GameHandler {
         }
 
     }
-    public void createGameTitle(Pane gamePane)
+
+    public void createGameTitle()
     {
         Label titleLabel = new Label("PONG");
         titleLabel.setStyle(TITLE_STYLE);
@@ -166,7 +167,7 @@ public class GameHandler {
         });
 
     }
-    public void createScoreSubScene(Pane gamePane) {
+    public void createScoreSubScene() {
         scoreSubScene = new GameSubScene(300, 100, 500, 575);
         playerOneScore = new Label("3");
         dashLbl = new Label("  -  ");
@@ -289,20 +290,7 @@ public class GameHandler {
         }
     }
 
-
-
-    public void createGameTitle() {
-        Label titleLabel = new Label("PONG");
-        titleLabel.setStyle(TITLE_STYLE);
-        //titleLabel.setFont(font);
-        titleLabel.setScaleX(5);
-        titleLabel.setScaleY(5);
-        titleLabel.setLayoutX(630);
-        titleLabel.setLayoutY(40);
-        //gamePane.getChildren().add(titleLabel);
-    }
-
-    public void createMenuButton(Pane gamePane) {
+    public void createMenuButton() {
         GameButton Button = new GameButton("Back to Menu", 880, 600);
         Button.setOnAction(e ->
         {

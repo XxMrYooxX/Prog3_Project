@@ -22,19 +22,22 @@ public class GameViewController {
 
     private Scene gameScene;
 
+    //Erschaffen des GameHandlers beim Klick auf Start mit entsprechendem Modus (Single, Multi)
     @FXML
     public void startButton(ActionEvent actionEvent){
 
+        //Parameter für Übergabe an gameHandler festlegen
         Stage gameStage = (Stage) gs_ap_anchorpane.getScene().getWindow();
         AnchorPane gamePane = gs_ap_anchorpane;
         gameScene = gamePane.getScene();
 
         GameHandler gameHandler = new GameHandler(gameStage, gamePane, gameScene);
-        gameHandler.createGameSubScene(gameScene, gamePane);
-        gameHandler.createScoreSubScene(gamePane);
+
+        gameHandler.createGameSubScene();
+        gameHandler.createScoreSubScene();
         gameHandler.createGameTimer();
-        gameHandler.createGameTitle(gamePane);
-        gameHandler.createMenuButton(gamePane);
+        gameHandler.createGameTitle();
+        gameHandler.createMenuButton();
 
         switch (GameOptions.getGameMode()) {
             case SINGLEPLAYER:
