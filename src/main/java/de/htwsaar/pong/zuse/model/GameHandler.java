@@ -6,7 +6,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -501,31 +500,31 @@ public class GameHandler {
      */
     public void addListeners(Scene gameScene){
         gameScene.setOnKeyPressed(e -> {
-            if(e.getCode() == KeyCode.UP){
+            if(e.getCode() == GameOptions.getKeyCodePtwoUp()){
                 isUpKeyPressed = true;
             }
-            if(e.getCode() == KeyCode.DOWN){
+            if(e.getCode() == GameOptions.getKeyCodePtwoDown()){
                 isDownKeyPressed = true;
             }
-            if (e.getCode() == KeyCode.W) {
+            if (e.getCode() == GameOptions.getKeyCodePoneUp()) {
                 isWKeyPressed = true;
             }
-            if (e.getCode() == KeyCode.S) {
+            if (e.getCode() == GameOptions.getKeyCodePoneDown()) {
                 isSKeyPressed = true;
             }
         });
         gameScene.setOnKeyReleased(e ->
         {
-            if (e.getCode() == KeyCode.UP) {
+            if (e.getCode() == GameOptions.getKeyCodePtwoUp()) {
                 isUpKeyPressed = false;
             }
-            if (e.getCode() == KeyCode.DOWN) {
+            if (e.getCode() == GameOptions.getKeyCodePtwoDown()) {
                 isDownKeyPressed = false;
             }
-            if (e.getCode() == KeyCode.W) {
+            if (e.getCode() == GameOptions.getKeyCodePoneUp()) {
                 isWKeyPressed = false;
             }
-            if (e.getCode() == KeyCode.S) {
+            if (e.getCode() == GameOptions.getKeyCodePoneDown()) {
                 isSKeyPressed = false;
             }
         });
