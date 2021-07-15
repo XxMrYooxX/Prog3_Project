@@ -3,8 +3,6 @@ package de.htwsaar.pong.zuse.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 

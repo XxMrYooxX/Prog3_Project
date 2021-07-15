@@ -21,7 +21,7 @@ public class ChooseGameModeController {
     private Label gm_label_multiplayer;
 
     @FXML
-    public void goToSingleplayer(javafx.scene.input.MouseEvent event) throws IOException, InterruptedException { //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml)
+    public void goToSingleplayer(javafx.scene.input.MouseEvent event) throws IOException{ //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml)
         System.out.println("go to singeplayer");
         //Setzen der Optionen auf Singleplayer
         GameOptions.setGameMode(GameOptions.GameMode.SINGLEPLAYER);
@@ -31,7 +31,7 @@ public class ChooseGameModeController {
     }
 
     @FXML
-    public void goToMultiplayer(javafx.scene.input.MouseEvent event) throws IOException, InterruptedException { //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml)
+    public void goToMultiplayer(javafx.scene.input.MouseEvent event) throws IOException{ //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml)
         System.out.println("go to multiplayer");
         //Setzen der Optionen auf Multiplayer
         GameOptions.setGameMode(GameOptions.GameMode.MULTIPLAYER);

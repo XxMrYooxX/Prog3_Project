@@ -1,6 +1,5 @@
 package de.htwsaar.pong.zuse.model;
 
-import de.htwsaar.pong.zuse.controller.MainMenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

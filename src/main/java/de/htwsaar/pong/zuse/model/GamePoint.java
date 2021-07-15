@@ -3,6 +3,8 @@ package de.htwsaar.pong.zuse.model;
 import java.util.Random;
 
 public class GamePoint implements Runnable {
+
+    //TODO wird nicht gebraucht?
     private final GameBall ball;
     private final GameHandler gameHandler;
 

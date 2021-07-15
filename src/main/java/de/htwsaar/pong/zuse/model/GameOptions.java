@@ -7,7 +7,7 @@ public final class GameOptions {
     private static final int WIDTH = 1280;
     private static final int HEIGHT = 720;
 
-    private GameOptions() {};
+    private GameOptions() {}
 
     private static KeyCode poneUp = KeyCode.W;
     private static KeyCode poneDown = KeyCode.S;
@@ -15,7 +15,7 @@ public final class GameOptions {
     private static KeyCode ptwoDown = KeyCode.DOWN;
 
 
-    public static enum GameMode{
+    public enum GameMode{
         SINGLEPLAYER, MULTIPLAYER
     }
 
