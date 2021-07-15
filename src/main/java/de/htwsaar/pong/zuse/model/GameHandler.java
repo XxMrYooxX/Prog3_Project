@@ -79,16 +79,13 @@ public class GameHandler {
         if (GameOptions.getGameMode() == GameOptions.GameMode.SINGLEPLAYER) {
             System.out.println(GameOptions.getGameMode());
             playerKI = new GamePlayerKI(ball);
-            playerKI.setLayoutX(1090);
-            playerKI.setLayoutY(360);
+
             gameSubScene.getPane().getChildren().addAll(ball, player, playerKI);
 
         } else {
             System.out.println(GameOptions.getGameMode());
             System.out.println("Multiplayer Erstellung 2 Spieler");
             player2 = new GamePlayer(gameScene, true);
-            player2.setLayoutX(1090);
-            player2.setLayoutY(225);
             gameSubScene.getPane().getChildren().addAll(ball, player, player2);
 
         }

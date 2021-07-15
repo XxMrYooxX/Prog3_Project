@@ -11,27 +11,36 @@ public class GamePlayer extends Rectangle {
     private final Scene scene;
     private boolean isUpKeyPressed;
     private boolean isDownKeyPressed;
-    private static final int HEIGHT = GameOptions.getGameHeight();
-    private static final int WIDTH = GameOptions.getGameHeight();
 
-
-    //Konstanten für Größe, bzw. Speed der Paddles
+    //Konstanten für Größe, bzw. Speed der Paddles, Größe des Fensters
     private static final int PLAYERHEIGHT = 100;
     private static final int PLAYERWIDTH = 20;
     private static final int SPEED = 10;
+    private static final int HEIGHT = GameOptions.getGameHeight();
+    private static final int WIDTH = GameOptions.getGameWidth();
 
     public GamePlayer(Scene scene, boolean playerTwo){
         this.scene = scene;
+
         createTimer();
 
-        if (!playerTwo) {
-          addActionListeners();
-          this.setLayoutX(20);
-          this.setLayoutY((720 / 2) - 50);
-        }
-        this.setFill(Color.WHITE);
         this.setWidth(PLAYERWIDTH);
         this.setHeight(PLAYERHEIGHT);
+
+        //Prüfen ob Spieler 1 oder 2 erschaffen werden soll
+        if (playerTwo) {
+          addActionListeners();
+            this.setFill(Color.GREEN);
+            this.setLayoutX(WIDTH-PLAYERWIDTH-20); //20px Breite des Paddles + 20px Abstand zum Rand = 40px -> 1280-40 = 1240
+            //Da das Rechteck von oben nach unten gezeichnet wird, befindet sich der Mittelpunkt bei der Hälfte des Fensterns, abzüglich der halben Länge des Paddles
+            this.setLayoutY((HEIGHT / 2) - (PLAYERHEIGHT / 2));
+        } else {
+            this.setFill(Color.WHITE);
+            this.setLayoutX(PLAYERWIDTH); //20px Abstand zum Rand
+            //Da das Rechteck von oben nach unten gezeichnet wird, befindet sich der Mittelpunkt bei der Hälfte des Fensterns, abzüglich der halben Länge des Paddles
+            this.setLayoutY((HEIGHT / 2) - (PLAYERHEIGHT / 2));
+        }
+
     }
 
     public void createTimer(){

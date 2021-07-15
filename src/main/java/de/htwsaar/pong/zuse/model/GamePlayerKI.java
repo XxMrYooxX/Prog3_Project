@@ -14,15 +14,23 @@ public class GamePlayerKI extends Rectangle
 
     private boolean isThreadActive = false;
 
+    private static final int PLAYERHEIGHT = 100;
+    private static final int PLAYERWIDTH = 20;
+    private static final int HEIGHT = GameOptions.getGameHeight();
+    private static final int WIDTH = GameOptions.getGameWidth();
+
     public GamePlayerKI(GameBall ball)
     {
         this.ball = ball;
 
         createAnimationTimer();
 
+        this.setWidth(PLAYERWIDTH);
+        this.setHeight(PLAYERHEIGHT);
         this.setFill(Color.GREEN);
-        this.setWidth(20);
-        this.setHeight(100);
+        this.setLayoutX(WIDTH-PLAYERWIDTH-20); //20px Breite des Paddles + 20px Abstannd zum Rand = 40px -> 1280-40 = 1240
+        //Da das Rechteck von oben nach unten gezeichnet wird, befindet sich der Mittelpunkt bei der Hälfte des Fensterns, abzüglich der halben Länge des Paddles
+        this.setLayoutY((HEIGHT / 2) - (PLAYERHEIGHT / 2));
     }
 
     private void createAnimationTimer()
