@@ -58,7 +58,7 @@
            </Label>
          </children>
          <padding>
-            <Insets left="100.0" />
+            <Insets left="50.0" />
          </padding>
       </VBox>
    </left>
@@ -82,14 +82,36 @@
            </Label>
          </children>
          <padding>
-            <Insets right="100.0" />
+            <Insets right="50.0" />
          </padding>
       </VBox>
    </right>
    <top>
       <BorderPane BorderPane.alignment="CENTER">
-         <left>
-           <Label fx:id="o_label_back" alignment="TOP_LEFT" onMouseClicked="#goToMainMenu" stylesheets="mainmenu_options_style.css" text="⮪ Back" BorderPane.alignment="CENTER">
+         <center>
+            <VBox alignment="CENTER" prefHeight="105.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+               <children>
+              <Label alignment="CENTER" contentDisplay="CENTER" style="&#10;" text="Options" textAlignment="CENTER" textFill="#aba0a0">
+                <font>
+                  <Font size="76.0" />
+                </font>
+              </Label>
+                  <Label fx:id="o_label_keyassigned" visible="false" alignment="CENTER" text="TASTENBELEGUNG DOPPELT!" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="60.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </center>
+         <top>
+           <Label fx:id="o_label_back" alignment="TOP_LEFT" onMouseClicked="#goToMainMenu" stylesheets="mainmenu_options_style.css" text="⮪ Back" BorderPane.alignment="TOP_LEFT">
               <font>
                  <Font name="System Bold" size="35.0" />
               </font>
@@ -97,14 +119,7 @@
                   <Insets left="10.0" top="5.0" />
                </padding>
            </Label>
-         </left>
-         <bottom>
-        <Label alignment="CENTER" contentDisplay="CENTER" style="&#10;" text="Options" textFill="#aba0a0" BorderPane.alignment="CENTER">
-          <font>
-            <Font size="120.0" />
-          </font>
-        </Label>
-         </bottom>
+         </top>
       </BorderPane>
    </top>
 </BorderPane>
