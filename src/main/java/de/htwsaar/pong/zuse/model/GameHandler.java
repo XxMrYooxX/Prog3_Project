@@ -2,26 +2,29 @@ package de.htwsaar.pong.zuse.model;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * Class GameHandler
+ * Steuert die gesamten Vorgehen während der GameScene
+ *
+ * @version 1.0
+ */
 public class GameHandler {
 
     private static GamePlayer player;
     private static GamePlayer player2;
+    private static GamePlayerKI playerKI;
     private static GameBall ball;
 
     private AnimationTimer animationTimer;
@@ -36,6 +39,8 @@ public class GameHandler {
     private Label playerTwoScore;
     private Button firstMenuButton;
 
+    private final Random rnd = new Random();
+
     private final String LABEL_STYLE = "-fx-spacing: 20; -fx-text-fill: #FFFFFF;";
 
     private int playerOneLivesLeft = 3;
@@ -48,41 +53,52 @@ public class GameHandler {
     private static final int SPEED = 5;
 
     //Setzen der benötigten Parameter für weitere Methoden
+
+    /**
+     * Konstruktor des GameHandlers
+     * Setzt die verwendete Stage, Pane und Scene
+     * @param gameStage     Verwendete GameStage
+     * @param gamePane      Verwendete GamePane
+     * @param gameScene     Verwendete GameScene
+     */
     public GameHandler(Stage gameStage, AnchorPane gamePane, Scene gameScene){
         this.gameStage = gameStage;
         this.gamePane = gamePane;
         this.gameScene = gameScene;
     }
 
-    //Erschaffen der eigentlichen GameScene auf Basis der gamescene view (root)
+    /**
+     * Methode createGameSubScene
+     * - Erschaffen der eigentlichen GameScene auf Basis der Game Scene view (root)
+     * - Festlegen des Hintergrunds
+     * - Anlegen des ersten Spielers unabhängig vom GameMode
+     * - Anlegen des Balls
+     * - Abhängig vom Spielmodus Anlegen von KI oder 2. Spieler
+     * - SubScene wird GamePane hinzugefügt
+     */
     public void createGameSubScene() {
         GameSubScene gameSubScene = new GameSubScene(WIDTH, HEIGHT, 0, 0);
-        //Festelegen des Hintergrunds der Spielfläche
+        //Festlegen des Hintergrunds der Spielfläche
         gameSubScene.getPane().setStyle("-fx-background-color: #beeef7;"); //Helles Türkis
 
-        //Anlegen des ersten Players, der unabhängig vom Gamemode gebraucht wird
+        //Anlegen des ersten Players, der unabhängig vom GameMode gebraucht wird
         player = new GamePlayer(gameScene, false);
 
         //Erstellt den Spielball
         ball = new GameBall(gameSubScene);
 
-
         //Abhängig vom GameMode wird ein KI Player, bzw. ein zweiter Spieler hinzugefügt
         if (GameOptions.getGameMode() == GameOptions.GameMode.SINGLEPLAYER) {
-            //Debug
             System.out.println(GameOptions.getGameMode());
             System.out.println("Singleplayer Erstellung 1 Spieler");
-
             //Anlegen des KI Spielers mit Referenz auf den Ball, damit dieser folgen kann
-            GamePlayerKI playerKI = new GamePlayerKI(ball);
+            playerKI = new GamePlayerKI(ball);
             //Hinzufügen des neuen Elements zur GameSubScene
             gameSubScene.getPane().getChildren().addAll(ball, player, playerKI);
 
         } else {
-            //Debug
             System.out.println(GameOptions.getGameMode());
             System.out.println("Multiplayer Erstellung 2 Spieler");
-
             //Anlegen des Spielers mit Referenz der Scene für den ActionListener (Tastenanschläge)
             player2 = new GamePlayer(gameScene, true);
             //Hinzufügen des neuen Elements zur GameSubScene
@@ -94,6 +110,11 @@ public class GameHandler {
 
     }
 
+    /**
+     *  Methode createGameTitle
+     *  - Erstellt titleLabel "PONG"
+     *  - Setzt es an gamePane
+     */
     public void createGameTitle()
     {
         Label titleLabel = new Label("PONG");
@@ -104,42 +125,54 @@ public class GameHandler {
         AnchorPane.setLeftAnchor(titleLabel, 0.0);
         AnchorPane.setRightAnchor(titleLabel, 0.0);
         titleLabel.setAlignment(Pos.CENTER);
-        //titleLabel.setLayoutX(WIDTH/2); //Horizontal zentriert
         titleLabel.setLayoutY(40); //40px Abstand zum obereren Rand
 
         //Hinzufügen zur GameScene
         gamePane.getChildren().add(titleLabel);
     }
 
-    //Erstellt und startet den Animationtimer, die Methoden checkCollision, checkPoints, endGame werden im Hintergrund immer wieder aufgerufen
+    /**
+     * Methode createGameTimer
+     * - Erstellt und startet den AnimationTimer
+     * - die Methoden checkCollision, checkPoints, endGame werden im Hintergrund immer wieder aufgerufen
+     */
     public void createGameTimer() {
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                checkCollision();
+                if(GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER){
+                    checkCollision();
+                    movePlayers();
+                }
+                checkBallCollision();
                 checkPoints();
             }
         };
         animationTimer.start();
     }
 
-    //Überprüft ob das Spiel vorbei ist, also ein Spieler 0 Leben hat //TODO Ball einfach unsichtbar machen mit "ball.setVisible(false)"
+    /**
+     * Methode endGame
+     * - Überprüft ob das Spiel vorbei ist, also ein Spieler 0 Leben hat
+     */
     private void endGame()  {
-            if(playerOneLivesLeft == 0){
-                createEndScoreSubScene(false);
-                //Entfernt den Menubutton unten rechts, da ein neuer mit dem EndScore eingeblendet wird
-                gamePane.getChildren().remove(firstMenuButton);
-
-            }
-            if(playerTwoLivesLeft == 0){
-                createEndScoreSubScene(true);
-                //Entfernt den Menubutton unten rechts, da ein neuer mit dem EndScore eingeblendet wird
-                gamePane.getChildren().remove(firstMenuButton);
-            }
-
+        if(playerOneLivesLeft == 0){
+            createEndScoreSubScene(false);
+            //Entfernt den Menu Button unten rechts, da ein neuer mit dem EndScore eingeblendet wird
+            gamePane.getChildren().remove(firstMenuButton);
+        }
+        if(playerTwoLivesLeft == 0){
+            createEndScoreSubScene(true);
+            //Entfernt den Menu Button unten rechts, da ein neuer mit dem EndScore eingeblendet wird
+            gamePane.getChildren().remove(firstMenuButton);
+        }
     }
 
-    //Kollisionserkennung //TODO kann nicht getestet werden weil movement nicht funktioniert
+    /**
+     * Methode checkCollision
+     * - Kollisionserkennung der SpielerPaddles
+     * - Abhängig von Spielmodus
+     */
     private void checkCollision(){
         if (player.getTranslateY() <= -225) {
             player.setTranslateY(player.getTranslateY() + SPEED);
@@ -158,29 +191,37 @@ public class GameHandler {
 
     }
 
-    //Setzen der Punkte, wenn Ball außerhalb des Spielbereichs fliegt, Ball in zufällige Richtung starten lassen mit gamePointThread
+    /**
+     * Methode checkPoints
+     * - Setzen der Punkte, wenn Ball außerhalb des Spielbereichs fliegt
+     * - Ball in zufällige Richtung starten lassen mit gamePointThread
+     */
     private void checkPoints(){
         Thread gamePointThread;
         if(ball.getTranslateX() <= -600){
-                    updateScore(true);
-                    //Ball wieder auf Startposition bringen
-                    relocateBall();
-                    //Zufällige Richtung für nächsten Ball bestimmen
-                    gamePointThread = new Thread(new GamePoint(ball, this));
-                    gamePointThread.start();
-            }
-            if (ball.getTranslateX() >= 600)
-            {
-                    updateScore(false);
-                    //Ball wieder auf Startposition bringen
-                    relocateBall();
-                    //Zufällige Richtung für nächsten Ball bestimmen
-                    gamePointThread = new Thread(new GamePoint(ball, this));
-                    gamePointThread.start();
-            }
+            updateScore(true);
+            //Ball wieder auf Startposition bringen
+            relocateBall();
+            //Zufällige Richtung für nächsten Ball bestimmen
+            gamePointThread = new Thread(new GamePoint(ball, this));
+            gamePointThread.start();
+        }
+        if (ball.getTranslateX() >= 600)
+        {
+            updateScore(false);
+            //Ball wieder auf Startposition bringen
+            relocateBall();
+            //Zufällige Richtung für nächsten Ball bestimmen
+            gamePointThread = new Thread(new GamePoint(ball, this));
+            gamePointThread.start();
+        }
     }
 
-    //Zentriert den Ball in der Mitte und setzt den Speed auf 0
+    /**
+     * Methode relocateBall
+     * - Zentriert den Ball in der Mitte
+     * - setzt den Speed auf 0
+     */
     private void relocateBall()
     {
         GameBall.setXSpeed(0);
@@ -189,11 +230,13 @@ public class GameHandler {
         ball.setTranslateY(0);
     }
 
-    //Erstellt den Button um zum Hauptmenü zurückzukommen
+    /**
+     * Methode createMenuButton
+     * - Erstellt den Button um zum Hauptmenü zurückzukommen
+     */
     public void createMenuButton() {
         firstMenuButton = new GameButton("Main Menu", 1150, 670);
-        firstMenuButton.setOnAction(e ->
-        {
+        firstMenuButton.setOnAction(e -> {
             try {
                 //AnimationTimer Befehle stoppen
                 animationTimer.stop();
@@ -207,15 +250,18 @@ public class GameHandler {
         gamePane.getChildren().add(firstMenuButton);
     }
 
-   //Erzeugen der Scene zum Anzeigen des Scores
+    /**
+     * Methode createScoreSubScene
+     * - Erzeugen der Scene zum Anzeigen des Scores
+     */
     public void createScoreSubScene() {
         GameSubScene scoreSubScene = new GameSubScene(300, 100, 500, 575);
         scoreSubScene.getPane().setStyle("-fx-background-color: transparent;");
 
         //Alles für das Layout
-        playerOneScore = new Label("3");
-        Label dashLbl = new Label("  -  ");
-        playerTwoScore = new Label("3");
+        playerOneScore = new Label("3"); //ToDo: eventuell dynamisch gestalten?
+        Label dashLbl = new Label("  -  "); //ToDo: eventuell dynamisch gestalten?
+        playerTwoScore = new Label("3"); //ToDo: eventuell dynamisch gestalten?
 
         playerOneScore.setScaleX(8);
         playerOneScore.setScaleY(8);
@@ -241,7 +287,14 @@ public class GameHandler {
         gamePane.getChildren().add(scoreSubScene);
     }
 
-    //Der spieler verliert ein Leben, wenn das Leben 0 erreicht hat, wird endGame aufgerufen und der Animationtimer wird gestoppt
+    /**
+     * Methode updateScore
+     * - Spieler verliert ein Leben
+     *      - Wenn Leben = 0 -> endGame() & Stop Animation Timer
+     * @param playerOne     Boolean, ob Spieler 1 Leben verliert
+     *                          Wenn True: playerOneLivesLeft--
+     *                          Wenn false: playerTwoLivesLeft--
+     */
     private void updateScore(boolean playerOne){
         if(playerOne){
             playerOneLivesLeft--;
@@ -264,9 +317,18 @@ public class GameHandler {
         }
     }
 
-    //Erstellt die Endscene, in der angezeigt wird, wer gewonnen hat, sowie ein Button um zurück ins Hauptmenü zu kommen
+    //Erstellt die EndScene, in der angezeigt wird, wer gewonnen hat, sowie ein Button um zurück ins Hauptmenü zu kommen
+
+    /**
+     * Methode createEndScoreSubScene
+     * - Erstellt EndScene
+     * - Erstellt "zurück ins Hauptmenü" Button
+     * @param playerOneWins     Boolean, ob Spieler 1 gewinnt
+     *                              true: spieler 1 gewinnt
+     *                              false: spieler 2 gewinnt
+     */
     private void createEndScoreSubScene(boolean playerOneWins){
-        //Erstellen der Subscene mit halbtransparentem Hintergrund
+        //Erstellen der SubScene mit halbtransparentem Hintergrund
         GameSubScene endGameSubScene = new GameSubScene(1280, 720, 0, 0);
         endGameSubScene.getPane().setStyle("-fx-background-color: rgba(0, 100, 100, 0.5);");
 
@@ -282,7 +344,7 @@ public class GameHandler {
         AnchorPane.setLeftAnchor(resultLabel, 0.0);
         AnchorPane.setRightAnchor(resultLabel, 0.0);
         resultLabel.setAlignment(Pos.CENTER);
-        resultLabel.setLayoutY(HEIGHT/2 -60);
+        resultLabel.setLayoutY((HEIGHT >> 1) - 60);
         resultLabel.setStyle(LABEL_STYLE);
 
         //Button zum Hauptmenü erzeugen
@@ -308,8 +370,10 @@ public class GameHandler {
         gamePane.getChildren().add(endGameSubScene);
     }
 
-
-    /* Listeners zum Bewegen der Paddles //TODO wird nicht genutzt und funktioniert auch nicht
+    /**
+     * Methode movePlayers
+     * - Setzt Bewegungen abhängig von Tastendruck um
+     */
     private void movePlayers() {
         if (isUpKeyPressed && !isDownKeyPressed && isWKeyPressed && !isSKeyPressed) {
             player2.setTranslateY(player2.getTranslateY() - SPEED);
@@ -342,6 +406,98 @@ public class GameHandler {
         }
     }
 
+    /**
+     * Methode checkBallCollision
+     * - Prüft die Collision des Balls am Spieler 1
+     * - Prüft abhängig von Spielmodus die Collision des Balls am Spieler 2 / KI
+     */
+    private void checkBallCollision() {
+        if (ball.getTranslateY() >= player.getTranslateY() && ball.getTranslateY() <= player.getTranslateY() + 33) {
+            if (ball.getTranslateX() <= -530 && ball.getTranslateX() >= -540) {
+                //ball.setColor(playerColor);
+                GameBall.setXSpeed(-GameBall.getXSpeed());
+                GameBall.setYSpeed(8);
+            }
+        } else if (ball.getTranslateY() >= player.getTranslateY() + 66 && ball.getTranslateY() <= player.getTranslateY() + 100) {
+            if (ball.getTranslateX() <= -530 && ball.getTranslateX() >= -540) {
+                //ball.setColor(playerColor);
+                GameBall.setXSpeed(-GameBall.getXSpeed());
+                GameBall.setYSpeed(-8);
+            }
+        } else if (ball.getTranslateY() >= player.getTranslateY() + 33 && ball.getTranslateY() <= player.getTranslateY() + 66) {
+            if (ball.getTranslateX() <= -530 && ball.getTranslateX() >= -540) {
+                //ball.setColor(playerColor);
+                GameBall.setXSpeed(-GameBall.getXSpeed());
+                int randNum = rnd.nextInt(2) + 1;
+                if (randNum == 1) {
+                    GameBall.setYSpeed(-2);
+                } else if (randNum == 2) {
+                    GameBall.setYSpeed(2);
+                }
+            }
+        }
+        switch(GameOptions.getGameMode()){
+            case MULTIPLAYER:
+                if (ball.getTranslateY() >= player2.getTranslateY() && ball.getTranslateY() <= player2.getTranslateY() + 33) {
+                    if (ball.getTranslateX() >= 510 && ball.getTranslateX() <= 515) {
+                        //ball.setColor(opponentColor);
+                        GameBall.setXSpeed(-GameBall.getXSpeed());
+                        GameBall.setYSpeed(8);
+                    }
+                } else if (ball.getTranslateY() >= player2.getTranslateY() + 66 && ball.getTranslateY() <= player2.getTranslateY() + 100) {
+                    if (ball.getTranslateX() >= 510 && ball.getTranslateX() <= 515) {
+                        //ball.setColor(opponentColor);
+                        GameBall.setXSpeed(-GameBall.getXSpeed());
+                        GameBall.setYSpeed(-8);
+                    }
+                } else if (ball.getTranslateY() >= player2.getTranslateY() + 33 && ball.getTranslateY() <= player2.getTranslateY() + 66) {
+                    if (ball.getTranslateX() >= 510 && ball.getTranslateX() <= 515) {
+                        //ball.setColor(opponentColor);
+                        GameBall.setXSpeed(-GameBall.getXSpeed());
+                        int randNum = rnd.nextInt(2) + 1;
+                        if (randNum == 1) {
+                            GameBall.setYSpeed(-2);
+                        } else if (randNum == 2) {
+                            GameBall.setYSpeed(2);
+                        }
+                    }
+                }
+                break;
+            case SINGLEPLAYER:
+                if (ball.getTranslateY() >= playerKI.getTranslateY() && ball.getTranslateY() <= playerKI.getTranslateY() + 33) {
+                    if (ball.getTranslateX() >= 510 && ball.getTranslateX() <= 515) {
+                        //ball.setColor(opponentColor);
+                        GameBall.setXSpeed(-GameBall.getXSpeed());
+                        GameBall.setYSpeed(8);
+                    }
+                } else if (ball.getTranslateY() >= playerKI.getTranslateY() + 66 && ball.getTranslateY() <= playerKI.getTranslateY() + 100) {
+                    if (ball.getTranslateX() >= 510 && ball.getTranslateX() <= 515) {
+                        //ball.setColor(opponentColor);
+                        GameBall.setXSpeed(-GameBall.getXSpeed());
+                        GameBall.setYSpeed(-8);
+                    }
+                } else if (ball.getTranslateY() >= playerKI.getTranslateY() + 33 && ball.getTranslateY() <= playerKI.getTranslateY() + 66) {
+                    if (ball.getTranslateX() >= 510 && ball.getTranslateX() <= 515) {
+                        //ball.setColor(opponentColor);
+                        GameBall.setXSpeed(-GameBall.getXSpeed());
+                        int randNum = rnd.nextInt(2) + 1;
+                        if (randNum == 1) {
+                            GameBall.setYSpeed(-2);
+                        } else if (randNum == 2) {
+                            GameBall.setYSpeed(2);
+                        }
+                    }
+                }
+                break;
+        }
+
+    }
+
+    /**
+     * Methode addListeners
+     * - Setzt nötige Attribute bei Drücken der Tasten zur Bewegung
+     * @param gameScene     Scene, auf welcher der Listener hört
+     */
     public void addListeners(Scene gameScene){
         gameScene.setOnKeyPressed(e -> {
             if(e.getCode() == GameOptions.getKeyCodePtwoUp()){
@@ -373,7 +529,5 @@ public class GameHandler {
             }
         });
     }
-
-     */
 
 }
