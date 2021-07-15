@@ -118,15 +118,12 @@ public class GameHandler {
         gamePane.getChildren().add(titleLabel);
     }
 
+    //Erstellt und startet den Animationtimer, die Methoden checkCollision, checkPoints, endGame werden im Hintergrund immer wieder aufgerufen
     public void createGameTimer() {
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                try{
-                    endGame();
-                } catch (FileNotFoundException e){
-                    e.printStackTrace();
-                }
+                endGame(); //TODO Stattdessen Animation Timer beenden, wenn das Leben auf 0 fällt, statt immer wieder zu prüfen?
                 checkCollision();
                 checkPoints();
             }
@@ -134,11 +131,13 @@ public class GameHandler {
         animationTimer.start();
     }
 
-    private void endGame() throws FileNotFoundException {
+    //Überprüft ob das Spiel vorbei ist, also ein Spieler 0 Leben hat //TODO Ball einfach unsichtbar machen mit "ball.setVisible(false)"
+    private void endGame()  {
         if(!gameDone){
             if(playerOneLivesLeft == 0){
                 gameDone = true;
                 ball.setFill(Color.BLACK);
+                //Beendet Ballbewegung und setzt ihn außerhalb des sichtbaren Bereichs
                 GameBall.setXSpeed(0);
                 GameBall.setYSpeed(0);
                 ball.setTranslateX(0);
@@ -148,6 +147,7 @@ public class GameHandler {
             if(playerTwoLivesLeft == 0){
                 gameDone = true;
                 ball.setFill(Color.BLACK);
+                //Beendet Ballbewegung und setzt ihn außerhalb des sichtbaren Bereichs
                 GameBall.setXSpeed(0);
                 GameBall.setYSpeed(0);
                 ball.setTranslateX(0);
@@ -158,6 +158,78 @@ public class GameHandler {
 
     }
 
+    //Kollisionserkennung //TODO kann nicht getestet werden weil movement nicht funktioniert
+    private void checkCollision(){
+        if (player.getTranslateY() <= -225) {
+            player.setTranslateY(player.getTranslateY() + SPEED);
+        }
+        if (player.getTranslateY() + 100 >= 225) {
+            player.setTranslateY(player.getTranslateY() - SPEED);
+        }
+        if(GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER){
+            if (player2.getTranslateY() <= -225) {
+                player2.setTranslateY(player2.getTranslateY() + SPEED);
+            }
+            if (player2.getTranslateY() + 100 >= 225) {
+                player2.setTranslateY(player2.getTranslateY() - SPEED);
+            }
+        }
+
+    }
+
+    //Setzen der Punkte, wenn Ball außerhalb des Spielbereichs fliegt, Ball in zufällige Richtung starten lassen mit gamePointThread
+    private void checkPoints(){
+        if(!gameDone){
+            if(ball.getTranslateX() <= -600){
+                if(!cooldown){
+                    updateScore(true);
+                    cooldown = true;
+                    //Ball wieder auf Startposition bringen
+                    relocateBall();
+                    //Zufällige Richtung für nächsten Ball bestimmen
+                    gamePointThread = new Thread(new GamePoint(ball, this));
+                    gamePointThread.start();
+
+                }
+            }
+            if (ball.getTranslateX() >= 600)
+            {
+                if (!cooldown)
+                {
+                    updateScore(false);
+                    cooldown = true;
+                    //Ball wieder auf Startposition bringen
+                    relocateBall();
+                    //Zufällige Richtung für nächsten Ball bestimmen
+                    gamePointThread = new Thread(new GamePoint(ball, this));
+                    gamePointThread.start();
+                }
+            }
+        }
+    }
+
+    //Zentriert den Ball in der Mitte und setzt den Speed auf 0
+    private void relocateBall()
+    {
+        GameBall.setXSpeed(0);
+        GameBall.setYSpeed(0);
+        ball.setTranslateX(0);
+        ball.setTranslateY(0);
+    }
+
+    //Erstellt den Button um zum Hauptmenü zurückzukommen
+    public void createMenuButton() {
+        GameButton Button = new GameButton("Hauptmenü", 1150, 670);
+        Button.setOnAction(e ->
+        {
+            try {
+                gameStage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        gamePane.getChildren().add(Button);
+    }
 
     private void createEndScoreSubScene(boolean playerOneWins){
         endGameSubScene = new GameSubScene(1270, 720, 400, 125);
@@ -224,56 +296,7 @@ public class GameHandler {
             playerTwoScore.setText(String.valueOf(playerTwoLivesLeft));
         }
     }
-    private void checkCollision(){
-        if (player.getTranslateY() <= -225) {
-            player.setTranslateY(player.getTranslateY() + SPEED);
-        }
-        if (player.getTranslateY() + 100 >= 225) {
-            player.setTranslateY(player.getTranslateY() - SPEED);
-        }
-        if(GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER){
-            if (player2.getTranslateY() <= -225) {
-                player2.setTranslateY(player2.getTranslateY() + SPEED);
-            }
-            if (player2.getTranslateY() + 100 >= 225) {
-                player2.setTranslateY(player2.getTranslateY() - SPEED);
-            }
-        }
 
-    }
-    private void checkPoints(){
-        if(!gameDone){
-            if(ball.getTranslateX() <= -600){
-                if(!cooldown){
-                    updateScore(true);
-                    cooldown = true;
-                    relocateBall();
-                    gamePointThread = new Thread(new GamePoint(ball, this));
-                    gamePointThread.start();
-
-                }
-            }
-            if (ball.getTranslateX() >= 600)
-            {
-                if (!cooldown)
-                {
-                    updateScore(false);
-                    cooldown = true;
-                    relocateBall();
-                    gamePointThread = new Thread(new GamePoint(ball, this));
-                    gamePointThread.start();
-                }
-            }
-        }
-    }
-    private void relocateBall()
-    {
-        ball.setFill(Color.BLACK);
-        GameBall.setXSpeed(0);
-        GameBall.setYSpeed(0);
-        ball.setTranslateX(0);
-        ball.setTranslateY(0);
-    }
     private void movePlayers() {
         if (isUpKeyPressed && !isDownKeyPressed && isWKeyPressed && !isSKeyPressed) {
             player2.setTranslateY(player2.getTranslateY() - SPEED);
@@ -306,18 +329,6 @@ public class GameHandler {
         }
     }
 
-    public void createMenuButton() {
-        GameButton Button = new GameButton("Back to Menu", 880, 600);
-        Button.setOnAction(e ->
-        {
-            try {
-                gameStage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-        });
-        gamePane.getChildren().add(Button);
-    }
     public void addListeners(Scene gameScene){
         gameScene.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.UP){

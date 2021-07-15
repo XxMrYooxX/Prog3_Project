@@ -3,13 +3,10 @@ package de.htwsaar.pong.zuse.model;
 import java.util.Random;
 
 public class GamePoint implements Runnable {
-    private GameBall ball;
-    private GameHandler gameHandler;
+    private final GameBall ball;
+    private final GameHandler gameHandler;
 
     int randNum;
-
-    private int directionX;
-    private int directionY;
 
 
     public GamePoint(GameBall ball, GameHandler gameHandler)
@@ -30,32 +27,38 @@ public class GamePoint implements Runnable {
             e.printStackTrace();
         }
 
+        //generieren einer zufälligen Zahl
         Random rnd = new Random();
         randNum = rnd.nextInt(100) + 1;
 
+        int directionX;
+        int directionY;
+
+        //oben rechts
         if (randNum <= 25)
         {
             directionX = 1;
             directionY = 1;
         }
-        else if (randNum > 25 && randNum <= 50)
+        else if (randNum > 25 && randNum <= 50) //oben links
         {
             directionX = -1;
             directionY = 1;
         }
-        else if (randNum > 50 && randNum <= 75)
+        else if (randNum > 50 && randNum <= 75) //unten links
         {
             directionX = -1;
             directionY = -1;
         }
-        else
+        else // unten rechts
         {
             directionX = 1;
             directionY = -1;
         }
 
-        ball.setXSpeed(10 * directionX);
-        ball.setYSpeed(8 * directionY);
+        //Übernehmen für GameBall
+        GameBall.setXSpeed(10 * directionX);
+        GameBall.setYSpeed(8 * directionY);
 
         gameHandler.setCooldown(false);
     }

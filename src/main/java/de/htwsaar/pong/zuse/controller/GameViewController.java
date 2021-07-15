@@ -37,9 +37,9 @@ public class GameViewController {
         //Methoden zum Aufbau der Gamescene
         gameHandler.createGameSubScene();
         gameHandler.createGameTitle();
-        gameHandler.createScoreSubScene();
         gameHandler.createGameTimer();
         gameHandler.createMenuButton();
+        gameHandler.createScoreSubScene();
 
         //Ändern des Fenstertitels entsprechend dem GameMode
         switch (GameOptions.getGameMode()) {
