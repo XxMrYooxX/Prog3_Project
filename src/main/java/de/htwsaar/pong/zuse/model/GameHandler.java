@@ -127,18 +127,12 @@ public class GameHandler {
     //Überprüft ob das Spiel vorbei ist, also ein Spieler 0 Leben hat //TODO Ball einfach unsichtbar machen mit "ball.setVisible(false)"
     private void endGame()  {
             if(playerOneLivesLeft == 0){
-                ball.setFill(Color.BLACK);
-                //Beendet Ballbewegung und setzt ihn außerhalb des sichtbaren Bereichs
-                relocateBall();
                 createEndScoreSubScene(false);
                 //Entfernt den Menubutton unten rechts, da ein neuer mit dem EndScore eingeblendet wird
                 gamePane.getChildren().remove(firstMenuButton);
 
             }
             if(playerTwoLivesLeft == 0){
-                ball.setFill(Color.BLACK);
-                //Beendet Ballbewegung und setzt ihn außerhalb des sichtbaren Bereichs
-                relocateBall();
                 createEndScoreSubScene(true);
                 //Entfernt den Menubutton unten rechts, da ein neuer mit dem EndScore eingeblendet wird
                 gamePane.getChildren().remove(firstMenuButton);
@@ -254,15 +248,19 @@ public class GameHandler {
             playerOneLivesLeft--;
             playerOneScore.setText(String.valueOf(playerOneLivesLeft));
             if(playerOneLivesLeft == 0) {
-                endGame();
                 animationTimer.stop();
+                ball.stopBallAnimation();
+                ball.setVisible(false);
+                endGame();
             }
         } else {
             playerTwoLivesLeft--;
             playerTwoScore.setText(String.valueOf(playerTwoLivesLeft));
             if(playerTwoLivesLeft == 0) {
-                endGame();
                 animationTimer.stop();
+                ball.stopBallAnimation();
+                ball.setVisible(false);
+                endGame();
             }
         }
     }

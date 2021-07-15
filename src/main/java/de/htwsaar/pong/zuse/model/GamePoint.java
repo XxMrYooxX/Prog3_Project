@@ -60,6 +60,5 @@ public class GamePoint implements Runnable {
         GameBall.setXSpeed(10 * directionX);
         GameBall.setYSpeed(8 * directionY);
 
-       // gameHandler.setCooldown(false);
     }
 }

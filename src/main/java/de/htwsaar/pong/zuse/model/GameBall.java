@@ -65,4 +65,8 @@ public class GameBall extends Circle {
     public void setColor(Color color){
         this.setFill(color);
     }
+
+    public void stopBallAnimation() {
+        animationTimer.stop();
+    }
 }
