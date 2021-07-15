@@ -21,36 +21,23 @@ import java.util.Random;
 
 public class GameHandler {
 
-    private static GameSubScene gameSubScene;
     private static GamePlayer player;
     private static GamePlayer player2;
-    private static GamePlayerKI playerKI;
     private static GameBall ball;
 
     private AnimationTimer animationTimer;
 
-    private Color playerColor = Color.rgb(178,34,34);
-    private Color opponentColor = Color.rgb(50,122,178);
-
     private static final int WIDTH = GameOptions.getGameWidth();
     private static final int HEIGHT = GameOptions.getGameHeight();
 
-    private boolean cooldown = false;
-    private Random rnd = new Random();
-    private Thread gamePointThread;
-    private GameSubScene scoreSubScene;
-    private Stage gameStage;
-    private Scene gameScene;
-    private AnchorPane gamePane;
+    private final Stage gameStage;
+    private final Scene gameScene;
+    private final AnchorPane gamePane;
     private Label playerOneScore;
     private Label playerTwoScore;
-    private Label dashLbl;
     private Button firstMenuButton;
 
     private final String LABEL_STYLE = "-fx-spacing: 20; -fx-text-fill: #FFFFFF;";
-
-    private GameSubScene endGameSubScene;
-    private Label resultLabel;
 
     private int playerOneLivesLeft = 3;
     private int playerTwoLivesLeft = 3;
@@ -70,7 +57,7 @@ public class GameHandler {
 
     //Erschaffen der eigentlichen GameScene auf Basis der gamescene view (root)
     public void createGameSubScene() {
-        gameSubScene = new GameSubScene(WIDTH, HEIGHT,0,0);
+        GameSubScene gameSubScene = new GameSubScene(WIDTH, HEIGHT, 0, 0);
         //Festelegen des Hintergrunds der Spielfläche
         gameSubScene.getPane().setStyle("-fx-background-color: #beeef7;"); //Helles Türkis
 
@@ -88,7 +75,7 @@ public class GameHandler {
             System.out.println("Singleplayer Erstellung 1 Spieler");
 
             //Anlegen des KI Spielers mit Referenz auf den Ball, damit dieser folgen kann
-            playerKI = new GamePlayerKI(ball);
+            GamePlayerKI playerKI = new GamePlayerKI(ball);
             //Hinzufügen des neuen Elements zur GameSubScene
             gameSubScene.getPane().getChildren().addAll(ball, player, playerKI);
 
@@ -180,30 +167,23 @@ public class GameHandler {
 
     //Setzen der Punkte, wenn Ball außerhalb des Spielbereichs fliegt, Ball in zufällige Richtung starten lassen mit gamePointThread
     private void checkPoints(){
-            if(ball.getTranslateX() <= -600){
-                if(!cooldown){
+        Thread gamePointThread;
+        if(ball.getTranslateX() <= -600){
                     updateScore(true);
-                    cooldown = true;
                     //Ball wieder auf Startposition bringen
                     relocateBall();
                     //Zufällige Richtung für nächsten Ball bestimmen
                     gamePointThread = new Thread(new GamePoint(ball, this));
                     gamePointThread.start();
-
-                }
             }
             if (ball.getTranslateX() >= 600)
             {
-                if (!cooldown)
-                {
                     updateScore(false);
-                    cooldown = true;
                     //Ball wieder auf Startposition bringen
                     relocateBall();
                     //Zufällige Richtung für nächsten Ball bestimmen
                     gamePointThread = new Thread(new GamePoint(ball, this));
                     gamePointThread.start();
-                }
             }
     }
 
@@ -233,12 +213,12 @@ public class GameHandler {
 
    //Erzeugen der Scene zum Anzeigen des Scores
     public void createScoreSubScene() {
-        scoreSubScene = new GameSubScene(300, 100, 500, 575);
+        GameSubScene scoreSubScene = new GameSubScene(300, 100, 500, 575);
         scoreSubScene.getPane().setStyle("-fx-background-color: transparent;");
 
         //Alles für das Layout
         playerOneScore = new Label("3");
-        dashLbl = new Label("  -  ");
+        Label dashLbl = new Label("  -  ");
         playerTwoScore = new Label("3");
 
         playerOneScore.setScaleX(8);
@@ -287,10 +267,10 @@ public class GameHandler {
     //Erstellt die Endscene, in der angezeigt wird, wer gewonnen hat, sowie ein Button um zurück ins Hauptmenü zu kommen
     private void createEndScoreSubScene(boolean playerOneWins){
         //Erstellen der Subscene mit halbtransparentem Hintergrund
-        endGameSubScene = new GameSubScene(1280, 720, 0, 0);
+        GameSubScene endGameSubScene = new GameSubScene(1280, 720, 0, 0);
         endGameSubScene.getPane().setStyle("-fx-background-color: rgba(0, 100, 100, 0.5);");
 
-        resultLabel = new Label("");
+        Label resultLabel = new Label("");
 
         //Gewinner bestimmen und Text setzen
         if (playerOneWins) resultLabel.setText("Player 1 Wins!");
@@ -327,6 +307,7 @@ public class GameHandler {
     }
 
 
+    /* Listeners zum Bewegen der Paddles //TODO wird nicht genutzt und funktioniert auch nicht
     private void movePlayers() {
         if (isUpKeyPressed && !isDownKeyPressed && isWKeyPressed && !isSKeyPressed) {
             player2.setTranslateY(player2.getTranslateY() - SPEED);
@@ -391,7 +372,6 @@ public class GameHandler {
         });
     }
 
-    public void setCooldown(boolean b) {
-        this.cooldown = b;
-    }
+     */
+
 }

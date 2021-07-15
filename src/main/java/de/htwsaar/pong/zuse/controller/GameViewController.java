@@ -49,7 +49,7 @@ public class GameViewController {
             case MULTIPLAYER:
                 gameStage.setTitle("Pong Multiplayer | Team Zuse");
                 //Hinzufügen von Listenern, ob Tasten gedrückt werden
-                gameHandler.addListeners(gameScene);
+                //TODO funktioniert nicht // gameHandler.addListeners(gameScene);
                 break;
 
 
