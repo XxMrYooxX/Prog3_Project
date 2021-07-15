@@ -39,26 +39,26 @@
 
 <BorderPane prefHeight="720" prefWidth="1080" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.htwsaar.pong.zuse.controller.OptionsMenuController">
    <left>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER_LEFT">
+      <VBox alignment="CENTER">
          <children>
             <Label text="Control - Player 1" underline="true">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
             </Label>
-           <Label stylesheets="@mainmenu_options_style.css" text=" ausgewählter Button: [BUTTON]">
+           <Label fx:id="o_label_pone_up" contentDisplay="CENTER" onMouseClicked="#setPoneKeyUp" stylesheets="@mainmenu_options_style.css" text=" ausgewählter Button: W">
               <font>
                  <Font size="35.0" />
               </font>
            </Label>
-           <Label stylesheets="@mainmenu_options_style.css" text=" ausgewählter Button: [BUTTON]">
+           <Label fx:id="o_label_pone_down" contentDisplay="CENTER" onMouseClicked="#setPoneKeyDown" stylesheets="@mainmenu_options_style.css" text=" ausgewählter Button: S">
               <font>
                  <Font size="35.0" />
               </font>
            </Label>
          </children>
          <padding>
-            <Insets left="60.0" />
+            <Insets left="100.0" />
          </padding>
       </VBox>
    </left>
@@ -70,19 +70,19 @@
                   <Font name="System Bold" size="35.0" />
                </font>
             </Label>
-           <Label stylesheets="@mainmenu_options_style.css" text="ausgewähler Button: [BUTTON]">
+           <Label fx:id="o_label_ptwo_up" onMouseClicked="#setPtwoKeyUp" stylesheets="@mainmenu_options_style.css" text="ausgewähler Button: UP">
               <font>
                  <Font size="35.0" />
               </font>
            </Label>
-           <Label stylesheets="@mainmenu_options_style.css" text="ausgewähler Button: [BUTTON]">
+           <Label fx:id="o_label_ptwo_down" onMouseClicked="#setPtwoKeyDown" stylesheets="@mainmenu_options_style.css" text="ausgewähler Button: DOWN">
               <font>
                  <Font size="35.0" />
               </font>
            </Label>
          </children>
          <padding>
-            <Insets right="60.0" />
+            <Insets right="100.0" />
          </padding>
       </VBox>
    </right>

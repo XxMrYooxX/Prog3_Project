@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -25,6 +26,11 @@ public class GameViewController {
     //Erschaffen des GameHandlers beim Klick auf Start mit entsprechendem Modus (Single, Multi)
     @FXML
     public void startButton(ActionEvent actionEvent){
+
+        System.out.println(GameOptions.getKeyCodePoneUp());
+        System.out.println(GameOptions.getKeyCodePoneDown());
+        System.out.println(GameOptions.getKeyCodePtwoUp());
+        System.out.println(GameOptions.getKeyCodePtwoDown());
 
         //Parameter für Übergabe an gameHandler festlegen
         Stage gameStage = (Stage) gs_ap_anchorpane.getScene().getWindow();
@@ -54,6 +60,7 @@ public class GameViewController {
 
 
         }
+
     }
 
     /* Nicht genutzt??

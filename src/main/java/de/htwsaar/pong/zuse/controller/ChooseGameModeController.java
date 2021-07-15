@@ -1,6 +1,5 @@
 package de.htwsaar.pong.zuse.controller;
 
-import de.htwsaar.pong.zuse.model.GameHandler;
 import de.htwsaar.pong.zuse.model.GameOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
