@@ -103,6 +103,8 @@ public class GameHandler {
         }
         //Fügt die erstellte SubScene zum GamePane hinzu
         gamePane.getChildren().add(gameSubScene);
+        //Focus richtig gesetztzt für Up Down Keys
+        gameSubScene.requestFocus();
 
     }
 
