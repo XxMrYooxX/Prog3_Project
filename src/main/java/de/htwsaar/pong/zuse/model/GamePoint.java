@@ -4,28 +4,13 @@ import java.util.Random;
 
 public class GamePoint implements Runnable {
 
-    //TODO wird nicht gebraucht?
-    private final GameBall ball;
-    private final GameHandler gameHandler;
-
     int randNum;
 
-
-    public GamePoint(GameBall ball, GameHandler gameHandler)
-    {
-        this.ball = ball;
-        this.gameHandler = gameHandler;
-    }
-
     @Override
-    public void run()
-    {
-        try
-        {
-            Thread.sleep(3000);
-        }
-        catch (InterruptedException e)
-        {
+    public void run() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
@@ -35,25 +20,17 @@ public class GamePoint implements Runnable {
 
         int directionX;
         int directionY;
-
-        //oben rechts
-        if (randNum <= 25)
-        {
+                                        //oben rechts
+        if (randNum <= 25) {
             directionX = 1;
             directionY = 1;
-        }
-        else if (randNum > 25 && randNum <= 50) //oben links
-        {
+        } else if (randNum <= 50){      //oben links
             directionX = -1;
             directionY = 1;
-        }
-        else if (randNum > 50 && randNum <= 75) //unten links
-        {
+        } else if (randNum <= 75){      //unten links
             directionX = -1;
             directionY = -1;
-        }
-        else // unten rechts
-        {
+        } else {                        // unten rechts
             directionX = 1;
             directionY = -1;
         }
@@ -61,6 +38,5 @@ public class GamePoint implements Runnable {
         //Übernehmen für GameBall
         GameBall.setXSpeed(10 * directionX);
         GameBall.setYSpeed(8 * directionY);
-
     }
 }

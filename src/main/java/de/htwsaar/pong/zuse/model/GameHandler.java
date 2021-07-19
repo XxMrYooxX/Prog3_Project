@@ -22,44 +22,42 @@ import java.util.Random;
  */
 public class GameHandler {
 
+    private static final int WIDTH = GameOptions.getGameWidth();
+    private static final int HEIGHT = GameOptions.getGameHeight();
+    private static final int SPEED = 5;
     private static GamePlayer player;
     private static GamePlayer player2;
     private static GamePlayerKI playerKI;
     private static GameBall ball;
-
-    private AnimationTimer animationTimer;
-
-    private static final int WIDTH = GameOptions.getGameWidth();
-    private static final int HEIGHT = GameOptions.getGameHeight();
-
     private final Stage gameStage;
     private final Scene gameScene;
     private final AnchorPane gamePane;
+    private final Random rnd = new Random();
+    private final String LABEL_STYLE = "-fx-spacing: 20; -fx-text-fill: #FFFFFF;";
+    private final String SCORE_SUBSCENE_STYLE = "-fx-background-color: transparent;";
+    private final String GAME_SUBSCENE_BACKGROUND_STYLE = "-fx-background-color: #beeef7;";
+    private final String GAME_TITLE_LABEL_STYLE = "-fx-spacing: 20; -fx-text-fill: #000000;";
+    private final String ENDGAME_SUBSCENE_STYLE = "-fx-background-color: rgba(0, 100, 100, 0.5);";
+    private AnimationTimer animationTimer;
     private Label playerOneScore;
     private Label playerTwoScore;
     private Button firstMenuButton;
-
-    private final Random rnd = new Random();
-
-    private final String LABEL_STYLE = "-fx-spacing: 20; -fx-text-fill: #FFFFFF;";
-
     private int playerOneLivesLeft = 3;
     private int playerTwoLivesLeft = 3;
-
     private boolean isUpKeyPressed;
     private boolean isDownKeyPressed;
     private boolean isWKeyPressed;
     private boolean isSKeyPressed;
-    private static final int SPEED = 5;
 
     /**
      * Konstruktor des GameHandlers
      * Setzt die verwendete Stage, Pane und Scene
-     * @param gameStage     Verwendete GameStage
-     * @param gamePane      Verwendete GamePane
-     * @param gameScene     Verwendete GameScene
+     *
+     * @param gameStage Verwendete GameStage
+     * @param gamePane  Verwendete GamePane
+     * @param gameScene Verwendete GameScene
      */
-    public GameHandler(Stage gameStage, AnchorPane gamePane, Scene gameScene){
+    public GameHandler(Stage gameStage, AnchorPane gamePane, Scene gameScene) {
         this.gameStage = gameStage;
         this.gamePane = gamePane;
         this.gameScene = gameScene;
@@ -77,13 +75,13 @@ public class GameHandler {
     public void createGameSubScene() {
         GameSubScene gameSubScene = new GameSubScene(WIDTH, HEIGHT, 0, 0);
         //Festlegen des Hintergrunds der Spielfläche
-        gameSubScene.getPane().setStyle("-fx-background-color: #beeef7;"); //Helles Türkis
+        gameSubScene.getPane().setStyle(GAME_SUBSCENE_BACKGROUND_STYLE); //Helles Türkis
 
         //Anlegen des ersten Players, der unabhängig vom GameMode gebraucht wird
         player = new GamePlayer(gameScene, false);
 
         //Erstellt den Spielball
-        ball = new GameBall(gameSubScene);
+        ball = new GameBall();
 
         //Abhängig vom GameMode wird ein KI Player, bzw. ein zweiter Spieler hinzugefügt
         if (GameOptions.getGameMode() == GameOptions.GameMode.SINGLEPLAYER) {
@@ -109,15 +107,14 @@ public class GameHandler {
     }
 
     /**
-     *  Methode createGameTitle
-     *  - Erstellt titleLabel "PONG"
-     *  - Setzt es an gamePane
+     * Methode createGameTitle
+     * - Erstellt titleLabel "PONG"
+     * - Setzt es an gamePane
      */
-    public void createGameTitle()
-    {
+    public void createGameTitle() {
         Label titleLabel = new Label("PONG");
 
-        titleLabel.setStyle("-fx-spacing: 20; -fx-text-fill: #000000;"); //Farbe schwarz
+        titleLabel.setStyle(GAME_TITLE_LABEL_STYLE); //Farbe schwarz
         titleLabel.setScaleX(5);
         titleLabel.setScaleY(5);
         AnchorPane.setLeftAnchor(titleLabel, 0.0);
@@ -138,7 +135,7 @@ public class GameHandler {
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                if(GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER){
+                if (GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER) {
                     checkCollision();
                     movePlayers();
                 }
@@ -153,17 +150,13 @@ public class GameHandler {
      * Methode endGame
      * - Überprüft ob das Spiel vorbei ist, also ein Spieler 0 Leben hat
      */
-    private void endGame()  {
-        if(playerOneLivesLeft == 0){
-            createEndScoreSubScene(false);
-            //Entfernt den Menu Button unten rechts, da ein neuer mit dem EndScore eingeblendet wird
-            gamePane.getChildren().remove(firstMenuButton);
-        }
-        if(playerTwoLivesLeft == 0){
-            createEndScoreSubScene(true);
-            //Entfernt den Menu Button unten rechts, da ein neuer mit dem EndScore eingeblendet wird
-            gamePane.getChildren().remove(firstMenuButton);
-        }
+    private void endGame(boolean playerOneWins) {
+        animationTimer.stop();
+        ball.stopBallAnimation();
+        ball.setVisible(false);
+        createEndScoreSubScene(playerOneWins);
+        //Entfernt den Menu Button unten rechts, da ein neuer mit dem EndScore eingeblendet wird
+        gamePane.getChildren().remove(firstMenuButton);
     }
 
     /**
@@ -172,14 +165,14 @@ public class GameHandler {
      * - Abhängig von Spielmodus
      * TODO: eventuell Anpassen der Koordinaten
      */
-    private void checkCollision(){
+    private void checkCollision() {
         if (player.getTranslateY() <= -360) {
             player.setTranslateY(player.getTranslateY() + SPEED);
         }
         if (player.getTranslateY() >= 360) {
             player.setTranslateY(player.getTranslateY() - SPEED);
         }
-        if(GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER){
+        if (GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER) {
             if (player2.getTranslateY() <= 360) {
                 player2.setTranslateY(player2.getTranslateY() + SPEED);
             }
@@ -194,23 +187,22 @@ public class GameHandler {
      * - Setzen der Punkte, wenn Ball außerhalb des Spielbereichs fliegt
      * - Ball in zufällige Richtung starten lassen mit gamePointThread
      */
-    private void checkPoints(){
+    private void checkPoints() {
         Thread gamePointThread;
-        if(ball.getTranslateX() <= -600){
+        if (ball.getTranslateX() <= -600) {
             updateScore(true);
             //Ball wieder auf Startposition bringen
             relocateBall();
             //Zufällige Richtung für nächsten Ball bestimmen
-            gamePointThread = new Thread(new GamePoint(ball, this));
+            gamePointThread = new Thread(new GamePoint());
             gamePointThread.start();
         }
-        if (ball.getTranslateX() >= 600)
-        {
+        if (ball.getTranslateX() >= 600) {
             updateScore(false);
             //Ball wieder auf Startposition bringen
             relocateBall();
             //Zufällige Richtung für nächsten Ball bestimmen
-            gamePointThread = new Thread(new GamePoint(ball, this));
+            gamePointThread = new Thread(new GamePoint());
             gamePointThread.start();
         }
     }
@@ -220,8 +212,7 @@ public class GameHandler {
      * - Zentriert den Ball in der Mitte
      * - setzt den Speed auf 0
      */
-    private void relocateBall()
-    {
+    private void relocateBall() {
         GameBall.setXSpeed(0);
         GameBall.setYSpeed(0);
         ball.setTranslateX(0);
@@ -254,7 +245,7 @@ public class GameHandler {
      */
     public void createScoreSubScene() {
         GameSubScene scoreSubScene = new GameSubScene(300, 100, 500, 575);
-        scoreSubScene.getPane().setStyle("-fx-background-color: transparent;");
+        scoreSubScene.getPane().setStyle(SCORE_SUBSCENE_STYLE);
 
         //Alles für das Layout
         playerOneScore = new Label("3"); //ToDo: eventuell dynamisch gestalten?
@@ -288,29 +279,24 @@ public class GameHandler {
     /**
      * Methode updateScore
      * - Spieler verliert ein Leben
-     *      - Wenn Leben = 0 -> endGame() & Stop Animation Timer
-     * @param playerOne     Boolean, ob Spieler 1 Leben verliert
-     *                          Wenn True: playerOneLivesLeft--
-     *                          Wenn false: playerTwoLivesLeft--
+     * - Wenn Leben = 0 -> endGame() & Stop Animation Timer
+     *
+     * @param playerOne Boolean, ob Spieler 1 Leben verliert
+     *                  Wenn True: playerOneLivesLeft--
+     *                  Wenn false: playerTwoLivesLeft--
      */
-    private void updateScore(boolean playerOne){
-        if(playerOne){
+    private void updateScore(boolean playerOne) {
+        if (playerOne) {
             playerOneLivesLeft--;
             playerOneScore.setText(String.valueOf(playerOneLivesLeft));
-            if(playerOneLivesLeft == 0) {
-                animationTimer.stop();
-                ball.stopBallAnimation();
-                ball.setVisible(false);
-                endGame();
+            if (playerOneLivesLeft == 0) {
+                endGame(false);
             }
         } else {
             playerTwoLivesLeft--;
             playerTwoScore.setText(String.valueOf(playerTwoLivesLeft));
-            if(playerTwoLivesLeft == 0) {
-                animationTimer.stop();
-                ball.stopBallAnimation();
-                ball.setVisible(false);
-                endGame();
+            if (playerTwoLivesLeft == 0) {
+                endGame(true);
             }
         }
     }
@@ -321,14 +307,15 @@ public class GameHandler {
      * Methode createEndScoreSubScene
      * - Erstellt EndScene
      * - Erstellt "zurück ins Hauptmenü" Button
-     * @param playerOneWins     Boolean, ob Spieler 1 gewinnt
-     *                              true: spieler 1 gewinnt
-     *                              false: spieler 2 gewinnt
+     *
+     * @param playerOneWins Boolean, ob Spieler 1 gewinnt
+     *                      true: spieler 1 gewinnt
+     *                      false: spieler 2 gewinnt
      */
-    private void createEndScoreSubScene(boolean playerOneWins){
+    private void createEndScoreSubScene(boolean playerOneWins) {
         //Erstellen der SubScene mit halbtransparentem Hintergrund
         GameSubScene endGameSubScene = new GameSubScene(1280, 720, 0, 0);
-        endGameSubScene.getPane().setStyle("-fx-background-color: rgba(0, 100, 100, 0.5);");
+        endGameSubScene.getPane().setStyle(ENDGAME_SUBSCENE_STYLE);
 
         Label resultLabel = new Label("");
 
@@ -371,6 +358,7 @@ public class GameHandler {
     /**
      * Methode movePlayers
      * - Setzt Bewegungen abhängig von Tastendruck um
+     * TODO: Neu machen :/
      */
     private void movePlayers() {
         if (isUpKeyPressed && !isDownKeyPressed && isWKeyPressed && !isSKeyPressed) {
@@ -385,21 +373,25 @@ public class GameHandler {
         } else if (!isUpKeyPressed && isDownKeyPressed && isWKeyPressed && !isSKeyPressed) {
             player2.setTranslateY(player2.getTranslateY() + SPEED);
             player.setTranslateY(player.getTranslateY() - SPEED);
-        } else if (isUpKeyPressed && !isDownKeyPressed && !isWKeyPressed && !isSKeyPressed) {
+        } else if (isUpKeyPressed && !isDownKeyPressed && !isWKeyPressed) {
             player2.setTranslateY(player2.getTranslateY() - SPEED);
-        } else if (!isUpKeyPressed && isDownKeyPressed && !isWKeyPressed && !isSKeyPressed) {
+        } else if (!isUpKeyPressed && isDownKeyPressed && !isWKeyPressed) {
             player2.setTranslateY(player2.getTranslateY() + SPEED);
         } else if (!isUpKeyPressed && !isDownKeyPressed && isWKeyPressed && !isSKeyPressed) {
             player.setTranslateY(player.getTranslateY() - SPEED);
         } else if (!isUpKeyPressed && !isDownKeyPressed && !isWKeyPressed && isSKeyPressed) {
             player.setTranslateY(player.getTranslateY() + SPEED);
-        }if (isUpKeyPressed && isDownKeyPressed && isWKeyPressed && !isSKeyPressed) {
+        }
+        if (isUpKeyPressed && isDownKeyPressed && isWKeyPressed && !isSKeyPressed) {
             player.setTranslateY(player.getTranslateY() - SPEED);
-        }if (isUpKeyPressed && isDownKeyPressed && !isWKeyPressed && isSKeyPressed) {
+        }
+        if (isUpKeyPressed && isDownKeyPressed && !isWKeyPressed && isSKeyPressed) {
             player.setTranslateY(player.getTranslateY() + SPEED);
-        }if (isUpKeyPressed && !isDownKeyPressed && isWKeyPressed && isSKeyPressed) {
+        }
+        if (isUpKeyPressed && !isDownKeyPressed && isWKeyPressed && isSKeyPressed) {
             player2.setTranslateY(player2.getTranslateY() - SPEED);
-        }if (!isUpKeyPressed && isDownKeyPressed && isWKeyPressed && !isSKeyPressed) {
+        }
+        if (!isUpKeyPressed && isDownKeyPressed && isWKeyPressed && !isSKeyPressed) {
             player2.setTranslateY(player2.getTranslateY() + SPEED);
         }
     }
@@ -408,7 +400,7 @@ public class GameHandler {
      * Methode checkBallCollision
      * - Prüft die Collision des Balls am Spieler 1
      * - Prüft abhängig von Spielmodus die Collision des Balls am Spieler 2 / KI
-     * TODO: Pruefe Koordinaten
+     * TODO: Pruefe Koordinaten // Ersetze mit getBoundsInParent().intersects
      */
     private void checkBallCollision() {
         if (ball.getTranslateY() >= player.getTranslateY() && ball.getTranslateY() <= player.getTranslateY() + 33) {
@@ -435,7 +427,7 @@ public class GameHandler {
                 }
             }
         }
-        switch(GameOptions.getGameMode()){
+        switch (GameOptions.getGameMode()) {
             case MULTIPLAYER:
                 if (ball.getTranslateY() >= player2.getTranslateY() && ball.getTranslateY() <= player2.getTranslateY() + 33) {
                     if (ball.getTranslateX() >= 360 && ball.getTranslateX() <= 360) {
@@ -477,7 +469,6 @@ public class GameHandler {
                     }
                 } else if (ball.getTranslateY() >= playerKI.getTranslateY() + 33 && ball.getTranslateY() <= playerKI.getTranslateY() + 66) {
                     if (ball.getTranslateX() >= 360 && ball.getTranslateX() <= 360) {
-                        //ball.setColor(opponentColor);
                         GameBall.setXSpeed(-GameBall.getXSpeed());
                         int randNum = rnd.nextInt(2) + 1;
                         if (randNum == 1) {
@@ -495,14 +486,15 @@ public class GameHandler {
     /**
      * Methode addListeners
      * - Setzt nötige Attribute bei Drücken der Tasten zur Bewegung
-     * @param gameScene     Scene, auf welcher der Listener hört
+     *
+     * @param gameScene Scene, auf welcher der Listener hört
      */
-    public void addListeners(Scene gameScene){
+    public void addListeners(Scene gameScene) {
         gameScene.setOnKeyPressed(e -> {
-            if(e.getCode() == GameOptions.getKeyCodePtwoUp()){
+            if (e.getCode() == GameOptions.getKeyCodePtwoUp()) {
                 isUpKeyPressed = true;
             }
-            if(e.getCode() == GameOptions.getKeyCodePtwoDown()){
+            if (e.getCode() == GameOptions.getKeyCodePtwoDown()) {
                 isDownKeyPressed = true;
             }
             if (e.getCode() == GameOptions.getKeyCodePoneUp()) {

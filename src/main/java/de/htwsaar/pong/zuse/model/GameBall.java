@@ -6,7 +6,6 @@ import javafx.scene.shape.Circle;
 
 public class GameBall extends Circle {
     private AnimationTimer animationTimer;
-    private GameSubScene gameSubScene;
 
     private static final int SIZE = 20;
     private static int xSpeed = -10;
@@ -14,15 +13,12 @@ public class GameBall extends Circle {
     private static final int HEIGHT = GameOptions.getGameHeight();
     private static final int WIDTH = GameOptions.getGameWidth();
 
-    public GameBall(GameSubScene gameSubScene){
-        this.gameSubScene = gameSubScene;
-
+    public GameBall(){
         //Festelegen des Balllayouts
         this.setRadius(SIZE);
         this.setFill(Color.WHITE);
         this.setLayoutX(WIDTH/2);
         this.setLayoutY(HEIGHT/2);
-
 
         //Erstellt und startet den Animationtimer
         createTimer();
@@ -59,11 +55,6 @@ public class GameBall extends Circle {
     //Speed des Balls zurückgeben
     public static int getXSpeed() {
         return xSpeed;
-    }
-
-    //Farbe des Balls ändern
-    public void setColor(Color color){
-        this.setFill(color);
     }
 
     public void stopBallAnimation() {

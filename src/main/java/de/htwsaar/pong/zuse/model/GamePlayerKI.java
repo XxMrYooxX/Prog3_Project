@@ -4,15 +4,10 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class GamePlayerKI extends Rectangle
-{
-
+public class GamePlayerKI extends Rectangle {
     private final GameBall ball;
     private AnimationTimer animationTimer;
-
     private static final int speed = 10;
-
-    private boolean isThreadActive = false;
 
     private static final int PLAYERHEIGHT = 100;
     private static final int PLAYERWIDTH = 20;
@@ -34,8 +29,7 @@ public class GamePlayerKI extends Rectangle
     }
 
     //Erstellt und startet den Animationtimer, die Methode Move() wird im Hintergrund immer wieder aufgerufen
-    private void createAnimationTimer()
-    {
+    private void createAnimationTimer() {
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
@@ -57,9 +51,5 @@ public class GamePlayerKI extends Rectangle
         {
             this.setTranslateY(this.getTranslateY() + speed);
         }
-    }
-
-    public void stopGamePlayerKIAnimation() {
-        animationTimer.stop();
     }
 }
