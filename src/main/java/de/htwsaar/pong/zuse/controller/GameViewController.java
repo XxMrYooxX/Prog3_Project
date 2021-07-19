@@ -4,6 +4,7 @@ import de.htwsaar.pong.zuse.model.GameHandler;
 import de.htwsaar.pong.zuse.model.GameOptions;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -18,6 +19,14 @@ public class GameViewController {
      */
     @FXML
     private AnchorPane gs_ap_anchorPane;
+
+    @FXML
+    private Button gs_button_start;
+
+    @FXML
+    public void initialize() {
+        gs_button_start.setFocusTraversable(false);
+    }
 
     /**
      * StartButton des Spiels

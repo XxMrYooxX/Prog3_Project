@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -105,7 +106,6 @@ public class GameHandler {
         gamePane.getChildren().add(gameSubScene);
         //Focus richtig gesetztzt für Up Down Keys
         gameSubScene.requestFocus();
-
     }
 
     /**
@@ -113,6 +113,7 @@ public class GameHandler {
      * - Erstellt titleLabel "PONG"
      * - Setzt es an gamePane
      */
+
     public void createGameTitle() {
         Label titleLabel = new Label("PONG");
 
@@ -239,6 +240,7 @@ public class GameHandler {
             }
         });
         gamePane.getChildren().add(firstMenuButton);
+        firstMenuButton.setFocusTraversable(false);
     }
 
     /**
