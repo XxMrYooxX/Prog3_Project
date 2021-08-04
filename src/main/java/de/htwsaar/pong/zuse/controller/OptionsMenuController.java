@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
@@ -48,10 +50,14 @@ public class OptionsMenuController {
             o_label_keyassigned.setVisible(true);
         } else {
             //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
+            o_label_back.setOnKeyPressed(e -> {
+                System.out.println("Debug ins Menu");
+            });
             o_label_back.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
         }
         //Event abgeschlossen und "verbraucht"
         event.consume();
+        return;
     }
 
     @FXML
@@ -64,6 +70,7 @@ public class OptionsMenuController {
         });
         o_label_keyassigned.setVisible(false);
         event.consume();
+        return;
     }
 
     @FXML
@@ -76,6 +83,7 @@ public class OptionsMenuController {
         });
         o_label_keyassigned.setVisible(false);
         event.consume();
+        return;
     }
 
     @FXML
@@ -88,6 +96,7 @@ public class OptionsMenuController {
         });
         o_label_keyassigned.setVisible(false);
         event.consume();
+        return;
     }
 
     @FXML
@@ -100,5 +109,6 @@ public class OptionsMenuController {
         });
         o_label_keyassigned.setVisible(false);
         event.consume();
+        return;
     }
 }

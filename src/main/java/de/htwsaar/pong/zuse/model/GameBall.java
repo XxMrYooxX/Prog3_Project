@@ -37,7 +37,7 @@ public class GameBall extends Circle {
 
     //Absolut keine Ahnung was das hier macht, irgendwie den Ball bewegen, wenn er 250 hoch/tief ist //TODO Verstehen was das macht
     private void move() {
-        if(this.getTranslateY() == -250 || this.getTranslateY() == 250){
+        if(this.getTranslateY() == -(GameOptions.getGameHeight()/2) || this.getTranslateY() == (GameOptions.getGameHeight()/2)){
             ySpeed = -ySpeed;
         }
         this.setTranslateX(this.getTranslateX() - xSpeed);
@@ -56,6 +56,7 @@ public class GameBall extends Circle {
     public static int getXSpeed() {
         return xSpeed;
     }
+    public static int getYSpeed() { return ySpeed; }
 
     public void stopBallAnimation() {
         animationTimer.stop();

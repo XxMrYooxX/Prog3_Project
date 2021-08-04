@@ -56,7 +56,7 @@ public class GameViewController {
         gameHandler.createGameTimer();
         gameHandler.createMenuButton();
         gameHandler.createScoreSubScene();
-
+        gameHandler.keyListeners(gameScene);
         //Ändern des Fenstertitels entsprechend dem GameMode
         switch (GameOptions.getGameMode()) {
             case SINGLEPLAYER:
@@ -64,8 +64,6 @@ public class GameViewController {
                 break;
             case MULTIPLAYER:
                 gameStage.setTitle("Pong Multiplayer | Team Zuse");
-                //Hinzufügen von Listeners, ob Tasten gedrückt werden
-                gameHandler.addListeners(gameScene);
                 break;
         }
     }

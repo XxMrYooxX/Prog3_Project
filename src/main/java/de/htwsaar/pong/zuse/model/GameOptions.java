@@ -20,6 +20,10 @@ public final class GameOptions {
     private static KeyCode ptwoUp = KeyCode.UP;
     private static KeyCode ptwoDown = KeyCode.DOWN;
 
+
+
+    private static int rounds = 5;
+
     /**
      * Enum GameMode
      * - Zur besseren Unterscheidung der SpielModi
@@ -114,4 +118,17 @@ public final class GameOptions {
      */
     public static void setKeyCodePoneUp(KeyCode key) { GameOptions.poneUp = key; }
 
+    /**
+     * Getter für Attribut rounds
+     * gibt die Anzahl der Runden eines Spiels zurück
+     * @return
+     */
+    public static int getRounds() { return rounds; }
+
+    /**
+     * Setter für Attribut rounds
+     * Setzt Anzahl der Runden fest
+     * @param rounds
+     */
+    public static void setRounds(int rounds) { GameOptions.rounds = rounds; }
 }
