@@ -47,10 +47,10 @@ public class GameViewController {
 
         Scene gameScene = gamePane.getScene();
 
-        //Anlegen des GameHandlers, der alles weitere übernimmt
+        //Anlegen des GameHandlers, der alles Weitere übernimmt
         GameHandler gameHandler = new GameHandler(gameStage, gamePane, gameScene);
 
-        //Methoden zum Aufbau der Game Scene
+        //Methoden zum Aufbau der GameScene
         gameHandler.createGameSubScene();
         gameHandler.createGameTitle();
         gameHandler.createGameTimer();

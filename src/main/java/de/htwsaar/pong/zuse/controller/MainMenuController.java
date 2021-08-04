@@ -6,10 +6,11 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Klasse MainMenuController
+ * repräsentiert den Controller des Main Menu
+ */
 public class MainMenuController {
-
-    //Initiliasieren der Label, damit diese zum Finden der Scene verwendet werden können (siehe unten)
-    //Labelnamen entsprechen den ID's , welche in der FXML Datei festgelegt wurden (Pflicht)
     @FXML
     private Label mm_label_howtoplay;
     @FXML
@@ -17,9 +18,14 @@ public class MainMenuController {
     @FXML
     private Label mm_label_options;
 
-    //Methode zum Wechseln in die How To Play Scene
+    /**
+     * Methode goToHowToPlay
+     * - zum Wechseln in die How To Play Scene
+     * @param event OnMouseClickEvent
+     * @throws IOException Generic IOException
+     */
     @FXML
-    public void goToHowToPlay(javafx.scene.input.MouseEvent event) throws IOException { //Reagiert auf OnMouseClick Event, festgelegt in der mainmenu.fxml)
+    public void goToHowToPlay(javafx.scene.input.MouseEvent event) throws IOException { //Reagiert auf OnMouseClick Event, festgelegt in der mainmenu.fxml
         System.out.println("go to how to play scene");
         //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
         mm_label_howtoplay.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/howtoplay.fxml"))));
@@ -27,7 +33,12 @@ public class MainMenuController {
         event.consume();
     }
 
-    //Exakt wie goToHowToPlay (siehe Kommentare oben)
+    /**
+     * Methode goToOptions
+     * - zum Wechseln in die Options Scene
+     * @param event OnMouseClickEvent
+     * @throws IOException Generic IOException
+     */
     @FXML
     public void goToOptions(javafx.scene.input.MouseEvent event) throws IOException {
         System.out.println("go to Options scene");
@@ -35,7 +46,12 @@ public class MainMenuController {
         event.consume();
     }
 
-    //Exakt wie goToHowToPlay (siehe Kommentare oben)
+    /**
+     * Methode goToPlay
+     * - zum Wechseln in die GameMode Scene
+     * @param event OnMouseClickEvent
+     * @throws IOException Generic IOException
+     */
     @FXML
     public void goToPlay(javafx.scene.input.MouseEvent event) throws IOException {
         System.out.println("go to gamemode scene");
@@ -43,6 +59,11 @@ public class MainMenuController {
         event.consume();
     }
 
+    /**
+     * Methode goToExit
+     * - beendet die Anwendung
+     * @param event OnMouseClickEvent
+     */
     @FXML
     public void goToExit(javafx.scene.input.MouseEvent event) {
         event.consume();

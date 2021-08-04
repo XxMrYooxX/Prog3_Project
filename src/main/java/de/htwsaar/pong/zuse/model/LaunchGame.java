@@ -9,8 +9,19 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
+/**
+ * Klasse LaunchGame
+ * repräsentiert die Implementierung der Application
+ */
 public class LaunchGame extends Application {
 
+    /**
+     * Methode start
+     * - Override der Application start-Methode
+     * - setzt benötigte Parameter der Stage und lädt das Main Menu (fxml)
+     * @param stage Stage
+     * @throws Exception Generic Exception
+     */
     @Override
     public void start(Stage stage) throws Exception{
 
@@ -25,8 +36,14 @@ public class LaunchGame extends Application {
         stage.setTitle("Pong by Team Zuse");
         stage.show();
 
-        // Ende der "Main" ->>> Änderungen an der Szene werden jeweils von den Controllern ausgeführt (siehe /controller)
+        // Ende der "Main" → Änderungen an der Szene werden jeweils von den Controllern ausgeführt (siehe /controller)
     }
+
+    /**
+     * Methode launchGame
+     * - führt launch Methode von Application aus
+     * @param args args an Application
+     */
     public static void launchGame(String[] args){
         launch(args);
     }

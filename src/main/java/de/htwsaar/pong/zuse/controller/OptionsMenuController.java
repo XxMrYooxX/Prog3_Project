@@ -4,19 +4,11 @@ import de.htwsaar.pong.zuse.model.GameOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class OptionsMenuController {
-
-
-    //Initiliasieren der Label, damit diese zum Finden der Scene verwendet werden können (siehe unten)
-    //Labelnamen entsprechen den ID's , welche in der FXML Datei festgelegt wurden (Pflicht)
     @FXML
     private Label o_label_back;
     @FXML
@@ -30,11 +22,10 @@ public class OptionsMenuController {
     @FXML
     private Label o_label_keyassigned;
 
-    public OptionsMenuController() {
-
-    }
-
-    //Initialisieren der Buttontexte aus den Options
+    /**
+     * Methode initialize
+     * - Initialisieren der Button Texte aus den Options
+     */
     @FXML
     public void initialize() {
         o_label_pone_up.setText("ausgewählter Button: "+ GameOptions.getKeyCodePoneUp().toString());
@@ -43,21 +34,24 @@ public class OptionsMenuController {
         o_label_ptwo_down.setText("ausgewählter Button: "+ GameOptions.getKeyCodePtwoDown().toString());
     }
 
+    /**
+     * Methode goToMainMenu
+     * - reagiert auf OnMouseClick Event, festgelegt in der options.fxml
+     * @param event OnMouseClickEvent
+     * @throws IOException Generic IOException
+     */
     //Methode zum Wechseln in die Main Menu Scene
     @FXML
-    public void goToMainMenu(javafx.scene.input.MouseEvent event) throws IOException { //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml)
+    public void goToMainMenu(javafx.scene.input.MouseEvent event) throws IOException { //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml
         if(GameOptions.doubleKeyAssignment()) {
             o_label_keyassigned.setVisible(true);
         } else {
             //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
-            o_label_back.setOnKeyPressed(e -> {
-                System.out.println("Debug ins Menu");
-            });
+            o_label_back.setOnKeyPressed(e -> System.out.println("Debug ins Menu"));
             o_label_back.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
         }
         //Event abgeschlossen und "verbraucht"
         event.consume();
-        return;
     }
 
     @FXML
@@ -70,7 +64,6 @@ public class OptionsMenuController {
         });
         o_label_keyassigned.setVisible(false);
         event.consume();
-        return;
     }
 
     @FXML
@@ -83,7 +76,6 @@ public class OptionsMenuController {
         });
         o_label_keyassigned.setVisible(false);
         event.consume();
-        return;
     }
 
     @FXML
@@ -96,7 +88,6 @@ public class OptionsMenuController {
         });
         o_label_keyassigned.setVisible(false);
         event.consume();
-        return;
     }
 
     @FXML
@@ -109,6 +100,5 @@ public class OptionsMenuController {
         });
         o_label_keyassigned.setVisible(false);
         event.consume();
-        return;
     }
 }

@@ -2,11 +2,21 @@ package de.htwsaar.pong.zuse.model;
 
 import javafx.scene.control.Button;
 
+/**
+ * Klasse GameButton
+ * repräsentiert einen Knopf im Spiel mit gewissen Attributen
+ */
 public class GameButton extends Button {
 
+    /**
+     * Konstruktor GameButton
+     * - erzeugt ein GameButton mit gewählten Eigenschaften
+     * @param buttonText Text, welcher im Button angezeigt wird
+     * @param x Lokation auf der x-Achse
+     * @param y Höhe auf der y-Achse
+     */
     public GameButton(String buttonText, int x, int y) {
         super();
-        //Festlegen des Button Layouts
         this.setText(buttonText);
         this.setScaleX(2);
         this.setScaleY(2);

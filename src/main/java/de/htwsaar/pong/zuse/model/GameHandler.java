@@ -1,14 +1,11 @@
 package de.htwsaar.pong.zuse.model;
 
 import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
@@ -16,11 +13,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
-import java.util.Random;
 
 /**
  * Class GameHandler
- * Steuert die gesamten Vorgehen während der GameScene
+ * steuert das gesamte Vorgehen während der GameScene
  *
  * @version 1.0
  */
@@ -36,7 +32,6 @@ public class GameHandler {
     private final Stage gameStage;
     private final Scene gameScene;
     private final AnchorPane gamePane;
-    private final Random rnd = new Random();
     private final String LABEL_STYLE = "-fx-spacing: 20; -fx-text-fill: #FFFFFF;";
     private final String SCORE_SUBSCENE_STYLE = "-fx-background-color: transparent;";
     private final String GAME_SUBSCENE_BACKGROUND_STYLE = "-fx-background-color: #beeef7;";
@@ -55,7 +50,7 @@ public class GameHandler {
 
     /**
      * Konstruktor des GameHandlers
-     * Setzt die verwendete Stage, Pane und Scene
+     * setzt die verwendete Stage, Pane und Scene
      *
      * @param gameStage Verwendete GameStage
      * @param gamePane  Verwendete GamePane
@@ -69,7 +64,7 @@ public class GameHandler {
 
     /**
      * Methode createGameSubScene
-     * - Erschaffen der eigentlichen GameScene auf Basis der Game Scene view (root)
+     * - Erschaffen der eigentlichen GameScene auf Basis das Game Scene view (root)
      * - Festlegen des Hintergrunds
      * - Anlegen des ersten Spielers unabhängig vom GameMode
      * - Anlegen des Balls
@@ -82,7 +77,7 @@ public class GameHandler {
         gameSubScene.getPane().setStyle(GAME_SUBSCENE_BACKGROUND_STYLE); //Helles Türkis TODO: Ersetzen mit css
 
         //Anlegen des ersten Players, der unabhängig vom GameMode gebraucht wird
-        player = new GamePlayer(gameScene, false);
+        player = new GamePlayer(false);
         //Erstellt den Spielball
         ball = new GameBall();
 
@@ -99,7 +94,7 @@ public class GameHandler {
             System.out.println(GameOptions.getGameMode());
             System.out.println("Multiplayer Erstellung 2 Spieler");
             //Anlegen des Spielers mit Referenz der Scene für den ActionListener (Tastenanschläge)
-            player2 = new GamePlayer(gameScene, true);
+            player2 = new GamePlayer(true);
             //Hinzufügen des neuen Elements zur GameSubScene
             gameSubScene.getPane().getChildren().addAll(ball, player, player2);
 
@@ -152,9 +147,10 @@ public class GameHandler {
      * Methode keyListeners
      * - EventHandler zum Checken der gedrückten Keys
      * - Setzt entsprechend der gedrückten Keys die booleans für movePlayer()
-     * @param gameScene
+     *
+     * @param gameScene Scene des aktuellen Games
      */
-    public void keyListeners(Scene gameScene){
+    public void keyListeners(Scene gameScene) {
         gameScene.setOnKeyPressed(e -> {
             if (e.getCode() == GameOptions.getKeyCodePtwoUp()) {
                 isPTwoUpKeyPressed = true;
@@ -188,20 +184,19 @@ public class GameHandler {
     /**
      * Methode movePlayer
      * - Bewegt Spieler abhängig vom definierten Speed
-     *
      */
     public void movePlayer() {
-        if(isPOneUpKeyPressed){
-                player.setTranslateY(player.getTranslateY() - SPEED);
+        if (isPOneUpKeyPressed) {
+            player.setTranslateY(player.getTranslateY() - SPEED);
         }
-        if(isPOneDownKeyPressed){
+        if (isPOneDownKeyPressed) {
             player.setTranslateY(player.getTranslateY() + SPEED);
         }
-        if(GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER){
-            if(isPTwoUpKeyPressed) {
+        if (GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER) {
+            if (isPTwoUpKeyPressed) {
                 player2.setTranslateY(player2.getTranslateY() - SPEED);
             }
-            if(isPTwoDownKeyPressed){
+            if (isPTwoDownKeyPressed) {
                 player2.setTranslateY(player2.getTranslateY() + SPEED);
             }
         }
@@ -224,20 +219,19 @@ public class GameHandler {
      * Methode checkCollision
      * - Kollisionserkennung der SpielerPaddles
      * - Abhängig von Spielmodus
-     *
      */
     private void checkCollision() {
-        if (player.getTranslateY() <= -(HEIGHT/2 - player.getHeight()/3)) {
+        if (player.getTranslateY() <= -(double)(HEIGHT / 2 - player.getHeight() / 3)) {
             player.setTranslateY(player.getTranslateY() + SPEED);
         }
-        if (player.getTranslateY() >= (HEIGHT/2 - player.getHeight()/3)) {
+        if (player.getTranslateY() >= ((double)HEIGHT / 2 - player.getHeight() / 3)) {
             player.setTranslateY(player.getTranslateY() - SPEED);
         }
         if (GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER) {
-            if (player2.getTranslateY() <= (HEIGHT/2 - player2.getHeight()/3)) {
+            if (player2.getTranslateY() <= ((double)HEIGHT / 2 - player2.getHeight() / 3)) {
                 player2.setTranslateY(player2.getTranslateY() + SPEED);
             }
-            if (player2.getTranslateY() >= -(HEIGHT/2 - player2.getHeight()/3)) {
+            if (player2.getTranslateY() >= -(double)(HEIGHT / 2 - player2.getHeight() / 3)) {
                 player2.setTranslateY(player2.getTranslateY() - SPEED);
             }
         }
@@ -250,7 +244,7 @@ public class GameHandler {
      */
     private void checkPoints() {
         Thread gamePointThread;
-        if (ball.getTranslateX() <= -WIDTH/2) {
+        if (ball.getTranslateX() <= -(double)WIDTH / 2) {
             updateScore(true);
             //Ball wieder auf Startposition bringen
             relocateBall();
@@ -258,7 +252,7 @@ public class GameHandler {
             gamePointThread = new Thread(new GamePoint());
             gamePointThread.start();
         }
-        if (ball.getTranslateX() >= WIDTH/2) {
+        if (ball.getTranslateX() >= (double)WIDTH / 2) {
             updateScore(false);
             //Ball wieder auf Startposition bringen
             relocateBall();
@@ -311,9 +305,9 @@ public class GameHandler {
         scoreSubScene.getPane().setStyle(SCORE_SUBSCENE_STYLE);
 
         //Alles für das Layout
-        playerOneScore = new Label( String.valueOf(GameOptions.getRounds()) );
+        playerOneScore = new Label(String.valueOf(GameOptions.getRounds()));
         Label dashLbl = new Label("  -  ");
-        playerTwoScore = new Label( String.valueOf(GameOptions.getRounds()) );
+        playerTwoScore = new Label(String.valueOf(GameOptions.getRounds()));
 
         playerOneScore.setScaleX(8);
         playerOneScore.setScaleY(8);
@@ -342,7 +336,7 @@ public class GameHandler {
     /**
      * Methode updateScore
      * - Spieler verliert ein Leben
-     * - Wenn Leben = 0 -> endGame() & Stop Animation Timer
+     * - Wenn Leben = 0 → endGame() & Stop Animation Timer
      *
      * @param playerOne Boolean, ob Spieler 1 Leben verliert
      *                  Wenn True: playerOneLivesLeft--
@@ -422,31 +416,31 @@ public class GameHandler {
      * - Prüft abhängig von Spielmodus die Collision des Balls am Spieler 2 / KI
      */
     private void checkBallCollision() {
-        if(ball.getTranslateY() >= WIDTH/2 || ball.getTranslateY() <= -(WIDTH/2)){
-            ball.setXSpeed(-(ball.getXSpeed()));
-            ball.setYSpeed(-(ball.getYSpeed()));
+        if (ball.getTranslateY() >= (double)WIDTH / 2 || ball.getTranslateY() <= -((double)WIDTH / 2)) {
+            GameBall.setXSpeed(-(GameBall.getXSpeed()));
+            GameBall.setYSpeed(-(GameBall.getYSpeed()));
         }
         Shape intersectBallOne = Shape.intersect(ball, player);
-        if(intersectBallOne.getBoundsInLocal().getWidth() != -1){
+        if (intersectBallOne.getBoundsInLocal().getWidth() != -1) {
             System.out.println("Collision detected: Ball and P1");
-            ball.setXSpeed(-(ball.getXSpeed()));
-            ball.setYSpeed(-(ball.getYSpeed()));
+            GameBall.setXSpeed(-(GameBall.getXSpeed()));
+            GameBall.setYSpeed(-(GameBall.getYSpeed()));
         }
-        switch(GameOptions.getGameMode()){
+        switch (GameOptions.getGameMode()) {
             case SINGLEPLAYER:
                 Shape intersectBallKI = Shape.intersect(ball, playerKI);
-                if(intersectBallKI.getBoundsInLocal().getWidth() != -1){
+                if (intersectBallKI.getBoundsInLocal().getWidth() != -1) {
                     System.out.println("Collision detected: Ball and KI");
-                    ball.setXSpeed(-(ball.getXSpeed()));
-                    ball.setYSpeed(-(ball.getYSpeed()));
+                    GameBall.setXSpeed(-(GameBall.getXSpeed()));
+                    GameBall.setYSpeed(-(GameBall.getYSpeed()));
                 }
                 break;
             case MULTIPLAYER:
                 Shape intersectBallTwo = Shape.intersect(ball, player2);
-                if(intersectBallTwo.getBoundsInLocal().getWidth() != -1){
+                if (intersectBallTwo.getBoundsInLocal().getWidth() != -1) {
                     System.out.println("Collision detected: Ball and P2");
-                    ball.setXSpeed(-(ball.getXSpeed()));
-                    ball.setYSpeed(-(ball.getYSpeed()));
+                    GameBall.setXSpeed(-(GameBall.getXSpeed()));
+                    GameBall.setYSpeed(-(GameBall.getYSpeed()));
                 }
                 break;
         }

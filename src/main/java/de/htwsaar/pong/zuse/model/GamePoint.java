@@ -2,10 +2,22 @@ package de.htwsaar.pong.zuse.model;
 
 import java.util.Random;
 
+/**
+ * Klasse GamePoint
+ * repräsentiert ein Gamedurchlauf als Thread
+ */
 public class GamePoint implements Runnable {
 
+    /**
+     * Pseudo-Random Ziffer der Startrichtung
+     */
     int randNum;
 
+    /**
+     * run Methode
+     * - startet Thread des Game Durchlauf
+     * - entscheidet, in welche Richtung der Ball startet (anhand Pseudo-Random Ziffer)
+     */
     @Override
     public void run() {
         try {

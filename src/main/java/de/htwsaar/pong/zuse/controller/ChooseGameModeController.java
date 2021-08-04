@@ -8,11 +8,11 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Klasse ChooseGameModeController
+ * repräsentiert den Controller der GameMode Auswahl
+ */
 public class ChooseGameModeController {
-
-    //Initiliasieren der Label, damit diese zum Finden der Scene verwendet werden können (siehe unten)
-    //Labelnamen entsprechen den ID's , welche in der FXML Datei festgelegt wurden (Pflicht)
-
     @FXML
     private Label gm_label_back;
     @FXML
@@ -20,9 +20,15 @@ public class ChooseGameModeController {
     @FXML
     private Label gm_label_multiplayer;
 
+    /**
+     * Methode goToSingleplayer
+     * - reagiert auf OnMouseClick Event, festgelegt in der options.fxml
+     * @param event OnMouseClickEvent
+     * @throws IOException Generic IOException
+     */
     @FXML
-    public void goToSingleplayer(javafx.scene.input.MouseEvent event) throws IOException{ //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml)
-        System.out.println("go to singeplayer");
+    public void goToSingleplayer(javafx.scene.input.MouseEvent event) throws IOException{
+        System.out.println("go to Singleplayer");
         //Setzen der Optionen auf Singleplayer
         GameOptions.setGameMode(GameOptions.GameMode.SINGLEPLAYER);
         //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
@@ -30,9 +36,15 @@ public class ChooseGameModeController {
         event.consume();
     }
 
+    /**
+     * Methode goToMultiplayer
+     * - reagiert auf OnMouseClick Event, festgelegt in der options.fxml
+     * @param event OnMouseClickEvent
+     * @throws IOException Generic IOException
+     */
     @FXML
-    public void goToMultiplayer(javafx.scene.input.MouseEvent event) throws IOException{ //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml)
-        System.out.println("go to multiplayer");
+    public void goToMultiplayer(javafx.scene.input.MouseEvent event) throws IOException{
+        System.out.println("go to Multiplayer");
         //Setzen der Optionen auf Multiplayer
         GameOptions.setGameMode(GameOptions.GameMode.MULTIPLAYER);
         //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
@@ -40,8 +52,14 @@ public class ChooseGameModeController {
         event.consume();
     }
 
+    /**
+     * Methode goToMainMenu
+     * - reagiert auf OnMouseClick Event, festgelegt in der options.fxml
+     * @param event OnMouseClickEvent
+     * @throws IOException Generic IOException
+     */
     @FXML
-    public void goToMainMenu(javafx.scene.input.MouseEvent event) throws IOException { //Reagiert auf OnMouseClick Event, festgelegt in der options.fxml)
+    public void goToMainMenu(javafx.scene.input.MouseEvent event) throws IOException {
         System.out.println("go to main menu");
         //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
         gm_label_back.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));

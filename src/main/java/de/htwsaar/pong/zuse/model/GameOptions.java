@@ -11,18 +11,19 @@ import java.util.Set;
  */
 public final class GameOptions {
     private static GameMode gameMode;
+
+    //Standard Game-Settings (bisher nicht InGame editierbar!)
     private static final int WIDTH = 1280;
     private static final int HEIGHT = 720;
+    private static int rounds = 5;
 
-    //Standard Keybelegung
+    //Standard Key Belegung
     private static KeyCode poneUp = KeyCode.W;
     private static KeyCode poneDown = KeyCode.S;
     private static KeyCode ptwoUp = KeyCode.UP;
     private static KeyCode ptwoDown = KeyCode.DOWN;
 
 
-
-    private static int rounds = 5;
 
     /**
      * Enum GameMode
@@ -33,13 +34,28 @@ public final class GameOptions {
     }
 
     /**
+     * Methode doubleKeyAssignment
+     * - Prüft, ob Keys doppelt belegt sind
+     * @return boolean
+     */
+    public static boolean doubleKeyAssignment() {
+        KeyCode[] keycodes = new KeyCode[]{poneUp, poneDown, ptwoDown, ptwoUp};
+        Set<KeyCode> lump = new HashSet<>();
+        for (KeyCode i : keycodes)
+        {
+            if (lump.contains(i)) return true;
+            lump.add(i);
+        }
+        return false;
+    }
+    /**
      * Getter für Attribut gameMode
      * @return GameMode gameMode
      */
     public static GameMode getGameMode() { return gameMode; }
 
     /**
-     * Getter für Attribut HEIGT
+     * Getter für Attribut HEIGHT
      * @return Höhe des Spielfelds
      */
     public static int getGameHeight() { return HEIGHT; }
@@ -74,16 +90,7 @@ public final class GameOptions {
      */
     public static KeyCode getKeyCodePoneDown() { return poneDown; }
 
-    public static boolean doubleKeyAssignment() {
-        KeyCode[] keycodes = new KeyCode[]{poneUp, poneDown, ptwoDown, ptwoUp};
-        Set<KeyCode> lump = new HashSet<>();
-        for (KeyCode i : keycodes)
-        {
-            if (lump.contains(i)) return true;
-            lump.add(i);
-        }
-        return false;
-    }
+
     /**
      * Setter für Attribut gameMode
      * @param gameMode Zu setzender GameMode
@@ -92,28 +99,28 @@ public final class GameOptions {
 
     /**
      * Setter für Attribut ptwoDown
-     * Setzt Key für Down von Player 2
+     * setzt Key für Down von Player 2
      * @param key Key für Down
      */
     public static void setKeyCodePtwoDown(KeyCode key) { GameOptions.ptwoDown = key; }
 
     /**
      * Setter für Attribut ptwoUp
-     * Setzt Key für Up von Player 2
+     * setzt Key für Up von Player 2
      * @param key Key für Up
      */
     public static void setKeyCodePtwoUp(KeyCode key) { GameOptions.ptwoUp = key; }
 
     /**
      * Setter für Attribut poneDown
-     * Setzt Key für Down von Player 1
+     * setzt Key für Down von Player 1
      * @param key Key für Down
      */
     public static void setKeyCodePoneDown(KeyCode key) { GameOptions.poneDown = key; }
 
     /**
      * Setter für Attribut poneUp
-     * Setzt Key für Up von Player 1
+     * setzt Key für Up von Player 1
      * @param key Key für Up
      */
     public static void setKeyCodePoneUp(KeyCode key) { GameOptions.poneUp = key; }
@@ -121,14 +128,14 @@ public final class GameOptions {
     /**
      * Getter für Attribut rounds
      * gibt die Anzahl der Runden eines Spiels zurück
-     * @return
+     * @return rounds Anzahl der Runden pro Spiel
      */
     public static int getRounds() { return rounds; }
 
     /**
      * Setter für Attribut rounds
-     * Setzt Anzahl der Runden fest
-     * @param rounds
+     * setzt Anzahl der Runden fest
+     * @param rounds Anzahl der Runden pro Spiel
      */
     public static void setRounds(int rounds) { GameOptions.rounds = rounds; }
 }

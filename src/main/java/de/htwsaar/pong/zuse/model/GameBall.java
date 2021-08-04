@@ -4,6 +4,10 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+/**
+ * Klasse GameBall
+ * repräsentiert den Ball innerhalb des Spiels und dessen Logik
+ */
 public class GameBall extends Circle {
     private AnimationTimer animationTimer;
 
@@ -13,18 +17,25 @@ public class GameBall extends Circle {
     private static final int HEIGHT = GameOptions.getGameHeight();
     private static final int WIDTH = GameOptions.getGameWidth();
 
+    /**
+     * Konstruktor GameBall
+     * - erstellt den GameBall und initialisiert seine Größe
+     * - erstellen des AnimationTimers
+     */
     public GameBall(){
-        //Festelegen des Balllayouts
+        //Festlegen des Balllayouts
         this.setRadius(SIZE);
         this.setFill(Color.WHITE);
-        this.setLayoutX(WIDTH/2);
-        this.setLayoutY(HEIGHT/2);
-
-        //Erstellt und startet den Animationtimer
+        this.setLayoutX((double)WIDTH/2);
+        this.setLayoutY((double)HEIGHT/2);
         createTimer();
     }
 
-    //Erstellt und startet den Animationtimer, die Methode Move() wird im Hintergrund immer wieder aufgerufen
+    /**
+     * Methode createTimer
+     * - erstellt AnimationTimer, welcher als HintergrundThread move() ausführt
+     * - startet AnimationTimer
+     */
     private void createTimer() {
         animationTimer = new AnimationTimer() {
             @Override
@@ -35,30 +46,60 @@ public class GameBall extends Circle {
         animationTimer.start();
     }
 
-    //Absolut keine Ahnung was das hier macht, irgendwie den Ball bewegen, wenn er 250 hoch/tief ist //TODO Verstehen was das macht
+    /**
+     * Methode move
+     * - Setzt Ballgeschwindigkeit fest
+     * - Kehrt Ball um, sollte dieser die maximale Höhe des Spielfeldes erreicht haben
+     */
     private void move() {
-        if(this.getTranslateY() == -(GameOptions.getGameHeight()/2) || this.getTranslateY() == (GameOptions.getGameHeight()/2)){
+        //Wenn Ball Spielfeldhöhe erreicht, Ball umkehren
+        if(this.getTranslateY() == -((double)GameOptions.getGameHeight()/2) || this.getTranslateY() == (double)(GameOptions.getGameHeight()/2)){
             ySpeed = -ySpeed;
         }
         this.setTranslateX(this.getTranslateX() - xSpeed);
         this.setTranslateY(this.getTranslateY() - ySpeed);
     }
 
-    //Festelegen der Ballgeschwindigkeit
+    /**
+     * Methode stopBallAnimation
+     * - beendet den AnimationTimer für das Movement des Balls
+     */
+    public void stopBallAnimation() {
+        animationTimer.stop();
+    }
+
+    /**
+     * Setter des Attributs xSpeed
+     * - setzt die Geschwindigkeit des Balls auf der x-Achse
+     * @param xSpeed Geschwindigkeit des Balls auf der x-Achse
+     */
     public static void setXSpeed(int xSpeed) {
         GameBall.xSpeed = xSpeed;
     }
+
+    /**
+     * Setter des Attributs ySpeed
+     * - setzt die Geschwindigkeit des Balls auf der y-Achse
+     * @param ySpeed Geschwindigkeit des Balls auf der y-Achse
+     */
     public static void setYSpeed(int ySpeed) {
         GameBall.ySpeed = ySpeed;
     }
 
-    //Speed des Balls zurückgeben
+    /**
+     * Getter des Attributs xSpeed
+     * - gibt die Geschwindigkeit des Balls auf der x-Achse zurück
+     * @return Geschwindigkeit des Balls auf der x-Achse
+     */
     public static int getXSpeed() {
         return xSpeed;
     }
+
+    /**
+     * Getter des Attributs ySpeed
+     * - gibt die Geschwindigkeit des Balls auf der y-Achse zurück
+     * @return Geschwindigkeit des Balls auf der y-Achse
+     */
     public static int getYSpeed() { return ySpeed; }
 
-    public void stopBallAnimation() {
-        animationTimer.stop();
-    }
 }
