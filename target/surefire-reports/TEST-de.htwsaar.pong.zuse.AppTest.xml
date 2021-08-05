@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="de.htwsaar.pong.zuse.AppTest" time="0.056" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="de.htwsaar.pong.zuse.AppTest" time="0.052" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="16"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\Marcel Hesselbach\.jdks\openjdk-16.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\MARCEL~1\AppData\Local\Temp\surefire8062671103632024586\surefirebooter241005148400226683.jar C:\Users\Marcel Hesselbach\AppData\Local\Temp\surefire8062671103632024586 2021-07-12T12-32-10_573-jvmRun1 surefire17591441521734473509tmp surefire_010378628418042572180tmp"/>
+    <property name="sun.java.command" value="C:\Users\MARCEL~1\AppData\Local\Temp\surefire13219910856554880688\surefirebooter12518149862057437472.jar C:\Users\Marcel Hesselbach\AppData\Local\Temp\surefire13219910856554880688 2021-08-04T19-29-00_193-jvmRun1 surefire8736091769283880592tmp surefire_015654879552945300301tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\Marcel Hesselbach\IdeaProjects\Pong\target\test-classes;C:\Users\Marcel Hesselbach\IdeaProjects\Pong\target\classes;C:\Users\Marcel Hesselbach\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Marcel Hesselbach\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Marcel Hesselbach\.m2\repository\org\openjfx\javafx-fxml\16\javafx-fxml-16.jar;C:\Users\Marcel Hesselbach\.m2\repository\org\openjfx\javafx-fxml\16\javafx-fxml-16-win.jar;C:\Users\Marcel Hesselbach\.m2\repository\org\openjfx\javafx-graphics\16\javafx-graphics-16.jar;C:\Users\Marcel Hesselbach\.m2\repository\org\openjfx\javafx-graphics\16\javafx-graphics-16-win.jar;C:\Users\Marcel Hesselbach\.m2\repository\org\openjfx\javafx-base\16\javafx-base-16.jar;C:\Users\Marcel Hesselbach\.m2\repository\org\openjfx\javafx-base\16\javafx-base-16-win.jar;C:\Users\Marcel Hesselbach\.m2\repository\org\openjfx\javafx-controls\16\javafx-controls-16.jar;C:\Users\Marcel Hesselbach\.m2\repository\org\openjfx\javafx-controls\16\javafx-controls-16-win.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\MARCEL~1\AppData\Local\Temp\surefire8062671103632024586\surefirebooter241005148400226683.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\MARCEL~1\AppData\Local\Temp\surefire13219910856554880688\surefirebooter12518149862057437472.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="16.0.1+9-24"/>
@@ -43,18 +43,18 @@
     <property name="localRepository" value="C:\Users\Marcel Hesselbach\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\MARCEL~1\AppData\Local\Temp\"/>
-    <property name="idea.version" value="2021.1.3"/>
+    <property name="idea.version" value="2021.2"/>
     <property name="java.version" value="16.0.1"/>
     <property name="user.dir" value="C:\Users\Marcel Hesselbach\IdeaProjects\Pong"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="java.library.path" value="C:\Users\Marcel Hesselbach\.jdks\openjdk-16.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Users\Marcel Hesselbach\AppData\Local\Microsoft\WindowsApps;C:\Users\Marcel Hesselbach\AppData\Local\Programs\Microsoft VS Code\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;E:\Program Files\PowerShell\7-preview\preview;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;E:\Program Files\Git\cmd;E:\Program Files\Power_Shell_Preview\7\;E:\Program Files (x86)\jdk-15.0.2\bin;E:\Program Files\TortoiseSVN\bin;C:\Users\Marcel Hesselbach\AppData\Local\Microsoft\WindowsApps;C:\Users\Marcel Hesselbach\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Marcel Hesselbach\AppData\Local\GitHubDesktop\bin;C:\Users\Marcel Hesselbach\AppData\Local\Microsoft\WindowsApps;;E:\Program Files\IntelliJ IDEA Community Edition 2021.1.1\bin;;."/>
+    <property name="java.library.path" value="C:\Users\Marcel Hesselbach\.jdks\openjdk-16.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Users\Marcel Hesselbach\AppData\Local\Microsoft\WindowsApps;C:\Users\Marcel Hesselbach\AppData\Local\Programs\Microsoft VS Code\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;E:\Program Files\PowerShell\7-preview\preview;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;E:\Program Files\Git\cmd;E:\Program Files\Power_Shell_Preview\7\;E:\Program Files (x86)\jdk-15.0.2\bin;E:\Program Files\TortoiseSVN\bin;C:\Users\Marcel Hesselbach\AppData\Local\Microsoft\WindowsApps;C:\Users\Marcel Hesselbach\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Marcel Hesselbach\AppData\Local\GitHubDesktop\bin;C:\Users\Marcel Hesselbach\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.2\bin;;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="16.0.1+9-24"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="60.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="de.htwsaar.pong.zuse.AppTest" time="0.003"/>
+  <testcase name="shouldAnswerWithTrue" classname="de.htwsaar.pong.zuse.AppTest" time="0.004"/>
 </testsuite>

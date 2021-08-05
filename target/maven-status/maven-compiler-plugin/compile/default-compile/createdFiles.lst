@@ -3,16 +3,13 @@ de\htwsaar\pong\zuse\model\LaunchGame.class
 de\htwsaar\pong\zuse\model\GameBall.class
 de\htwsaar\pong\zuse\controller\HowToPlayController.class
 de\htwsaar\pong\zuse\model\GamePlayerKI.class
-de\htwsaar\pong\zuse\model\GamePlayer$1.class
 de\htwsaar\pong\zuse\model\GamePlayer.class
 de\htwsaar\pong\zuse\controller\OptionsMenuController.class
 de\htwsaar\pong\zuse\model\GameSubScene.class
 de\htwsaar\pong\zuse\model\GameButton.class
-de\htwsaar\pong\zuse\model\ButtonHandler.class
 de\htwsaar\pong\zuse\model\GameBall$1.class
 de\htwsaar\pong\zuse\model\GamePlayerKI$1.class
 de\htwsaar\pong\zuse\controller\GameViewController.class
-de\htwsaar\pong\zuse\model\GameHandler$GameMode.class
 de\htwsaar\pong\zuse\controller\GameViewController$1.class
 de\htwsaar\pong\zuse\controller\ChooseGameModeController.class
 de\htwsaar\pong\zuse\controller\MainMenuController.class
