@@ -431,6 +431,9 @@ public class GameHandler {
             System.out.println("Collision detected: Ball and P1");
             GameBall.setXSpeed(-(GameBall.getXSpeed()));
             GameBall.setYSpeed(-(GameBall.getYSpeed()));
+            if(GameOptions.getGameMode() == GameOptions.GameMode.SINGLEPLAYER) {
+                playerKI.setInAcc((int)(Math.random() * (90 - 20)) + 20);
+            }
         }
         switch (GameOptions.getGameMode()) {
             case SINGLEPLAYER:

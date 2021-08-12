@@ -4,6 +4,8 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.util.Random;
+
 /**
  * Klasse GamePlayerKI
  * repräsentiert die KI des Gegners im Singleplayer
@@ -11,6 +13,8 @@ import javafx.scene.shape.Rectangle;
 public class GamePlayerKI extends Rectangle {
     private final GameBall ball;
     private static final int speed = 10;
+
+    private static int inAcc = 50;
 
     private static final int PLAYERHEIGHT = 100;
     private static final int PLAYERWIDTH = 20;
@@ -56,13 +60,17 @@ public class GamePlayerKI extends Rectangle {
     private void move()
     {
         //Wenn der Ball +-50px von der Y-Koordinate (Höhe) des Paddles entfernt ist, bewegt sich das Paddle zu dem Ball hin
-        if (ball.getTranslateY() < this.getTranslateY() + 50)
+        if (ball.getTranslateY() < this.getTranslateY() + inAcc)
         {
             this.setTranslateY(this.getTranslateY() - speed);
         }
-        if (ball.getTranslateY() > this.getTranslateY() + 50)
+        if (ball.getTranslateY() > this.getTranslateY() + inAcc)
         {
             this.setTranslateY(this.getTranslateY() + speed);
         }
+    }
+
+    public static void setInAcc(int inAcc) {
+        GamePlayerKI.inAcc = inAcc;
     }
 }
