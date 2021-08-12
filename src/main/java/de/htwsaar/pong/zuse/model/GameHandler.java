@@ -142,7 +142,6 @@ public class GameHandler {
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                //checkCollision();
                 movePlayer();
                 checkBallCollision();
                 checkPoints();
@@ -449,7 +448,7 @@ public class GameHandler {
                 if (intersectBallTwo.getBoundsInLocal().getWidth() != -1) {
                     System.out.println("Collision detected: Ball and P2");
                     GameBall.setXSpeed(-(GameBall.getXSpeed()));
-                    GameBall.setYSpeed(-(GameBall.getYSpeed()));
+                    //GameBall.setYSpeed(-(GameBall.getYSpeed()));
                 }
                 break;
         }

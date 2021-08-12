@@ -13,10 +13,10 @@ public class GameBall extends Circle {
     private AnimationTimer animationTimer;
 
     private static final int SIZE = 20;
-    private static final int initialXSpeed = -8;
-    private static final int initialYSpeed = 6;
     private static int xSpeed = -8;
     private static int ySpeed = 6;
+    private static final int initialXSpeed = -6;
+    private static final int initialYSpeed = 4;
     private static Bounds bounds;
     private static final int HEIGHT = GameOptions.getGameHeight();
     private static final int WIDTH = GameOptions.getGameWidth();

@@ -12,9 +12,9 @@ import java.util.Random;
  */
 public class GamePlayerKI extends Rectangle {
     private final GameBall ball;
-    private static final int speed = 10;
+    private static final int speed = 7;
 
-    private static int inAcc = 50;
+    private static int inAcc = 20;
 
     private static final int PLAYERHEIGHT = 100;
     private static final int PLAYERWIDTH = 20;
