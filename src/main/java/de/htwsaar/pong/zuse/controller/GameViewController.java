@@ -54,7 +54,7 @@ public class GameViewController {
         gameHandler.createGameSubScene();
         gameHandler.createGameTitle();
         gameHandler.createGameTimer();
-        //gameHandler.createMenuButton();
+        gameHandler.createMenuButton();
         gameHandler.createScoreSubScene();
         gameHandler.keyListeners(gameScene);
         //Ändern des Fenstertitels entsprechend dem GameMode

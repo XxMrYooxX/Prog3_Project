@@ -12,8 +12,10 @@ public class GameBall extends Circle {
     private AnimationTimer animationTimer;
 
     private static final int SIZE = 20;
-    private static int xSpeed = -10;
-    private static int ySpeed = 8;
+    private static final int initialXSpeed = -8;
+    private static final int initialYSpeed = 6;
+    private static int xSpeed = -8;
+    private static int ySpeed = 6;
     private static final int HEIGHT = GameOptions.getGameHeight();
     private static final int WIDTH = GameOptions.getGameWidth();
 
@@ -101,5 +103,23 @@ public class GameBall extends Circle {
      * @return Geschwindigkeit des Balls auf der y-Achse
      */
     public static int getYSpeed() { return ySpeed; }
+
+    /**
+     * Getter des Attributs InitialXSpeed
+     * - gibt die Geschwindigkeit des Balls auf der x-Achse zurück
+     * @return Geschwindigkeit des Balls auf der x-Achse
+     */
+    public static int getInitialXSpeed() {
+        return initialXSpeed;
+    }
+
+    /**
+     * Getter des Attributs InitialYSpeed
+     * - gibt die Geschwindigkeit des Balls auf der y-Achse zurück
+     * @return Geschwindigkeit des Balls auf der y-Achse
+     */
+    public static int getInitialYSpeed() {
+        return initialYSpeed;
+    }
 
 }

@@ -48,7 +48,7 @@ public class GamePoint implements Runnable {
         }
 
         //Übernehmen für GameBall
-        GameBall.setXSpeed(10 * directionX);
-        GameBall.setYSpeed(8 * directionY);
+        GameBall.setXSpeed(GameBall.getInitialXSpeed() * directionX);
+        GameBall.setYSpeed(GameBall.getInitialYSpeed() * directionY);
     }
 }

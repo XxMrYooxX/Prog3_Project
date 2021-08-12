@@ -96,7 +96,7 @@
                   <Font size="76.0" />
                 </font>
               </Label>
-                  <Label fx:id="o_label_keyassigned" visible="false" alignment="CENTER" text="TASTENBELEGUNG DOPPELT!" textAlignment="CENTER" textFill="RED">
+                  <Label fx:id="o_label_keyassigned" visible="false" alignment="CENTER" text="TASTENBELEGUNG DOPPELT ODER UNGÜLTIGE TASTE (ESC)!" textAlignment="CENTER" textFill="RED">
                      <font>
                         <Font size="38.0" />
                      </font>
