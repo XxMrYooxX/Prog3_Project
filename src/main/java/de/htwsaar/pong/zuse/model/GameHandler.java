@@ -3,6 +3,7 @@ package de.htwsaar.pong.zuse.model;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,6 +30,7 @@ public class GameHandler {
     private static final int WIDTH = GameOptions.getGameWidth();
     private static final int HEIGHT = GameOptions.getGameHeight();
     private static final int SPEED = 15;
+    private static Bounds bounds;
     private static GamePlayer player;
     private static GamePlayer player2;
     private static GamePlayerKI playerKI;
@@ -64,6 +66,7 @@ public class GameHandler {
         this.gameStage = gameStage;
         this.gamePane = gamePane;
         this.gameScene = gameScene;
+        bounds = gamePane.getLayoutBounds();
     }
 
     /**
@@ -83,7 +86,7 @@ public class GameHandler {
         //Anlegen des ersten Players, der unabhängig vom GameMode gebraucht wird
         player = new GamePlayer(false);
         //Erstellt den Spielball
-        ball = new GameBall();
+        ball = new GameBall(bounds);
 
         //Abhängig vom GameMode wird ein KI-Player, bzw. ein zweiter Spieler hinzugefügt
         if (GameOptions.getGameMode() == GameOptions.GameMode.SINGLEPLAYER) {
@@ -105,6 +108,7 @@ public class GameHandler {
         }
         //Fügt die erstellte SubScene zum GamePane hinzu
         gamePane.getChildren().add(gameSubScene);
+        //Fenster-Grenzen für Paddles und Ball (Collisiondetection)
         //Focus richtig gesetzt für Up Down Keys
         gameSubScene.requestFocus();
     }
@@ -138,7 +142,7 @@ public class GameHandler {
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                checkCollision();
+                //checkCollision();
                 movePlayer();
                 checkBallCollision();
                 checkPoints();
@@ -192,17 +196,17 @@ public class GameHandler {
      * - Bewegt Spieler abhängig vom definierten Speed
      */
     public void movePlayer() {
-        if (isPOneUpKeyPressed) {
+        if (isPOneUpKeyPressed && (player.getBoundsInParent().getMinY() > (bounds.getMinY()))) {
             player.setTranslateY(player.getTranslateY() - SPEED);
         }
-        if (isPOneDownKeyPressed) {
+        if (isPOneDownKeyPressed && (player.getBoundsInParent().getMaxY() < (bounds.getMaxY()))) {
             player.setTranslateY(player.getTranslateY() + SPEED);
         }
         if (GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER) {
-            if (isPTwoUpKeyPressed) {
+            if (isPTwoUpKeyPressed && (player2.getBoundsInParent().getMinY() > (bounds.getMinY()))) {
                 player2.setTranslateY(player2.getTranslateY() - SPEED);
             }
-            if (isPTwoDownKeyPressed) {
+            if (isPTwoDownKeyPressed && (player2.getBoundsInParent().getMaxY() < (bounds.getMaxY()))) {
                 player2.setTranslateY(player2.getTranslateY() + SPEED);
             }
         }
@@ -422,10 +426,6 @@ public class GameHandler {
      * - Prüft abhängig von Spielmodus die Collision des Balls am Spieler 2 / KI
      */
     private void checkBallCollision() {
-        if (ball.getTranslateY() >= (double)WIDTH / 2 || ball.getTranslateY() <= -((double)WIDTH / 2)) {
-            GameBall.setXSpeed(-(GameBall.getXSpeed()));
-            GameBall.setYSpeed(-(GameBall.getYSpeed()));
-        }
         Shape intersectBallOne = Shape.intersect(ball, player);
         if (intersectBallOne.getBoundsInLocal().getWidth() != -1) {
             System.out.println("Collision detected: Ball and P1");

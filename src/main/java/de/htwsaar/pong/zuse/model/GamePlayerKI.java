@@ -60,7 +60,7 @@ public class GamePlayerKI extends Rectangle {
     private void move()
     {
         //Wenn der Ball +-50px von der Y-Koordinate (Höhe) des Paddles entfernt ist, bewegt sich das Paddle zu dem Ball hin
-        if (ball.getTranslateY() < this.getTranslateY() + inAcc)
+        if (ball.getTranslateY() < this.getTranslateY() - inAcc)
         {
             this.setTranslateY(this.getTranslateY() - speed);
         }

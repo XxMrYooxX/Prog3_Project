@@ -1,6 +1,7 @@
 package de.htwsaar.pong.zuse.model;
 
 import javafx.animation.AnimationTimer;
+import javafx.geometry.Bounds;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
@@ -16,6 +17,7 @@ public class GameBall extends Circle {
     private static final int initialYSpeed = 6;
     private static int xSpeed = -8;
     private static int ySpeed = 6;
+    private static Bounds bounds;
     private static final int HEIGHT = GameOptions.getGameHeight();
     private static final int WIDTH = GameOptions.getGameWidth();
 
@@ -24,12 +26,13 @@ public class GameBall extends Circle {
      * - erstellt den GameBall und initialisiert seine Größe
      * - erstellen des AnimationTimers
      */
-    public GameBall(){
+    public GameBall(Bounds bounds){
         //Festlegen des Balllayouts
         this.setRadius(SIZE);
         this.setFill(Color.WHITE);
         this.setLayoutX((double)WIDTH/2);
         this.setLayoutY((double)HEIGHT/2);
+        this.bounds = bounds;
         createTimer();
     }
 
@@ -55,7 +58,7 @@ public class GameBall extends Circle {
      */
     private void move() {
         //Wenn Ball Spielfeldhöhe erreicht, Ball umkehren
-        if(this.getTranslateY() == -((double)GameOptions.getGameHeight()/2) || this.getTranslateY() == (double)(GameOptions.getGameHeight()/2)){
+        if(this.getBoundsInParent().getMaxY() > bounds.getMaxY() || this.getBoundsInParent().getMinY() < bounds.getMinY()){
             ySpeed = -ySpeed;
         }
         this.setTranslateX(this.getTranslateX() - xSpeed);
