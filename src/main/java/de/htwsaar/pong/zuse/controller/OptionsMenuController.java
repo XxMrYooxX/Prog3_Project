@@ -74,6 +74,7 @@ public class OptionsMenuController {
             o_label_pone_down.setText("ausgewählter Button: "+ e.getCode());
             GameOptions.setKeyCodePoneDown(e.getCode());
         });
+
         o_label_keyassigned.setVisible(false);
         event.consume();
     }
@@ -85,6 +86,7 @@ public class OptionsMenuController {
             System.out.println(e.getCode());
             o_label_ptwo_up.setText("ausgewählter Button: "+ e.getCode());
             GameOptions.setKeyCodePtwoUp(e.getCode());
+            e.consume();
         });
         o_label_keyassigned.setVisible(false);
         event.consume();

@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
@@ -40,7 +41,6 @@ public class GameHandler {
     private AnimationTimer animationTimer;
     private Label playerOneScore;
     private Label playerTwoScore;
-    private Button firstMenuButton;
     private int playerOneLivesLeft = GameOptions.getRounds();
     private int playerTwoLivesLeft = GameOptions.getRounds();
     private boolean isPOneUpKeyPressed;
@@ -151,6 +151,7 @@ public class GameHandler {
      * @param gameScene Scene des aktuellen Games
      */
     public void keyListeners(Scene gameScene) {
+
         gameScene.setOnKeyPressed(e -> {
             if (e.getCode() == GameOptions.getKeyCodePtwoUp()) {
                 isPTwoUpKeyPressed = true;
@@ -163,6 +164,11 @@ public class GameHandler {
             }
             if (e.getCode() == GameOptions.getKeyCodePoneDown()) {
                 isPOneDownKeyPressed = true;
+            }
+            //Escape Key Listener für zurück zum Hautpmenu
+            if(e.getCode() == KeyCode.ESCAPE) {
+                backToMenu();
+                System.out.println("zurück menu");
             }
         });
         gameScene.setOnKeyReleased(e -> {
@@ -211,8 +217,6 @@ public class GameHandler {
         ball.stopBallAnimation();
         ball.setVisible(false);
         createEndScoreSubScene(playerOneWins);
-        //Entfernt den Menu Button unten rechts, da ein neuer mit dem EndScore eingeblendet wird
-        gamePane.getChildren().remove(firstMenuButton);
     }
 
     /**
@@ -278,21 +282,17 @@ public class GameHandler {
      * Methode createMenuButton
      * - Erstellt den Button, um zum Hauptmenü zurückzukommen
      */
-    public void createMenuButton() {
-        firstMenuButton = new GameButton("Main Menu", 640, 20);
-        firstMenuButton.setOnAction(e -> {
-            try {
-                //AnimationTimer Befehle stoppen
-                animationTimer.stop();
-                //Fenstertitel zurückändern
-                gameStage.setTitle("Pong by Team Zuse");
-                gameStage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-        });
-        gamePane.getChildren().add(firstMenuButton);
-        firstMenuButton.setFocusTraversable(false);
+    public void backToMenu() {
+        try {
+            //AnimationTimer Befehle stoppen
+            animationTimer.stop();
+            ball.stopBallAnimation();
+            //Fenstertitel zurückändern
+            gameStage.setTitle("Pong by Team Zuse");
+            gameStage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
+        } catch (IOException ioException) {
+           // ioException.printStackTrace();
+        }
     }
 
     /**

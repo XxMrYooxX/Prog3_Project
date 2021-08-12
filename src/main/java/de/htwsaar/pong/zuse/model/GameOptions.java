@@ -43,7 +43,7 @@ public final class GameOptions {
         Set<KeyCode> lump = new HashSet<>();
         for (KeyCode i : keycodes)
         {
-            if (lump.contains(i)) return true;
+            if (lump.contains(i) || lump.contains(KeyCode.ESCAPE)) return true;
             lump.add(i);
         }
         return false;
