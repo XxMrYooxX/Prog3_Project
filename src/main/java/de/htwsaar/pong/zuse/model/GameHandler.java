@@ -253,7 +253,7 @@ public class GameHandler {
      */
     private void checkPoints() {
         Thread gamePointThread;
-        if (ball.getTranslateX() <= -(double)WIDTH / 2) {
+        if (ball.getBoundsInParent().getMinX() < bounds.getMinX()) {
             updateScore(true);
             //Ball wieder auf Startposition bringen
             relocateBall();
@@ -261,7 +261,7 @@ public class GameHandler {
             gamePointThread = new Thread(new GamePoint());
             gamePointThread.start();
         }
-        if (ball.getTranslateX() >= (double)WIDTH / 2) {
+        if (ball.getBoundsInParent().getMaxX() > bounds.getMaxX()) {
             updateScore(false);
             //Ball wieder auf Startposition bringen
             relocateBall();
@@ -425,6 +425,7 @@ public class GameHandler {
      * - Prüft abhängig von Spielmodus die Collision des Balls am Spieler 2 / KI
      */
     private void checkBallCollision() {
+
         Shape intersectBallOne = Shape.intersect(ball, player);
         if (intersectBallOne.getBoundsInLocal().getWidth() != -1) {
             System.out.println("Collision detected: Ball and P1");
