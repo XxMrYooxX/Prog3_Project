@@ -1,0 +1,12 @@
+digraph "de.htwsaar.pong.zuse.model.GameOptions.setGameMode"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="de.htwsaar.pong.zuse.model.\lGameOptions.setGameMode",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Setter für Attribut gameMode."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="de.htwsaar.pong.zuse.controller.\lChooseGameModeController.goToMultiplayer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classde_1_1htwsaar_1_1pong_1_1zuse_1_1controller_1_1_choose_game_mode_controller.html#a25cd2598a3d4bdd545f60331d78c8810",tooltip="Methode goToMultiplayer."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="de.htwsaar.pong.zuse.controller.\lChooseGameModeController.goToSingleplayer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classde_1_1htwsaar_1_1pong_1_1zuse_1_1controller_1_1_choose_game_mode_controller.html#a524d102dd8ed6a2566533088f55c23d9",tooltip="Methode goToSingleplayer."];
+}

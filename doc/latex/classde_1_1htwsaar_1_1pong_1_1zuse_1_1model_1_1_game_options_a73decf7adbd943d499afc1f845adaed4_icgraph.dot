@@ -1,0 +1,12 @@
+digraph "de.htwsaar.pong.zuse.model.GameOptions.getRounds"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="de.htwsaar.pong.zuse.model.\lGameOptions.getRounds",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Getter für Attribut rounds gibt die Anzahl der Runden eines Spiels zurück."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="de.htwsaar.pong.zuse.model.\lGameHandler.createScoreSubScene",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classde_1_1htwsaar_1_1pong_1_1zuse_1_1model_1_1_game_handler.html#a6a1e12189b97b22112677aab88dbdfb3",tooltip="Methode createScoreSubScene."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="de.htwsaar.pong.zuse.controller.\lGameViewController.startButton",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classde_1_1htwsaar_1_1pong_1_1zuse_1_1controller_1_1_game_view_controller.html#a3ee1540dfea4c5d7ba3540f5f5061643",tooltip="StartButton des Spiels Erschaffen des GameHandlers beim Klick auf Start mit entsprechendem Modus (Sin..."];
+}

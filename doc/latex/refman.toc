@@ -1,0 +1,151 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\babel@toc {ngerman}{}
+\contentsline {chapter}{\numberline {1}Verzeichnis der Namensbereiche}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Pakete}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Hierarchie-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Verzeichnis}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Klassenhierarchie}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Klassen-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Verzeichnis}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Auflistung der Klassen}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Datei-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Verzeichnis}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Auflistung der Dateien}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Dokumentation der Namensbereiche}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Paket de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller}{9}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Ausführliche Beschreibung}{9}{subsection.5.1.1}%
+\contentsline {section}{\numberline {5.2}Paket de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model}{10}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Ausführliche Beschreibung}{11}{subsection.5.2.1}%
+\contentsline {chapter}{\numberline {6}Klassen-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dokumentation}{15}{chapter.6}%
+\contentsline {section}{\numberline {6.1}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test Klassenreferenz}{15}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Ausführliche Beschreibung}{15}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Dokumentation der Elementfunktionen}{15}{subsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.2.1}shouldAnswerWithTrue()}{15}{subsubsection.6.1.2.1}%
+\contentsline {section}{\numberline {6.2}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Choose\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Mode\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Klassenreferenz}{16}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Ausführliche Beschreibung}{16}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Dokumentation der Elementfunktionen}{16}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}goToMainMenu()}{16}{subsubsection.6.2.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2.2}goToMultiplayer()}{17}{subsubsection.6.2.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.3}goToSingleplayer()}{17}{subsubsection.6.2.2.3}%
+\contentsline {section}{\numberline {6.3}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ball Klassenreferenz}{18}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Ausführliche Beschreibung}{18}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Beschreibung der Konstruktoren und Destruktoren}{18}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}GameBall()}{18}{subsubsection.6.3.2.1}%
+\contentsline {subsection}{\numberline {6.3.3}Dokumentation der Elementfunktionen}{19}{subsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.3.1}getInitialXSpeed()}{19}{subsubsection.6.3.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.3.2}getInitialYSpeed()}{19}{subsubsection.6.3.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3.3}getXSpeed()}{19}{subsubsection.6.3.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.3.4}getYSpeed()}{20}{subsubsection.6.3.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.3.5}setXSpeed()}{20}{subsubsection.6.3.3.5}%
+\contentsline {subsubsection}{\numberline {6.3.3.6}setYSpeed()}{20}{subsubsection.6.3.3.6}%
+\contentsline {subsubsection}{\numberline {6.3.3.7}stopBallAnimation()}{21}{subsubsection.6.3.3.7}%
+\contentsline {section}{\numberline {6.4}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Button Klassenreferenz}{21}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Ausführliche Beschreibung}{21}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Beschreibung der Konstruktoren und Destruktoren}{21}{subsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.2.1}GameButton()}{21}{subsubsection.6.4.2.1}%
+\contentsline {section}{\numberline {6.5}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler Klassenreferenz}{22}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Ausführliche Beschreibung}{22}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Beschreibung der Konstruktoren und Destruktoren}{23}{subsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.2.1}GameHandler()}{23}{subsubsection.6.5.2.1}%
+\contentsline {subsection}{\numberline {6.5.3}Dokumentation der Elementfunktionen}{23}{subsection.6.5.3}%
+\contentsline {subsubsection}{\numberline {6.5.3.1}createGameSubScene()}{23}{subsubsection.6.5.3.1}%
+\contentsline {subsubsection}{\numberline {6.5.3.2}createGameTimer()}{24}{subsubsection.6.5.3.2}%
+\contentsline {subsubsection}{\numberline {6.5.3.3}createGameTitle()}{24}{subsubsection.6.5.3.3}%
+\contentsline {subsubsection}{\numberline {6.5.3.4}createMenuButton()}{24}{subsubsection.6.5.3.4}%
+\contentsline {subsubsection}{\numberline {6.5.3.5}createScoreSubScene()}{24}{subsubsection.6.5.3.5}%
+\contentsline {subsubsection}{\numberline {6.5.3.6}keyListeners()}{25}{subsubsection.6.5.3.6}%
+\contentsline {subsubsection}{\numberline {6.5.3.7}movePlayer()}{25}{subsubsection.6.5.3.7}%
+\contentsline {section}{\numberline {6.6}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Options.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Mode Enum-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Referenz}{25}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Ausführliche Beschreibung}{26}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}Dokumentation der Datenelemente}{26}{subsection.6.6.2}%
+\contentsline {subsubsection}{\numberline {6.6.2.1}MULTIPLAYER}{26}{subsubsection.6.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.6.2.2}SINGLEPLAYER}{26}{subsubsection.6.6.2.2}%
+\contentsline {section}{\numberline {6.7}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Options Klassenreferenz}{26}{section.6.7}%
+\contentsline {subsection}{\numberline {6.7.1}Ausführliche Beschreibung}{27}{subsection.6.7.1}%
+\contentsline {subsection}{\numberline {6.7.2}Dokumentation der Elementfunktionen}{27}{subsection.6.7.2}%
+\contentsline {subsubsection}{\numberline {6.7.2.1}doubleKeyAssignment()}{28}{subsubsection.6.7.2.1}%
+\contentsline {subsubsection}{\numberline {6.7.2.2}getGameHeight()}{28}{subsubsection.6.7.2.2}%
+\contentsline {subsubsection}{\numberline {6.7.2.3}getGameMode()}{28}{subsubsection.6.7.2.3}%
+\contentsline {subsubsection}{\numberline {6.7.2.4}getGameWidth()}{29}{subsubsection.6.7.2.4}%
+\contentsline {subsubsection}{\numberline {6.7.2.5}getKeyCodePoneDown()}{29}{subsubsection.6.7.2.5}%
+\contentsline {subsubsection}{\numberline {6.7.2.6}getKeyCodePoneUp()}{29}{subsubsection.6.7.2.6}%
+\contentsline {subsubsection}{\numberline {6.7.2.7}getKeyCodePtwoDown()}{29}{subsubsection.6.7.2.7}%
+\contentsline {subsubsection}{\numberline {6.7.2.8}getKeyCodePtwoUp()}{30}{subsubsection.6.7.2.8}%
+\contentsline {subsubsection}{\numberline {6.7.2.9}getKiInaccuracy()}{30}{subsubsection.6.7.2.9}%
+\contentsline {subsubsection}{\numberline {6.7.2.10}getRounds()}{30}{subsubsection.6.7.2.10}%
+\contentsline {subsubsection}{\numberline {6.7.2.11}setGameMode()}{30}{subsubsection.6.7.2.11}%
+\contentsline {subsubsection}{\numberline {6.7.2.12}setKeyCodePoneDown()}{31}{subsubsection.6.7.2.12}%
+\contentsline {subsubsection}{\numberline {6.7.2.13}setKeyCodePoneUp()}{31}{subsubsection.6.7.2.13}%
+\contentsline {subsubsection}{\numberline {6.7.2.14}setKeyCodePtwoDown()}{31}{subsubsection.6.7.2.14}%
+\contentsline {subsubsection}{\numberline {6.7.2.15}setKeyCodePtwoUp()}{32}{subsubsection.6.7.2.15}%
+\contentsline {subsubsection}{\numberline {6.7.2.16}setKiInaccuracy()}{32}{subsubsection.6.7.2.16}%
+\contentsline {subsubsection}{\numberline {6.7.2.17}setRounds()}{32}{subsubsection.6.7.2.17}%
+\contentsline {section}{\numberline {6.8}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Player Klassenreferenz}{33}{section.6.8}%
+\contentsline {subsection}{\numberline {6.8.1}Ausführliche Beschreibung}{33}{subsection.6.8.1}%
+\contentsline {subsection}{\numberline {6.8.2}Beschreibung der Konstruktoren und Destruktoren}{33}{subsection.6.8.2}%
+\contentsline {subsubsection}{\numberline {6.8.2.1}GamePlayer()}{33}{subsubsection.6.8.2.1}%
+\contentsline {section}{\numberline {6.9}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Player\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}KI Klassenreferenz}{33}{section.6.9}%
+\contentsline {subsection}{\numberline {6.9.1}Ausführliche Beschreibung}{34}{subsection.6.9.1}%
+\contentsline {subsection}{\numberline {6.9.2}Beschreibung der Konstruktoren und Destruktoren}{34}{subsection.6.9.2}%
+\contentsline {subsubsection}{\numberline {6.9.2.1}GamePlayerKI()}{34}{subsubsection.6.9.2.1}%
+\contentsline {subsection}{\numberline {6.9.3}Dokumentation der Elementfunktionen}{34}{subsection.6.9.3}%
+\contentsline {subsubsection}{\numberline {6.9.3.1}setInAcc()}{34}{subsubsection.6.9.3.1}%
+\contentsline {section}{\numberline {6.10}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Point Klassenreferenz}{35}{section.6.10}%
+\contentsline {subsection}{\numberline {6.10.1}Ausführliche Beschreibung}{35}{subsection.6.10.1}%
+\contentsline {subsection}{\numberline {6.10.2}Dokumentation der Elementfunktionen}{35}{subsection.6.10.2}%
+\contentsline {subsubsection}{\numberline {6.10.2.1}run()}{35}{subsubsection.6.10.2.1}%
+\contentsline {section}{\numberline {6.11}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sub\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scene Klassenreferenz}{36}{section.6.11}%
+\contentsline {subsection}{\numberline {6.11.1}Ausführliche Beschreibung}{36}{subsection.6.11.1}%
+\contentsline {subsection}{\numberline {6.11.2}Beschreibung der Konstruktoren und Destruktoren}{36}{subsection.6.11.2}%
+\contentsline {subsubsection}{\numberline {6.11.2.1}GameSubScene()}{36}{subsubsection.6.11.2.1}%
+\contentsline {subsection}{\numberline {6.11.3}Dokumentation der Elementfunktionen}{36}{subsection.6.11.3}%
+\contentsline {subsubsection}{\numberline {6.11.3.1}getPane()}{36}{subsubsection.6.11.3.1}%
+\contentsline {section}{\numberline {6.12}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}View\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Klassenreferenz}{37}{section.6.12}%
+\contentsline {subsection}{\numberline {6.12.1}Ausführliche Beschreibung}{37}{subsection.6.12.1}%
+\contentsline {subsection}{\numberline {6.12.2}Dokumentation der Elementfunktionen}{37}{subsection.6.12.2}%
+\contentsline {subsubsection}{\numberline {6.12.2.1}initialize()}{37}{subsubsection.6.12.2.1}%
+\contentsline {subsubsection}{\numberline {6.12.2.2}startButton()}{37}{subsubsection.6.12.2.2}%
+\contentsline {section}{\numberline {6.13}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}How\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}To\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Play\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Klassenreferenz}{38}{section.6.13}%
+\contentsline {subsection}{\numberline {6.13.1}Ausführliche Beschreibung}{38}{subsection.6.13.1}%
+\contentsline {subsection}{\numberline {6.13.2}Dokumentation der Elementfunktionen}{38}{subsection.6.13.2}%
+\contentsline {subsubsection}{\numberline {6.13.2.1}goToMainMenu()}{38}{subsubsection.6.13.2.1}%
+\contentsline {section}{\numberline {6.14}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Launch\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game Klassenreferenz}{39}{section.6.14}%
+\contentsline {subsection}{\numberline {6.14.1}Ausführliche Beschreibung}{39}{subsection.6.14.1}%
+\contentsline {subsection}{\numberline {6.14.2}Dokumentation der Elementfunktionen}{39}{subsection.6.14.2}%
+\contentsline {subsubsection}{\numberline {6.14.2.1}launchGame()}{39}{subsubsection.6.14.2.1}%
+\contentsline {subsubsection}{\numberline {6.14.2.2}start()}{40}{subsubsection.6.14.2.2}%
+\contentsline {section}{\numberline {6.15}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Menu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Klassenreferenz}{40}{section.6.15}%
+\contentsline {subsection}{\numberline {6.15.1}Ausführliche Beschreibung}{40}{subsection.6.15.1}%
+\contentsline {subsection}{\numberline {6.15.2}Dokumentation der Elementfunktionen}{41}{subsection.6.15.2}%
+\contentsline {subsubsection}{\numberline {6.15.2.1}goToExit()}{41}{subsubsection.6.15.2.1}%
+\contentsline {subsubsection}{\numberline {6.15.2.2}goToHowToPlay()}{41}{subsubsection.6.15.2.2}%
+\contentsline {subsubsection}{\numberline {6.15.2.3}goToOptions()}{41}{subsubsection.6.15.2.3}%
+\contentsline {subsubsection}{\numberline {6.15.2.4}goToPlay()}{42}{subsubsection.6.15.2.4}%
+\contentsline {section}{\numberline {6.16}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Options\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Menu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Klassenreferenz}{42}{section.6.16}%
+\contentsline {subsection}{\numberline {6.16.1}Ausführliche Beschreibung}{43}{subsection.6.16.1}%
+\contentsline {subsection}{\numberline {6.16.2}Dokumentation der Elementfunktionen}{43}{subsection.6.16.2}%
+\contentsline {subsubsection}{\numberline {6.16.2.1}goToMainMenu()}{43}{subsubsection.6.16.2.1}%
+\contentsline {subsubsection}{\numberline {6.16.2.2}initialize()}{43}{subsubsection.6.16.2.2}%
+\contentsline {subsubsection}{\numberline {6.16.2.3}setPoneKeyDown()}{44}{subsubsection.6.16.2.3}%
+\contentsline {subsubsection}{\numberline {6.16.2.4}setPoneKeyUp()}{44}{subsubsection.6.16.2.4}%
+\contentsline {subsubsection}{\numberline {6.16.2.5}setPtwoKeyDown()}{44}{subsubsection.6.16.2.5}%
+\contentsline {subsubsection}{\numberline {6.16.2.6}setPtwoKeyUp()}{44}{subsubsection.6.16.2.6}%
+\contentsline {section}{\numberline {6.17}de.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}htwsaar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pong.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}zuse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zuse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pong\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App Klassenreferenz}{44}{section.6.17}%
+\contentsline {subsection}{\numberline {6.17.1}Ausführliche Beschreibung}{45}{subsection.6.17.1}%
+\contentsline {subsection}{\numberline {6.17.2}Dokumentation der Elementfunktionen}{45}{subsection.6.17.2}%
+\contentsline {subsubsection}{\numberline {6.17.2.1}main()}{45}{subsubsection.6.17.2.1}%
+\contentsline {chapter}{\numberline {7}Datei-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dokumentation}{47}{chapter.7}%
+\contentsline {section}{\numberline {7.1}src/main/java/de/htwsaar/pong/zuse/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Choose\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Mode\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{47}{section.7.1}%
+\contentsline {section}{\numberline {7.2}src/main/java/de/htwsaar/pong/zuse/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}View\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{47}{section.7.2}%
+\contentsline {section}{\numberline {7.3}src/main/java/de/htwsaar/pong/zuse/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}How\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}To\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Play\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{48}{section.7.3}%
+\contentsline {section}{\numberline {7.4}src/main/java/de/htwsaar/pong/zuse/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Menu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{48}{section.7.4}%
+\contentsline {section}{\numberline {7.5}src/main/java/de/htwsaar/pong/zuse/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Options\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Menu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{48}{section.7.5}%
+\contentsline {section}{\numberline {7.6}src/main/java/de/htwsaar/pong/zuse/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ball.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{48}{section.7.6}%
+\contentsline {section}{\numberline {7.7}src/main/java/de/htwsaar/pong/zuse/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Button.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{49}{section.7.7}%
+\contentsline {section}{\numberline {7.8}src/main/java/de/htwsaar/pong/zuse/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{49}{section.7.8}%
+\contentsline {section}{\numberline {7.9}src/main/java/de/htwsaar/pong/zuse/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Options.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{49}{section.7.9}%
+\contentsline {section}{\numberline {7.10}src/main/java/de/htwsaar/pong/zuse/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Player.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{50}{section.7.10}%
+\contentsline {section}{\numberline {7.11}src/main/java/de/htwsaar/pong/zuse/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Player\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}KI.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{50}{section.7.11}%
+\contentsline {section}{\numberline {7.12}src/main/java/de/htwsaar/pong/zuse/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Point.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{50}{section.7.12}%
+\contentsline {section}{\numberline {7.13}src/main/java/de/htwsaar/pong/zuse/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sub\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scene.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{51}{section.7.13}%
+\contentsline {section}{\numberline {7.14}src/main/java/de/htwsaar/pong/zuse/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Launch\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{51}{section.7.14}%
+\contentsline {section}{\numberline {7.15}src/main/java/de/htwsaar/pong/zuse/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zuse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pong\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{51}{section.7.15}%
+\contentsline {section}{\numberline {7.16}src/test/java/de/htwsaar/pong/zuse/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dateireferenz}{51}{section.7.16}%
+\contentsline {chapter}{Index}{53}{section*.54}%
