@@ -219,6 +219,8 @@ public class GameHandler {
         animationTimer.stop();
         ball.stopBallAnimation();
         ball.setVisible(false);
+        gameScene.setOnKeyPressed(e -> {});
+        gameScene.setOnKeyReleased(e -> {});
         createEndScoreSubScene(playerOneWins);
         //Entfernt den Menu Button unten rechts, da ein neuer mit dem EndScore eingeblendet wird
         gamePane.getChildren().remove(firstMenuButton);
@@ -295,6 +297,8 @@ public class GameHandler {
                 animationTimer.stop();
                 //Fenstertitel zurückändern
                 gameStage.setTitle("Pong by Team Zuse");
+                gameScene.setOnKeyPressed(ev -> {});
+                gameScene.setOnKeyReleased(ev -> {});
                 gameStage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
             } catch (IOException ioException) {
                 ioException.printStackTrace();

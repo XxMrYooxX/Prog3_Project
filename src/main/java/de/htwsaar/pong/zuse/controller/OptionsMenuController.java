@@ -1,9 +1,12 @@
 package de.htwsaar.pong.zuse.controller;
 
 import de.htwsaar.pong.zuse.model.GameOptions;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
+
 
 import java.io.IOException;
 import java.util.Objects;
@@ -48,6 +51,8 @@ public class OptionsMenuController {
         } else {
             //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
             o_label_back.setOnKeyPressed(e -> System.out.println("Debug ins Menu"));
+            o_label_back.getScene().setOnKeyPressed(e -> {});
+            System.out.println(o_label_back.getScene());
             o_label_back.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
         }
         //Event abgeschlossen und "verbraucht"
@@ -56,11 +61,13 @@ public class OptionsMenuController {
 
     @FXML
     public void setPoneKeyUp(javafx.scene.input.MouseEvent event) {
+
         o_label_pone_up.getScene().setOnKeyPressed(e -> {
             System.out.println("setPoneKeyUp");
             System.out.println(e.getCode());
             o_label_pone_up.setText("ausgewählter Button: "+ e.getCode());
             GameOptions.setKeyCodePoneUp(e.getCode());
+            e.consume();
         });
         o_label_keyassigned.setVisible(false);
         event.consume();
