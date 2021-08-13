@@ -1,21 +1,17 @@
 package de.htwsaar.pong.zuse.model;
 
 import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
-import javax.swing.plaf.basic.BasicTreeUI;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -29,7 +25,7 @@ public class GameHandler {
 
     private static final int WIDTH = GameOptions.getGameWidth();
     private static final int HEIGHT = GameOptions.getGameHeight();
-    private static final int SPEED = 15;
+    private static final int PADDLE_SPEED = 15;
     private static Bounds bounds;
     private static GamePlayer player;
     private static GamePlayer player2;
@@ -66,7 +62,6 @@ public class GameHandler {
         this.gameStage = gameStage;
         this.gamePane = gamePane;
         this.gameScene = gameScene;
-        bounds = gamePane.getLayoutBounds();
     }
 
     /**
@@ -80,6 +75,7 @@ public class GameHandler {
      */
     public void createGameSubScene() {
         GameSubScene gameSubScene = new GameSubScene(WIDTH, HEIGHT, 0, 0);
+        bounds = gameSubScene.getLayoutBounds();
         //Festlegen des Hintergrunds der Spielfläche
         gameSubScene.getPane().setStyle(GAME_SUBSCENE_BACKGROUND_STYLE); //Helles Türkis TODO: Ersetzen mit css
 
@@ -108,7 +104,7 @@ public class GameHandler {
         }
         //Fügt die erstellte SubScene zum GamePane hinzu
         gamePane.getChildren().add(gameSubScene);
-        //Fenster-Grenzen für Paddles und Ball (Collisiondetection)
+        //Fenster-Grenzen für Paddles und Ball (Collision Detection)
         //Focus richtig gesetzt für Up Down Keys
         gameSubScene.requestFocus();
     }
@@ -196,17 +192,17 @@ public class GameHandler {
      */
     public void movePlayer() {
         if (isPOneUpKeyPressed && (player.getBoundsInParent().getMinY() > (bounds.getMinY()))) {
-            player.setTranslateY(player.getTranslateY() - SPEED);
+            player.setTranslateY(player.getTranslateY() - PADDLE_SPEED);
         }
         if (isPOneDownKeyPressed && (player.getBoundsInParent().getMaxY() < (bounds.getMaxY()))) {
-            player.setTranslateY(player.getTranslateY() + SPEED);
+            player.setTranslateY(player.getTranslateY() + PADDLE_SPEED);
         }
         if (GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER) {
             if (isPTwoUpKeyPressed && (player2.getBoundsInParent().getMinY() > (bounds.getMinY()))) {
-                player2.setTranslateY(player2.getTranslateY() - SPEED);
+                player2.setTranslateY(player2.getTranslateY() - PADDLE_SPEED);
             }
             if (isPTwoDownKeyPressed && (player2.getBoundsInParent().getMaxY() < (bounds.getMaxY()))) {
-                player2.setTranslateY(player2.getTranslateY() + SPEED);
+                player2.setTranslateY(player2.getTranslateY() + PADDLE_SPEED);
             }
         }
     }
@@ -224,28 +220,6 @@ public class GameHandler {
         createEndScoreSubScene(playerOneWins);
         //Entfernt den Menu Button unten rechts, da ein neuer mit dem EndScore eingeblendet wird
         gamePane.getChildren().remove(firstMenuButton);
-    }
-
-    /**
-     * Methode checkCollision
-     * - Kollisionserkennung der SpielerPaddles
-     * - Abhängig von Spielmodus
-     */
-    private void checkCollision() {
-        if (player.getTranslateY() <= -(double)(HEIGHT / 2 - player.getHeight() / 3)) {
-            player.setTranslateY(player.getTranslateY() + SPEED);
-        }
-        if (player.getTranslateY() >= ((double)HEIGHT / 2 - player.getHeight() / 3)) {
-            player.setTranslateY(player.getTranslateY() - SPEED);
-        }
-        if (GameOptions.getGameMode() == GameOptions.GameMode.MULTIPLAYER) {
-            if (player2.getTranslateY() <= ((double)HEIGHT / 2 - player2.getHeight() / 3)) {
-                player2.setTranslateY(player2.getTranslateY() + SPEED);
-            }
-            if (player2.getTranslateY() >= -(double)(HEIGHT / 2 - player2.getHeight() / 3)) {
-                player2.setTranslateY(player2.getTranslateY() - SPEED);
-            }
-        }
     }
 
     /**
@@ -388,8 +362,11 @@ public class GameHandler {
         Label resultLabel = new Label("");
 
         //Gewinner bestimmen und Text setzen
-        if (playerOneWins) resultLabel.setText("Player 1 Wins!");
-        else resultLabel.setText("Player 2 Wins!");
+        if (playerOneWins) {
+            resultLabel.setText("Player 1 Wins!");
+        } else {
+            resultLabel.setText("Player 2 Wins!");
+        }
 
         //Layout anpassen und zentrieren
         resultLabel.setScaleX(7);
@@ -429,33 +406,59 @@ public class GameHandler {
      * - Prüft abhängig von Spielmodus die Collision des Balls am Spieler 2 / KI
      */
     private void checkBallCollision() {
-
         Shape intersectBallOne = Shape.intersect(ball, player);
+        double playerSectionSize = player.getHeight() / 4;
+        double dif;
         if (intersectBallOne.getBoundsInLocal().getWidth() != -1) {
-            System.out.println("Collision detected: Ball and P1");
-            GameBall.setXSpeed(-(GameBall.getXSpeed()));
-            GameBall.setYSpeed(-(GameBall.getYSpeed()));
+            dif = ball.getBoundsInParent().getCenterY() - player.getBoundsInParent().getCenterY();
+            System.out.print("Collision detected: Ball and P1\t");
+            changeBallSpeedForDif(dif, playerSectionSize);
             if(GameOptions.getGameMode() == GameOptions.GameMode.SINGLEPLAYER) {
-                playerKI.setInAcc((int)(Math.random() * (90 - 20)) + 20);
+                GamePlayerKI.setInAcc((int)(Math.random() * (90 - 20)) + 20);
             }
         }
         switch (GameOptions.getGameMode()) {
             case SINGLEPLAYER:
                 Shape intersectBallKI = Shape.intersect(ball, playerKI);
                 if (intersectBallKI.getBoundsInLocal().getWidth() != -1) {
-                    System.out.println("Collision detected: Ball and KI");
-                    GameBall.setXSpeed(-(GameBall.getXSpeed()));
-                    GameBall.setYSpeed(-(GameBall.getYSpeed()));
+                    System.out.print("Collision detected: Ball and KI\t");
+                    dif = ball.getBoundsInParent().getCenterY() - playerKI.getBoundsInParent().getCenterY();
+                    changeBallSpeedForDif(dif, playerSectionSize);
                 }
                 break;
             case MULTIPLAYER:
                 Shape intersectBallTwo = Shape.intersect(ball, player2);
                 if (intersectBallTwo.getBoundsInLocal().getWidth() != -1) {
-                    System.out.println("Collision detected: Ball and P2");
-                    GameBall.setXSpeed(-(GameBall.getXSpeed()));
-                    //GameBall.setYSpeed(-(GameBall.getYSpeed()));
+                    System.out.print("Collision detected: Ball and P2\t");
+                    dif = ball.getBoundsInParent().getCenterY() - player2.getBoundsInParent().getCenterY();
+                    changeBallSpeedForDif(dif, playerSectionSize);
                 }
                 break;
         }
+    }
+
+    private void changeBallSpeedForDif(double difToPlayerZero, double playerSectionSize){
+        int section = 0;
+        if(difToPlayerZero == 0){
+            GameBall.setXSpeed(-(GameBall.getXSpeed()));
+            GameBall.setYSpeed(-(GameBall.getYSpeed()));
+        } else if (difToPlayerZero <= playerSectionSize && difToPlayerZero > 0) {   // Section 1
+            GameBall.setXSpeed(-(GameBall.getXSpeed()));
+            GameBall.setYSpeed(-(int)(GameBall.getYSpeed() * 1.2));
+            section = 1;
+        } else if (difToPlayerZero <= playerSectionSize*2) {                        // Section 2
+            GameBall.setXSpeed(-(GameBall.getXSpeed()));
+            GameBall.setYSpeed(-(int)(GameBall.getYSpeed() * 1.6));
+            section = 2;
+        } else if (difToPlayerZero <= -(playerSectionSize) && difToPlayerZero < 0) {// Section -1
+            GameBall.setXSpeed(-(GameBall.getXSpeed()));
+            GameBall.setYSpeed(-(int)(GameBall.getYSpeed() * 1.2));
+            section = -1;
+        } else if (difToPlayerZero <= -(playerSectionSize)) {                       // Section -2
+            GameBall.setXSpeed(-(GameBall.getXSpeed()));
+            GameBall.setYSpeed(-(int)(GameBall.getYSpeed() * 1.6));
+            section = -2;
+        }
+        System.out.println("Ungenauigkeit: " + difToPlayerZero + "\t Section: " + section);
     }
 }
