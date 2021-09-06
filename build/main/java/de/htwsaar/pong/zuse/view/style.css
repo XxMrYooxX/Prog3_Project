@@ -1,0 +1,17 @@
+/* Anpassen der Farbe von Labels, beim Darüberhovern mit der Maus */
+
+.root * {
+    -on-enter-hover-label: #000000;
+    -on-leave-hover-label: #aba0a0
+}
+
+.label {
+    -fx-text-fill: -on-leave-hover-label;
+}
+.label:hover {
+    -fx-text-fill: -on-enter-hover-label;
+}
+
+.imageView:hover {
+    -fx-opacity: 0.25;
+}

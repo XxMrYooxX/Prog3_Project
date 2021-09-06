@@ -37,7 +37,7 @@ public class MainMenuController {
     System.out.println("go to how to play scene");
     //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
     mm_label_howtoplay.getScene().setRoot(
-        FXMLLoader.load(Objects.requireNonNull(getClass().getResource(convertResPath("/howtoplay.fxml")))));
+        FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/howtoplay.fxml"))));
     //Event abgeschlossen und "verbraucht"
     event.consume();
   }
@@ -52,7 +52,7 @@ public class MainMenuController {
   public void goToOptions(javafx.scene.input.MouseEvent event) throws IOException {
     System.out.println("go to Options scene");
     mm_label_options.getScene().setRoot(FXMLLoader.load(
-        Objects.requireNonNull(getClass().getResource(convertResPath("/options.fxml")))));
+        Objects.requireNonNull(getClass().getResource("/options.fxml"))));
     event.consume();
   }
 
@@ -66,7 +66,7 @@ public class MainMenuController {
   public void goToPlay(javafx.scene.input.MouseEvent event) throws IOException {
     System.out.println("go to gamemode scene");
     mm_label_playnow.getScene().setRoot(FXMLLoader.load(
-        Objects.requireNonNull(getClass().getResource(convertResPath("/choosegamemode.fxml")))));
+        Objects.requireNonNull(getClass().getResource("/choosegamemode.fxml"))));
     event.consume();
   }
 
@@ -80,16 +80,5 @@ public class MainMenuController {
     event.consume();
     //Programm wird mit Return Code 0 beendet.
     System.exit(0);
-  }
-
-  /**
-   * Methode convertResPath
-   * Konvertiert Path, sodass dieser durch festgelegte Ressourcen-Paths und durch manuelles Compilen genutzt werden kann
-   * @param path ursprünglicher Path zum Ressourcen Ordner
-   * @return neuer Path
-   */
-  public static String convertResPath (String path) {
-    path = "..\\view\\" + path.substring(1);
-    return path;
   }
 }

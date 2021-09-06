@@ -50,6 +50,7 @@ public class OptionsMenuController {
    * @param event OnMouseClickEvent
    * @throws IOException Generic IOException
    */
+  //Methode zum Wechseln in die Main Menu Scene
   @FXML
   public void goToMainMenu(javafx.scene.input.MouseEvent event) throws IOException {
     if (GameOptions.doubleKeyAssignment()) {
@@ -61,17 +62,12 @@ public class OptionsMenuController {
       });
       System.out.println(o_label_back.getScene());
       o_label_back.getScene().setRoot(
-          FXMLLoader.load(Objects.requireNonNull(getClass().getResource(convertResPath("/mainmenu.fxml")))));
+          FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
     }
     //Event abgeschlossen und "verbraucht"
     event.consume();
   }
 
-  /**
-   * Methode setPoneKeyDown
-   * setzt Spieler 1 Key zur Bewegung: oben
-   * @param event MouseEvent
-   */
   @FXML
   public void setPoneKeyUp(javafx.scene.input.MouseEvent event) {
     o_label_pone_up.getScene().setOnKeyPressed(e -> {
@@ -85,11 +81,6 @@ public class OptionsMenuController {
     event.consume();
   }
 
-  /**
-   * Methode setPoneKeyDown
-   * setzt Spieler 1 Key zur Bewegung: unten
-   * @param event MouseEvent
-   */
   @FXML
   public void setPoneKeyDown(javafx.scene.input.MouseEvent event) {
     o_label_pone_down.getScene().setOnKeyPressed(e -> {
@@ -103,11 +94,6 @@ public class OptionsMenuController {
     event.consume();
   }
 
-  /**
-   * Methode setPtwoKeyUp
-   * setzt Spieler 2 Key zur Bewegung: oben
-   * @param event MouseEvent
-   */
   @FXML
   public void setPtwoKeyUp(javafx.scene.input.MouseEvent event) {
     o_label_ptwo_up.getScene().setOnKeyPressed(e -> {
@@ -121,11 +107,6 @@ public class OptionsMenuController {
     event.consume();
   }
 
-  /**
-   * Methode setPtwoKeyDown
-   * setzt Spieler 2 Key zur Bewegung: unten
-   * @param event MouseEvent
-   */
   @FXML
   public void setPtwoKeyDown(javafx.scene.input.MouseEvent event) {
     o_label_ptwo_down.getScene().setOnKeyPressed(e -> {
@@ -136,16 +117,5 @@ public class OptionsMenuController {
     });
     o_label_keyassigned.setVisible(false);
     event.consume();
-  }
-
-  /**
-   * Methode convertResPath
-   * Konvertiert Path, sodass dieser durch festgelegte Ressourcen-Paths und durch manuelles Compilen genutzt werden kann
-   * @param path ursprünglicher Path zum Ressourcen Ordner
-   * @return neuer Path
-   */
-  public static String convertResPath (String path) {
-    path = "..\\view\\" + path.substring(1);
-    return path;
   }
 }

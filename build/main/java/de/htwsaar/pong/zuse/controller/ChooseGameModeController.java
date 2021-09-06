@@ -40,7 +40,7 @@ public class ChooseGameModeController {
     GameOptions.setGameMode(GameOptions.GameMode.SINGLEPLAYER);
     //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
     gm_label_singleplayer.getScene().setRoot(FXMLLoader.load(
-        Objects.requireNonNull(getClass().getResource(convertResPath("/gamescene.fxml")))));
+        Objects.requireNonNull(getClass().getResource("/gamescene.fxml"))));
     event.consume();
   }
 
@@ -57,7 +57,7 @@ public class ChooseGameModeController {
     GameOptions.setGameMode(GameOptions.GameMode.MULTIPLAYER);
     //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
     gm_label_multiplayer.getScene().setRoot(FXMLLoader.load(
-        Objects.requireNonNull(getClass().getResource(convertResPath("/gamescene.fxml")))));
+        Objects.requireNonNull(getClass().getResource("/gamescene.fxml"))));
     event.consume();
   }
 
@@ -72,18 +72,7 @@ public class ChooseGameModeController {
     System.out.println("go to main menu");
     //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
     gm_label_back.getScene().setRoot(FXMLLoader.load(
-        Objects.requireNonNull(getClass().getResource(convertResPath("/mainmenu.fxml")))));
+        Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
     event.consume();
-  }
-
-  /**
-   * Methode convertResPath
-   * Konvertiert Path, sodass dieser durch festgelegte Ressourcen-Paths und durch manuelles Compilen genutzt werden kann
-   * @param path ursprünglicher Path zum Ressourcen Ordner
-   * @return neuer Path
-   */
-  public static String convertResPath (String path) {
-    path = "..\\view\\" + path.substring(1);
-    return path;
   }
 }

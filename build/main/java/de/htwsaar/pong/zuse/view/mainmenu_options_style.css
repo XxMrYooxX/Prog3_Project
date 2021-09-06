@@ -1,0 +1,14 @@
+/* Anpassen der Farbe von Labels, beim Darüberhovern mit der Maus */
+/* Genau umgekehrt zur "style.css", da manche Labels im Standard-Zustand Schwarz sind */
+
+.root * {
+    -on-enter-hover-label: #aba0a0;
+    -on-leave-hover-label: #000000;
+}
+
+.label {
+    -fx-text-fill: -on-leave-hover-label;
+}
+.label:hover {
+    -fx-text-fill: -on-enter-hover-label;
+}

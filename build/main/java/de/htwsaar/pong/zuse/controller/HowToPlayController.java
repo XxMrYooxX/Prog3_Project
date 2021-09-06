@@ -23,6 +23,8 @@ public class HowToPlayController {
   @FXML
   private Label htop_label_back;
 
+  //Methode zum Wechseln in die Main Menu Scene
+
   /**
    * Methode goToMainMenu
    * - zum Wechseln in die Main Menu Scene
@@ -34,19 +36,9 @@ public class HowToPlayController {
     System.out.println("go to main menu");
     //Findet über das Label (oben deklariert) die Root Scene und lädt dort die neue .fxml rein
     htop_label_back.getScene().setRoot(FXMLLoader.load(
-        Objects.requireNonNull(getClass().getResource(convertResPath("/mainmenu.fxml")))));
+        Objects.requireNonNull(getClass().getResource("/mainmenu.fxml"))));
     //Event abgeschlossen und "verbraucht"
     event.consume();
   }
 
-  /**
-   * Methode convertResPath
-   * Konvertiert Path, sodass dieser durch festgelegte Ressourcen-Paths und durch manuelles Compilen genutzt werden kann
-   * @param path ursprünglicher Path zum Ressourcen Ordner
-   * @return neuer Path
-   */
-  public static String convertResPath (String path) {
-    path = "..\\view\\" + path.substring(1);
-    return path;
-  }
 }

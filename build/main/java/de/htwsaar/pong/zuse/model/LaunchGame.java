@@ -41,22 +41,11 @@ public class LaunchGame extends Application {
   @Override
   public void start(Stage stage) throws Exception {
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass()
-        .getResource(convertResPath("/mainmenu.fxml"))));
+        .getResource("/mainmenu.fxml")));
     stage.setScene(new Scene(root, 1280, 720));
     stage.setResizable(false);
     stage.setMaximized(false);
     stage.setTitle("Pong by Team Zuse");
     stage.show();
-  }
-
-  /**
-   * Methode convertResPath
-   * Konvertiert Path, sodass dieser durch festgelegte Ressourcen-Paths und durch manuelles Compilen genutzt werden kann
-   * @param path ursprünglicher Path zum Ressourcen Ordner
-   * @return neuer Path
-   */
-  public static String convertResPath (String path) {
-    path = "..\\view\\" + path.substring(1);
-    return path;
   }
 }

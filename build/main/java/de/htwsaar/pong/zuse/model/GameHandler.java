@@ -282,7 +282,7 @@ public class GameHandler {
         });
         gameStage.getScene().setRoot(
             FXMLLoader.load(Objects.requireNonNull(getClass()
-                .getResource(convertResPath("/mainmenu.fxml")))));
+                .getResource("/mainmenu.fxml"))));
       } catch (IOException ioException) {
         ioException.printStackTrace();
       }
@@ -400,7 +400,7 @@ public class GameHandler {
         gameStage.setTitle("Pong by Team Zuse");
         gameStage.getScene().setRoot(
             FXMLLoader.load(Objects.requireNonNull(getClass()
-                .getResource(convertResPath("/mainmenu.fxml")))));
+                .getResource("/mainmenu.fxml"))));
       } catch (IOException ioException) {
         ioException.printStackTrace();
       }
@@ -506,16 +506,5 @@ public class GameHandler {
       invalidCollision = true;
     }
     return invalidCollision;
-  }
-
-  /**
-   * Methode convertResPath
-   * Konvertiert Path, sodass dieser durch festgelegte Ressourcen-Paths und durch manuelles Compilen genutzt werden kann
-   * @param path ursprünglicher Path zum Ressourcen Ordner
-   * @return neuer Path
-   */
-  public static String convertResPath (String path) {
-    path = "..\\view\\" + path.substring(1);
-    return path;
   }
 }

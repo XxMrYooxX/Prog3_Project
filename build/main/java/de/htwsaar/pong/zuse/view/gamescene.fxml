@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane fx:id="gs_ap_anchorPane" prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.htwsaar.pong.zuse.controller.GameViewController">
+   <children>
+      <Button fx:id="gs_button_start" layoutX="472.0" layoutY="278.0" mnemonicParsing="false" onAction="#startButton" text="Start">
+         <font>
+            <Font size="78.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
