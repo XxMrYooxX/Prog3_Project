@@ -68,5 +68,5 @@ This project is licensed under the GNU General Public License v3.0
 * Marcel Hesselbach - Teamkommunikator und Entwickler
 * Isabelle Müller - Entwicklerin
 * Jorin Moritz Spiller - Entwickler
-* Amin Yousif - Entwicklerin
+* Amin Yousif - Entwickler
 * every StackOverflow Member - technische und seelische Unterstützung
