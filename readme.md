@@ -28,18 +28,17 @@ Geben Sie eine kompakte Beschreibung der Kernidee Ihres Lösungsansatzes. Begrü
 ![Bild des statischen Modells](doc/markdown_doc/statisches_modell.png)
 
 ## Getting Started
-Dokumentieren Sie, wie man ihr Projekt bauen, installieren und starten kann.
 
 #### Voraussetzungen
-Welche Voraussetzungen werden benötigt, um ihr Projekt zu starten: Frameworks, Software, Libraries, ggf. Hardware.
+Voraussetzung: 
+- Sie befinden sich im Ordner src\main\java
+- OpenJFX ist lokal vorhanden
+
+Hinweis: Path abhängig von betriebssystemunabhängigem Path-Separator! ggf. Anpassung nötig!
 
 #### Installation und Deployment
 
 Schritt-für-Schritt-Anleitung zum manuellen Compilieren:
-
-Voraussetzung: Sie befinden sich im Ordner src\main\java
-
-Hinweis: Path abhängig von betriebssystemunabhängigem Path-Separator! ggf. Anpassung nötig!
 
 Compile:
 ```shell
