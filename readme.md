@@ -52,7 +52,7 @@ java --module-path %PATH_TO_JFX_LIB% --add-modules javafx.controls,javafx.fxml d
 ## Built With
 Geben Sie an, welche Frameworks und Tools Sie verwendet haben. Z.B.:
 
-* [OpenJFX 16](https://openjfx.io/) - open source client application platform
+* [OpenJFX 11](https://openjfx.io/) - open source client application platform
 * [SceneBuilder](https://gluonhq.com/products/scene-builder/) - visual layout tool for JavaFX Applications
 * [Apache Maven](https://maven.apache.org/) - software project management tool used during development
 
